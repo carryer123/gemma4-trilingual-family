@@ -79,5 +79,5 @@ LoRA training. Section 4 introduces the Family-as-Evaluator protocol and the
 failure-mode catalog it surfaces. Section 5 reports translation-quality
 ablations, schema adherence, latency, and a bridge-pivot data-augmentation
 ablation. Section 6 discusses limitations (N=1 family, IRB scope, voice-data
-locality). Section 7 outlines future work tied to the Sejong regional content
+locality). Section 7 outlines future work tied to a regional content
 program (Section 7).

@@ -122,7 +122,7 @@ and the household stratification:
   multicultural households at confidence c." Supported by N
   computed via a power calculation against the chosen p, c.
 
-Our N=1 case study (§5) supports Tier 1 only; the Sejong N=20 panel
+Our N=1 case study (§5) supports Tier 1 only; the N=20 multicultural family panel
 (§7.2) is the upgrade to Tier 2.
 
 ## 4.3 Pre-registration template
@@ -157,8 +157,8 @@ We are explicit about scope to discourage misuse:
   They are existence proofs that should be promoted to Tier 2 by
   N-scaling, not by inflated per-household statistical tests.
 * FaE does not replace IRB review for any panel beyond the
-  experimenter's own household. The Sejong panel (§7.2) is being
-  designed in collaboration with the Sejong Multicultural Family
+  experimenter's own household. The N=20 panel (§7.2) is being
+  designed in collaboration with the partner Multicultural Family
   Center under their own ethics framework.
 * FaE assumes the evaluators are honest. It is not robust to adversarial
   evaluation. (We see this as a feature for this niche population, not

@@ -1,4 +1,4 @@
-# 7. Future Work and the Sejong Pipeline
+# 7. Future Work and Scaling Plan
 
 The current paper is the v1 of a multi-stage program. We outline the
 concrete next four milestones, each tied to a delivery date and a
@@ -17,17 +17,17 @@ explicit transliteration pairs (§3.2 + Appendix B). Target metrics
 
 Delivery: arXiv v2 by 2026-05-18 (hackathon submission deadline).
 
-## 7.2 Milestone M2: Sejong Family Center N=20 panel (Aug-Nov 2026)
+## 7.2 Milestone M2: multicultural family center N=20 panel (Aug-Nov 2026)
 
-A 2026 Sejong Regional Specialized Content Development support
-program (세종 지역특화콘텐츠개발지원사업) proposal was filed on
+A 2026 [regional cultural funding] Development support
+program (
 2026-04-09 with this exact product as the deliverable, providing the
 funding pipeline for the N=20 family-center scaling described below. The 11-month program runs 2026-05 to 2026-12
 and includes mid-term review in August and final review in November.
 Total budget 111.2M KRW (100M public + 11.2M company-matched).
 
-The work plan submitted to Sejong includes a *family-center pilot* with
-the Sejong Multicultural Family Center (다문화가족지원센터). We commit
+The work plan submitted to the partner program includes a *family-center pilot* with
+the multicultural family centers (다문화가족지원센터). We commit
 to recruiting **N=20 multicultural households**, stratified by maternal
 L1 (Russian, Vietnamese, Mandarin Chinese, Thai, Uzbek, Mongolian,
 Filipino), each with at least one child aged 0–8. Each household runs
@@ -75,7 +75,7 @@ inference numbers in §5 are upper bounds; phone NPU inference will be
 ≈3–5× slower in raw tokens/s but with substantially lower memory
 pressure thanks to MediaPipe's int4 weight quantization.
 
-## 7.5 The Sejong → arXiv → Findings → Journal ladder
+## 7.5 The arXiv → Findings → Journal ladder
 
 The intended publication ladder (separate from the hackathon
 submission, which is unaffected by review timing):
@@ -84,7 +84,7 @@ submission, which is unaffected by review timing):
 |---|---|---|---|
 | arXiv v1 | preprint + hackathon | 2026-05-17 | base paper |
 | arXiv v2 | LoResMT or MRL workshop | 2026-06 | LoRA-v2, human eval N=1 final |
-| arXiv v3 | ACL Findings or CHI | 2026-12 | Sejong N=20 panel + 3 more language triples + child speech eval |
+| arXiv v3 | ACL Findings or CHI | 2026-12 | N=20 multicultural family panel + 3 more language triples + child speech eval |
 | arXiv v4 | Computer Speech & Language journal | 2027 spring | 6-month longitudinal, IRB clear, full statistical analysis |
 
 Each level requires substantially new material (≥ 30%) per ACL and
@@ -92,12 +92,12 @@ journal extension policies, satisfied by the milestones above.
 
 ## 7.6 IP and content extension (deployment context)
 
-The Sejong proposal (referenced above) extends the system to character
-IP — Sejong-i (세종이), Tomi (또미), Mallangi (말랑이) — plus webtoons,
+The partner proposal (referenced above) extends the system to character
+IP — (character IPs) — plus webtoons,
 workbooks, sticker books, and Hangul play kits. These are out of scope
 of the LLM paper but coexist with it: the LLM generates the dialog,
 the IP renders the visual world, and the print products (in
-collaboration with 미래엔 세종공장 [mirae-en]) make the service
+collaboration with print partners [mirae-en]) make the service
 tangible to households without smartphones. We treat this as
 deployment context, not a scientific claim.
 
@@ -109,6 +109,6 @@ evaluation infrastructure. Multicultural family centers exist in every
 Korean city. A small standardized 30-probe rubric per language triple,
 graded by recruited households monthly, would constitute the first
 systematic public-good evaluation set for niche-population LLMs.
-We will discuss this with the Sejong Multicultural Family Center
+We will discuss this with the multicultural family centers
 and the Korea Institute for Healthy Family (한국건강가정진흥원) during
-the Sejong program's mid-term review.
+[partner program]'s mid-term review.

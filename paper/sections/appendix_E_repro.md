@@ -77,7 +77,6 @@ Total wall-clock from the moment we entered `젬마4해커톤/`:
 ├── setup_env.sh
 ├── install_packages.sh
 ├── docs/
-│   ├── 세종_지역특화콘텐츠_제안서_2026-04-09.md
 │   ├── 아키텍처_결정_20260506.md
 │   ├── 파인튜닝_플랜_20260506.md
 │   └── (more)
@@ -129,6 +128,6 @@ will include:
 * The 21-month-old participant's voice data does not appear in any
   released artifact; only second-hand parental observations of
   attention/laughter/repetition are reported.
-* If we move the Sejong N=20 panel forward (Section 7), an IRB or
+* If we move the N=20 multicultural family panel forward (Section 7), an IRB or
   equivalent local-ethics review is required; we will not retroactively
   release the v1 single-family data as if it were panel data.

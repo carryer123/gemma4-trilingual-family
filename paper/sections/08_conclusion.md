@@ -20,7 +20,7 @@ to BLEU and JSON-parse metrics. We diagnosed it as policy-frequency
 overfitting (too few transliteration examples in v1), corrected it
 with 300 explicit transliteration pairs (LoRA-v2), and committed to
 scaling the family-evaluator panel to 20 multicultural households via
-the Sejong Multicultural Family Center program in late 2026.
+the multicultural family centers program in late 2026.
 
 The methodological point — *observable benchmark success ≠ task-real
 success; instrument the parity that matters* — is inherited from our

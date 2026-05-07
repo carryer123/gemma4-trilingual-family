@@ -72,8 +72,8 @@ judge model. For a niche population (multicultural household, pre-literate
 child, RU-L1 mother), these proxies fail. Our Family-as-Evaluator (Section 4)
 is small-N (N=1 family) by design, in the same spirit as a *case study*
 in HCI: we trade statistical power for ground-truth fidelity, and propose
-a future-work pathway (Section 7) to scale through the Sejong
-Multicultural Family Centers network [sejong-family].
+a future-work pathway (Section 7) to scale through partner
+Multicultural Family Centers network [family-centers].
 
 ## 2.6 Inheritance from Paper 1 (DFT-AI)
 

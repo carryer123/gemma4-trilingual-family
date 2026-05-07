@@ -162,7 +162,7 @@ Appendix D.
 The 30-probe FaE session is conducted with both adult evaluators
 independently scoring each probe across {stock E2B, LoRA-v1, LoRA-v2}.
 We report mean ± SD per category, failure-mode incidence rate per tag,
-and Cohen's κ. The N=20 Sejong panel (§7.2) is the upgrade path;
+and Cohen's κ. The N=20 N=20 panel (§7.2) is the upgrade path;
 v1 supports Tier 1 (existence) only.
 
 | Variant | Mean rating ± SD | Failure-mode count | κ A vs B |

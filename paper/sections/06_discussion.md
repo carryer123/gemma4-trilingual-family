@@ -36,7 +36,7 @@ toward the system."** Acknowledged. We mitigate by (a) publishing the
 30-probe set verbatim with the rubric so any third-party multicultural
 household can replicate, (b) reporting raw side-by-side outputs in
 Appendix D so readers can re-grade, (c) committing to a five-family
-panel via the Sejong Multicultural Family Centers in November 2026
+panel via the multicultural family centers in November 2026
 (Section 7), with a pre-registered protocol that mirrors v1.
 
 ## 6.2 The bridge-pivot is a double-edged sword

@@ -39,7 +39,7 @@ trace it to data-policy frequency, and fix it in LoRA-v2 with 300
 explicit transliteration pairs. We release the LoRA adapter, the
 trilingual dataset, and the 30-probe Family-as-Evaluator set under
 Apache 2.0 + CC-BY. The work was submitted to the 2026 Kaggle Gemma 4
-Good Hackathon and is part of a publicly-funded Sejong regional content
+Good Hackathon and is preparing a follow-up multicultural family panel
 program scaling to N=20 multicultural households in late 2026.
 
 ---
@@ -55,7 +55,7 @@ under `paper/sections/`:
 4. [Family-as-Evaluator](sections/04_family_as_evaluator.md)
 5. [Experiments](sections/05_experiments.md)
 6. [Discussion and Limitations](sections/06_discussion.md)
-7. [Future Work and the Sejong Pipeline](sections/07_future_work.md)
+7. [Future Work and Scaling Plan](sections/07_future_work.md)
 8. [Conclusion](sections/08_conclusion.md)
 
 **Appendices**:
@@ -79,7 +79,7 @@ under `paper/sections/`:
   hyperparameters, Appendix D shows raw failure cases.
 * **For HCI reviewers**: §4 (Family-as-Evaluator) is the methodological
   core. §6.1 addresses the N=1 critique head-on. §7.2 commits to the
-  N=20 panel via the Sejong family-center program.
+  N=20 panel via the multicultural family centers program.
 * **For practitioners**: §3.2 (data) and Appendix A (schemas) are a
   recipe for replicating the trilingual dataset for any other language
   triple. The released LoRA adapter and dataset card are linked at the
@@ -93,7 +93,7 @@ under `paper/sections/`:
 |---|---|---|---|
 | v1 | arXiv preprint + Kaggle Gemma 4 Good Hackathon | **2026-05-17** | base paper |
 | v2 | LoResMT or MRL workshop @ ACL/EMNLP | 2026-06 | LoRA-v2 + family human-eval |
-| v3 | ACL Findings 2027 or CHI 2027 | 2026-12 | Sejong N=20 panel + 3 more language triples + child-speech eval |
+| v3 | ACL Findings 2027 or CHI 2027 | 2026-12 | N=20 multicultural family panel + 3 more language triples + child-speech eval |
 | v4 | journal (Computer Speech & Language or similar) | 2027 spring | 6-month longitudinal, IRB clear, full power analysis |
 
 ---
@@ -104,9 +104,9 @@ This work began in the home of the first author. The 21-month-old
 participant is the first author's child; the RU-L1 evaluator is the
 first author's spouse. We are grateful to MoonTechnology and the SKKU
 School of Advanced Materials Science and Engineering for protected
-research time, and to the Sejong Regional Specialized Content
-Development support program (administered by Sejong Cultural
-Industries Promotion Foundation) for the funding pipeline that makes
+research time, and to the [regional cultural funding]
+[program]
+ for the funding pipeline that makes
 the N=20 family-center scaling milestone in §7 financially feasible.
 The 4× A100 80GB cluster used for training and distillation is part
 of the KISTI HPC infrastructure. We thank the Gemma 4, Unsloth,
