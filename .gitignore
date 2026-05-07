@@ -1,0 +1,75 @@
+# venv + caches (large, regenerable)
+venv/
+hf_cache/
+torch_cache/
+pip_cache/
+tmp/
+
+# model weights (download from HF / Ollama, do not commit)
+models/
+ollama/
+ollama_models/
+
+# training outputs (large, but adapter is released separately)
+lora_out/*/checkpoint-*/
+lora_out/*/runs/
+lora_out/*/gguf-q4_k_m/
+
+# logs (regenerable)
+logs/
+wandb/
+
+# raw data (Tatoeba, etc. — re-download via scripts)
+prototype/data/raw/tatoeba_*.csv
+prototype/data/raw/tatoeba_*.jsonl
+prototype/data/raw/object_cards*.jsonl
+prototype/data/raw/family_scenarios*.jsonl
+prototype/data/raw/transliteration.jsonl
+prototype/data/raw/function_calls.jsonl
+prototype/data/raw/trilingual_ko_ru_en.jsonl
+prototype/data/train_*.jsonl
+prototype/data/eval_*.jsonl
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+*.pyo
+
+# secrets
+.envrc
+.env
+*.token
+hf_token.txt
+kaggle.json
+
+# private documents not for public release
+docs/세종_지역특화콘텐츠_제안서_*.md
+chain/
+auto_agent_output/
+
+# Disk-heavy / regenerable
+lora_out/
+ollama_models/
+ollama_install/
+hf_cache/
+torch_cache/
+pip_cache/
+tmp/
+venv/
+models/
+logs/
+prototype/data/raw/
+prototype/data/ablation/
+prototype/data/train_*.jsonl
+prototype/data/eval_*.jsonl
+prototype/eval/variant_*.jsonl
+paper/build/
+.envrc
+*.token
+hf_token.txt
+kaggle.json
+chain/
+auto_agent_output/

@@ -1,0 +1,24 @@
+{
+  "model": "gemma4:e2b",
+  "n": 20,
+  "n_ok": 20,
+  "mean_tps": 110.63,
+  "by_tag_avg": {
+    "trans_ko_ru": 70.91,
+    "trans_ru_ko": 116.12,
+    "trans_en_ko": 118.29,
+    "trans_en_ru": 118.93,
+    "l1_ru_for_ko": 118.11,
+    "l1_en_for_ko": 115.94,
+    "scenario": 118.38,
+    "func_call": 111.32,
+    "ko_grammar": 118.37,
+    "ru_grammar": 119.2,
+    "phonetic_ko_cyr": 120.01,
+    "phonetic_ru_han": 119.83,
+    "safety": 117.11,
+    "code_switch": 119.26,
+    "contrast_ru_ko": 120.56,
+    "contrast_ko_ru": 121.04
+  }
+}

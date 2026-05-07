@@ -1,0 +1,24 @@
+# FaE failure-mode taxonomy v1.0
+# Authors: Lee & Lee (2026). License: CC-BY 4.0
+# Tag format: lowercase_snake_case
+# Append-only within a major version. New tags via PR.
+
+# === core taxonomy v1 ===
+cross_script_translit_direction
+schema_label_hallucination
+persona_bridge_collapse
+age_band_leakage
+pivot_hallucination
+politeness_register_mismatch
+phonetic_over_anglicization
+l1_aware_contrast_hallucination
+
+# === sub-tags (more specific instances of the above) ===
+source_lang_echo                # under cross_script_translit_direction
+empty_response                  # under schema_invalid (when JSON expected)
+schema_invalid_json
+schema_enum_violation
+already_learned_word_returned   # under recommend_next_word semantic violations
+fabricated_animal_or_object     # hallucinated entity in a constrained list
+incorrect_aspect_ru             # Russian aspect contrast errors
+incorrect_honorific_ko          # Korean honorific level errors

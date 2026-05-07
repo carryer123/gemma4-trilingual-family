@@ -1,0 +1,47 @@
+{
+  "n_probes": 30,
+  "stock": {
+    "empty": 0,
+    "empty_ids": [],
+    "json_parse_ok": 10,
+    "json_parse_total": 14,
+    "json_required_keys_ok": 10,
+    "transliteration_correct_script": 4,
+    "transliteration_total": 4,
+    "transliteration_failed_ids": []
+  },
+  "lora": {
+    "empty": 0,
+    "empty_ids": [],
+    "json_parse_ok": 7,
+    "json_parse_total": 14,
+    "json_required_keys_ok": 7,
+    "transliteration_correct_script": 1,
+    "transliteration_total": 4,
+    "transliteration_failed_ids": [
+      {
+        "id": "phonetic_ko_to_cyr",
+        "expected": "cyr",
+        "got_script": "han",
+        "snippet": "안녕하세요, 우리 아기."
+      },
+      {
+        "id": "phonetic_ko_to_lat",
+        "expected": "lat",
+        "got_script": "han",
+        "snippet": "주방에서 밥 먹어요."
+      },
+      {
+        "id": "phonetic_ru_to_lat",
+        "expected": "lat",
+        "got_script": "cyr",
+        "snippet": "Благодаря, малыш."
+      }
+    ]
+  },
+  "deltas": {
+    "empty_change": 0,
+    "json_parse_change": -3,
+    "transliteration_change": -3
+  }
+}

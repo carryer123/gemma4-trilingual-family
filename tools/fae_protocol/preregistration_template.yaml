@@ -1,0 +1,30 @@
+# Family-as-Evaluator pre-registration template
+# Fork to preregistrations/<your_pseudonym>_<yyyymmdd>.yaml and fill in.
+
+fae_preregistration:
+  date: 2026-MM-DD
+  protocol_version: 1.0
+  language_triple:
+    L1_A: ru          # ISO-639-1 of L1 of evaluator A
+    L1_B: ko          # ISO-639-1 of L1 of evaluator B
+    bridge: [en]      # bridge languages used in the household
+  household:
+    n_l1_a_speakers: 1
+    n_l1_b_speakers: 1
+    children:
+      - {age_months: 21, l1: ko, observe_only: true}
+  models_compared:
+    - {id: gemma-4-E2B-it, variant: stock, source: hf://unsloth/gemma-4-E2B-it}
+    - {id: gemma-4-E2B-it, variant: LoRA-v2, adapter_path: lora_out/lora_v2/adapter}
+  evaluators:
+    A: {role: L1_A, name_pseudonym: P1, native_language: ru, target_language: ko, bridge: en}
+    B: {role: L1_B, name_pseudonym: P2, native_language: ko, target_language: ru, bridge: en}
+    C: {role: child_observer, n_minutes: 5, recording: parental_handwritten_notes}
+  probe_set:
+    file: tools/fae_protocol/probes_v1.jsonl
+    sha256: <fill from probes_v1.sha256>
+    n_probes: 30
+  stop_criterion: all_probes_scored_by_both_adults
+  claim_tier: 1   # 1=existence, 2=predictability (N>=10), 3=prevalence (powered)
+  ethics_scope: own_household_only_no_irb_needed   # or: irb_xyz, family_center_program_xyz
+  local_tag_extensions: []   # add new failure-mode tags here if needed
