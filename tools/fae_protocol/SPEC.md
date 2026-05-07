@@ -2,9 +2,7 @@
 
 **Authors**: Byoungsang Lee, Jung Heon Lee
 **License**: CC-BY 4.0
-**Status**: v1.0 (released alongside arXiv preprint, 2026-05-17)
-**Companion paper**: *Beyond BLEU: Family-as-Evaluator for Trilingual L1-Aware
-On-Device Tutoring with Gemma 4* (arXiv preprint).
+**Status**: v1.0
 
 This document is the canonical specification of the FaE protocol.
 Appendix F of the companion paper is a copy of this file. If they ever

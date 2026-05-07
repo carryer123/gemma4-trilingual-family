@@ -151,16 +151,3 @@ See [`tools/fae_protocol/SPEC.md`](tools/fae_protocol/SPEC.md).
 | Trained LoRA adapter weights | Apache 2.0 (released separately on Hugging Face) |
 | Multilingual datasets | CC-BY 4.0 (inherits from Tatoeba) |
 | FaE protocol specification, probe set, taxonomy | CC-BY 4.0 |
-
-## Citation
-
-```bibtex
-@misc{lee2026multilingual,
-  title  = {A Multilingual Family Co-Learning Pipeline on Gemma 4
-            with the Family-as-Evaluator Protocol},
-  author = {Lee, Byoungsang and Lee, Jung Heon},
-  year   = {2026},
-  howpublished = {arXiv preprint},
-  note   = {arXiv id pending}
-}
-```
