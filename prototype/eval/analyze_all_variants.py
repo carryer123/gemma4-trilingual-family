@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Analyze all variant_*.jsonl files and produce:
-  - PF-1 curve figure (paper Fig. 4)
-  - 4-arm bridge-pivot ablation table (markdown)
-  - Section 5 numbers ready to paste
-  - Per-variant auto-judge summary
+"""Roll-up analysis across all variant_*.jsonl files.
+
+Auto-discovers everything in prototype/eval/variant_*.jsonl, infers the
+training meta from the variant name (training-share %, step count, base
+model), and emits the cliff curves and the ablation tables.
 """
 from __future__ import annotations
-import json, pathlib, re, unicodedata, sys
+import json, pathlib, re, unicodedata
+import collections
 
 PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
 EVAL = PROJ / "prototype/eval"
@@ -67,30 +68,89 @@ def extract_json(s):
     except: return None
 
 
+def parse_meta(name: str):
+    """Infer (base_model, training_share_pct, step) from variant name.
+
+    Examples:
+      stock                → (E2B, None, 0)
+      L_direct             → (E2B, ~1.5%, 1500)
+      L_policy_00          → (E2B, 0%, 1500)
+      L_policy_01          → (E2B, 0.95%, 1500)
+      L_policy_03/05/10    → (E2B, 1.84%, 600)
+      L_pf_00p5            → (E2B, 0.5%, 2500)
+      L_pf_05p0            → (E2B, 5.0%, 2500)
+      L_step_dense_p0_step01000 → (E2B, 0%, 1000)
+      L_step_dense_p1_5_step02000 → (E2B, 1.5%, 2000)
+      lora_v1              → (E2B, 0%, 4512)
+      lora_v1_step4000     → (E2B, 0%, 4000)
+      lora_v2              → (E2B, 1.46%, 5130)
+      lora_v2_step4500     → (E2B, 1.46%, 4500)
+      E4B_L_direct         → (E4B, ~1.5%, 1500)
+      E4B_L_policy_00      → (E4B, 0%, 1500)
+    """
+    base = "E4B" if name.startswith("E4B_") else "E2B"
+    short = name[len("E4B_"):] if base == "E4B" else name
+
+    # step extraction
+    step = None
+    m = re.search(r"_step(\d+)$", short)
+    if m:
+        step = int(m.group(1))
+        short = short[:m.start()]
+
+    # specific names
+    map_step = {
+        "stock": 0, "lora_v1": 4512, "lora_v2": 5130,
+        "lora_smoke": 50,
+    }
+    map_pct = {
+        "stock": None, "lora_v1": 0.0, "lora_v2": 1.46,
+        "L_policy_00": 0.0, "L_policy_01": 0.95,
+        "L_policy_03": 1.84, "L_policy_05": 1.84, "L_policy_10": 1.84,
+        "L_direct": 1.50, "L_pivot_only": 1.50,
+        "L_pivot_filtered": 1.50, "L_multilingual": 1.40,
+    }
+    if short in map_step:
+        if step is None: step = map_step[short]
+    if short in map_pct:
+        # FIX: 'step or default' is buggy when step=0 (stock); use explicit None check
+        default_step = {"L_policy_03": 600, "L_policy_05": 600, "L_policy_10": 600}.get(short, 1500)
+        final_step = step if step is not None else default_step
+        return base, map_pct[short], final_step
+
+    # L_pf_XXpY pattern → policy fraction
+    m = re.match(r"L_pf_(\d+)p(\d+)$", short)
+    if m:
+        pct = float(m.group(1)) + float(m.group(2)) / 10
+        return base, pct, step if step is not None else 2500
+
+    # L_step_dense_p0 or L_step_dense_p1_5 → 0% or 1.5%
+    m = re.match(r"L_step_dense_p(\d+)(?:_(\d+))?$", short)
+    if m:
+        if m.group(2):
+            pct = float(m.group(1)) + float(m.group(2)) / 10
+        else:
+            pct = float(m.group(1))
+        return base, pct, step if step is not None else 5000
+
+    return base, None, step
+
+
 def score_variant(rows):
     out = {
-        "n": len(rows),
-        "empty": 0,
-        "json_parse_ok": 0,
-        "json_parse_total": 0,
-        "json_required_keys_ok": 0,
-        "translit_correct_script": 0,
+        "n": len(rows), "empty": 0, "json_parse_ok": 0, "json_parse_total": 0,
+        "json_required_keys_ok": 0, "translit_correct_script": 0,
         "translit_total": len(EXPECTED_SCRIPT),
-        "translit_per_probe": {},
         "mean_tps": 0.0,
     }
     tps_acc = []
     for r in rows:
         resp = r.get("response", "")
-        if not resp.strip():
-            out["empty"] += 1
-        if "tps" in r:
-            tps_acc.append(r["tps"])
+        if not resp.strip(): out["empty"] += 1
+        if "tps" in r: tps_acc.append(r["tps"])
         if r["id"] in EXPECTED_SCRIPT:
             scr = script_of(resp)
-            ok = scr == EXPECTED_SCRIPT[r["id"]]
-            if ok: out["translit_correct_script"] += 1
-            out["translit_per_probe"][r["id"]] = {"got": scr, "ok": ok, "snippet": resp[:80]}
+            if scr == EXPECTED_SCRIPT[r["id"]]: out["translit_correct_script"] += 1
         if r["id"] in REQUIRED_KEYS:
             out["json_parse_total"] += 1
             obj = extract_json(resp)
@@ -99,8 +159,7 @@ def score_variant(rows):
                 req = REQUIRED_KEYS[r["id"]]
                 if not req or (isinstance(obj, dict) and req.issubset(obj)):
                     out["json_required_keys_ok"] += 1
-    if tps_acc:
-        out["mean_tps"] = round(sum(tps_acc)/len(tps_acc), 2)
+    if tps_acc: out["mean_tps"] = round(sum(tps_acc)/len(tps_acc), 2)
     return out
 
 
@@ -109,79 +168,111 @@ def main():
     for f in sorted(EVAL.glob("variant_*.jsonl")):
         name = f.stem.replace("variant_", "")
         rows = [json.loads(l) for l in f.open()]
-        summaries[name] = score_variant(rows)
-        s = summaries[name]
-        print(f"[{name:18}] n={s['n']:2}  empty={s['empty']}/30  "
-              f"json={s['json_parse_ok']}/{s['json_parse_total']}  "
-              f"translit={s['translit_correct_script']}/{s['translit_total']}  "
-              f"tps={s['mean_tps']}")
+        if len(rows) < 25:
+            print(f"[skip] {name}: only {len(rows)} rows (incomplete eval)")
+            continue
+        s = score_variant(rows)
+        base, pct, step = parse_meta(name)
+        s.update({"base": base, "pct": pct, "step": step})
+        summaries[name] = s
+
+    print(f"[discover] {len(summaries)} variants")
+    print(f"{'name':<32} {'base':<5} {'pct':<7} {'step':<6} {'translit':<10} {'json':<10}")
+    for n, s in sorted(summaries.items(), key=lambda x: (x[1]["base"], x[1].get("pct") or -1, x[1].get("step") or 0)):
+        print(f"{n:<32} {s['base']:<5} {str(s['pct']):<7} {str(s['step']):<6} "
+              f"{s['translit_correct_script']}/{s['translit_total']:<8} "
+              f"{s['json_parse_ok']}/{s['json_parse_total']}")
 
     out_json = OUT / "all_variants_scores.json"
     out_json.write_text(json.dumps(summaries, ensure_ascii=False, indent=2))
 
     # ---- 4-arm bridge-pivot ablation table (Section 5.3) ----
-    md = []
-    md.append("# Section 5.3 fill — 4-arm bridge-pivot ablation\n")
-    md.append("| Arm | Empty | JSON parse | Translit script | tok/s |")
-    md.append("|---|---|---|---|---|")
-    for arm in ["stock", "L_direct", "L_pivot_only", "L_pivot_filtered", "lora_v2", "L_multilingual"]:
+    md = ["# Section 5.3 — 4-arm bridge-pivot ablation\n",
+          "| Arm | Base | Empty | JSON parse | Translit script | tok/s |",
+          "|---|---|---|---|---|---|"]
+    for arm in ["stock", "L_direct", "L_pivot_only", "L_pivot_filtered", "lora_v2", "L_multilingual",
+                "E4B_L_direct", "E4B_L_pivot_only", "E4B_L_pivot_filtered", "E4B_L_multilingual"]:
         if arm not in summaries: continue
         s = summaries[arm]
-        md.append(f"| **{arm}** | {s['empty']}/30 | {s['json_parse_ok']}/{s['json_parse_total']} ({100*s['json_parse_ok']/max(1,s['json_parse_total']):.0f}%) | {s['translit_correct_script']}/{s['translit_total']} ({100*s['translit_correct_script']/s['translit_total']:.0f}%) | {s['mean_tps']} |")
-    md.append("")
-    # ---- PF-1 curve table (Section 5.4) ----
-    md.append("# Section 5.4 fill — policy-frequency curve")
-    md.append("(translit_share_actual_pct from ablation builder)")
-    md.append("| Variant | Translit share % | Translit script-correct | JSON parse |")
+        md.append(f"| **{arm}** | {s['base']} | {s['empty']}/30 | "
+                  f"{s['json_parse_ok']}/{s['json_parse_total']} | "
+                  f"{s['translit_correct_script']}/{s['translit_total']} | "
+                  f"{s['mean_tps']} |")
+
+    md.append("\n# Section 5.4 — policy-frequency curve (E2B)\n")
+    md.append("| Variant | translit% | translit/4 | json/14 |")
     md.append("|---|---|---|---|")
-    pct_lookup = {"L_policy_00": 0.0, "L_policy_01": 0.95, "L_policy_03": 1.84,
-                  "L_policy_05": 1.84, "L_policy_10": 1.84,
-                  "lora_v1": 0.0, "lora_v2": 1.46, "stock": float("nan")}
-    for arm in ["stock", "L_policy_00", "L_policy_01", "L_policy_03", "L_policy_05", "L_policy_10", "lora_v2"]:
-        if arm not in summaries: continue
-        s = summaries[arm]
-        pct = pct_lookup.get(arm, "?")
-        md.append(f"| **{arm}** | {pct} | {s['translit_correct_script']}/{s['translit_total']} ({100*s['translit_correct_script']/s['translit_total']:.0f}%) | {s['json_parse_ok']}/{s['json_parse_total']} |")
-    md.append("")
+    pf = [(n,s) for n,s in summaries.items() if s["base"]=="E2B" and s.get("pct") is not None]
+    pf.sort(key=lambda x: x[1]["pct"])
+    for n, s in pf:
+        md.append(f"| {n} | {s['pct']}% (step {s['step']}) | "
+                  f"{s['translit_correct_script']}/4 | {s['json_parse_ok']}/14 |")
+
+    md.append("\n# Step-axis cliff (0% policy data)\n")
+    md.append("| variant | step | translit/4 |")
+    md.append("|---|---|---|")
+    step_curve_p0 = [(n,s) for n,s in summaries.items() if s.get("pct")==0.0]
+    step_curve_p0.sort(key=lambda x: x[1].get("step") or 0)
+    for n, s in step_curve_p0:
+        md.append(f"| {n} | {s['step']} | {s['translit_correct_script']}/4 |")
+
     out_md = OUT / "section_5_3_5_4_fill.md"
     out_md.write_text("\n".join(md), encoding="utf-8")
     print(f"\n[md] -> {out_md}")
     print(f"[json] -> {out_json}")
 
-    # ---- PF-1 figure ----
+    # ---- PF-1 cliff figure ----
     try:
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
-        pf_x = []
-        pf_y = []
-        labels = []
-        for arm in ["L_policy_00", "L_policy_01", "L_policy_03", "lora_v2"]:
-            if arm not in summaries: continue
-            s = summaries[arm]
-            pct = pct_lookup[arm]
-            acc = s["translit_correct_script"] / s["translit_total"] * 100
-            pf_x.append(pct); pf_y.append(acc); labels.append(arm)
-        if "stock" in summaries:
-            s = summaries["stock"]
-            stock_acc = s["translit_correct_script"] / s["translit_total"] * 100
-        else:
-            stock_acc = 100
-        plt.figure(figsize=(6, 4))
-        plt.plot(pf_x, pf_y, "o-", linewidth=2, markersize=10, label="LoRA")
-        plt.axhline(stock_acc, color="gray", linestyle="--", alpha=0.7, label=f"Stock E2B ({stock_acc:.0f}%)")
-        for x, y, l in zip(pf_x, pf_y, labels):
-            plt.annotate(l.replace("L_policy_", "p"), (x, y), textcoords="offset points",
-                         xytext=(5, -10), fontsize=8)
+
+        # E2B policy-fraction curve at "long" training (step >= 2500)
+        pts_long = [(s["pct"], s["translit_correct_script"]/s["translit_total"]*100, n)
+                    for n,s in summaries.items()
+                    if s["base"]=="E2B" and s.get("pct") is not None
+                    and (s.get("step") or 0) >= 2500]
+        pts_long.sort()
+        pts_short = [(s["pct"], s["translit_correct_script"]/s["translit_total"]*100, n)
+                     for n,s in summaries.items()
+                     if s["base"]=="E2B" and s.get("pct") is not None
+                     and (s.get("step") or 0) < 2500 and (s.get("step") or 0) > 0]
+        pts_short.sort()
+
+        plt.figure(figsize=(7, 4))
+        if pts_long:
+            xs, ys, _ = zip(*pts_long)
+            plt.plot(xs, ys, "o-", linewidth=2, markersize=8, label="long train (≥2500 steps)", color="C3")
+        if pts_short:
+            xs, ys, _ = zip(*pts_short)
+            plt.plot(xs, ys, "s--", linewidth=2, markersize=8, label="short train (<2500 steps)", color="C0", alpha=0.7)
+        plt.axhline(100, color="gray", linestyle=":", alpha=0.5, label="stock baseline (100%)")
         plt.xlabel("Transliteration share of training data (%)")
         plt.ylabel("Transliteration script accuracy (%)")
-        plt.title("PF-1: Policy-Frequency Curve\n(transliteration regresses below f*, recovers above)")
+        plt.title("Policy-Frequency × Training-Duration Interaction\n(E2B base, transliteration policy)")
         plt.grid(alpha=0.3)
         plt.legend()
         plt.tight_layout()
-        plt.savefig(OUT / "fig_pf1_curve.png", dpi=160)
-        plt.savefig(OUT / "fig_pf1_curve.pdf")
-        print(f"[fig] -> {OUT / 'fig_pf1_curve.png'}")
+        plt.savefig(OUT / "fig_pf_curve.png", dpi=160)
+        plt.savefig(OUT / "fig_pf_curve.pdf")
+
+        # Step-axis curve at f=0
+        pts0 = sorted([(s["step"], s["translit_correct_script"]/s["translit_total"]*100, n)
+                       for n,s in summaries.items() if s.get("pct")==0.0 and s["base"]=="E2B" and s.get("step") is not None])
+        if pts0:
+            plt.figure(figsize=(7, 4))
+            xs, ys, _ = zip(*pts0)
+            plt.plot(xs, ys, "o-", linewidth=2, markersize=8, color="C3", label="0% transliteration data")
+            plt.axhline(100, color="gray", linestyle=":", alpha=0.5, label="stock baseline (100%)")
+            plt.xlabel("Training steps")
+            plt.ylabel("Transliteration script accuracy (%)")
+            plt.title("Step-axis cliff (E2B, 0% target policy data)")
+            plt.grid(alpha=0.3)
+            plt.legend()
+            plt.tight_layout()
+            plt.savefig(OUT / "fig_step_cliff.png", dpi=160)
+            plt.savefig(OUT / "fig_step_cliff.pdf")
+        print(f"[fig] -> {OUT / 'fig_pf_curve.png'}, {OUT / 'fig_step_cliff.png'}")
     except Exception as e:
         print(f"[fig] matplotlib failed: {e}")
 

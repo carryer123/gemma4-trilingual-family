@@ -1,0 +1,22 @@
+{
+  "seed": 20260509,
+  "max_rows": 2400,
+  "rows": 2400,
+  "deduped_pool_rows": 4926,
+  "source_counts": {
+    "eval_4l_balanced.jsonl": 1432,
+    "eval_4l_policy_high.jsonl": 1218,
+    "eval_4l_family_high.jsonl": 960,
+    "eval_4l_no_policy.jsonl": 1408,
+    "eval_4l_balanced_repair.jsonl": 1432,
+    "eval_4l_policy_repair.jsonl": 1218,
+    "eval_4l_family_repair.jsonl": 960,
+    "eval_4l_no_policy_repair.jsonl": 1408
+  },
+  "family_counts": {
+    "translation": 2350,
+    "script_policy": 33,
+    "schema_or_family": 17
+  },
+  "output": "/scratch/hpc198a01/젬마4해커톤/prototype/data/eval_4l_common.jsonl"
+}

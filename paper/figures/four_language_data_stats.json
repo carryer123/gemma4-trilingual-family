@@ -1,0 +1,234 @@
+{
+  "4l_balanced": {
+    "train": {
+      "rows": 27209,
+      "chars": 3175154,
+      "approx_tokens": 793788,
+      "slices": {
+        "translation": 26692,
+        "family_card": 85,
+        "other": 284,
+        "schema_policy": 111,
+        "script_policy": 37
+      }
+    },
+    "eval": {
+      "rows": 1432,
+      "chars": 167707,
+      "approx_tokens": 41927,
+      "slices": {
+        "translation": 1402,
+        "other": 16,
+        "schema_policy": 9,
+        "script_policy": 3,
+        "family_card": 2
+      }
+    }
+  },
+  "4l_policy_high": {
+    "train": {
+      "rows": 23144,
+      "chars": 2909758,
+      "approx_tokens": 727440,
+      "slices": {
+        "translation": 21752,
+        "other": 853,
+        "schema_policy": 344,
+        "script_policy": 111,
+        "family_card": 84
+      }
+    },
+    "eval": {
+      "rows": 1218,
+      "chars": 153583,
+      "approx_tokens": 38396,
+      "slices": {
+        "translation": 1142,
+        "family_card": 4,
+        "other": 47,
+        "script_policy": 9,
+        "schema_policy": 16
+      }
+    }
+  },
+  "4l_family_high": {
+    "train": {
+      "rows": 18243,
+      "chars": 2259263,
+      "approx_tokens": 564816,
+      "slices": {
+        "translation": 17566,
+        "script_policy": 38,
+        "other": 284,
+        "family_card": 238,
+        "schema_policy": 117
+      }
+    },
+    "eval": {
+      "rows": 960,
+      "chars": 117855,
+      "approx_tokens": 29464,
+      "slices": {
+        "translation": 928,
+        "other": 16,
+        "schema_policy": 3,
+        "script_policy": 2,
+        "family_card": 11
+      }
+    }
+  },
+  "4l_no_policy": {
+    "train": {
+      "rows": 26769,
+      "chars": 3021349,
+      "approx_tokens": 755337,
+      "slices": {
+        "translation": 26687,
+        "family_card": 82
+      }
+    },
+    "eval": {
+      "rows": 1408,
+      "chars": 156767,
+      "approx_tokens": 39192,
+      "slices": {
+        "translation": 1407,
+        "family_card": 1
+      }
+    }
+  },
+  "4l_balanced_repair": {
+    "train": {
+      "rows": 27689,
+      "chars": 3451054,
+      "approx_tokens": 862764,
+      "slices": {
+        "translation": 26692,
+        "g1_repair": 192,
+        "session_policy": 288,
+        "other": 284,
+        "schema_policy": 111,
+        "family_card": 85,
+        "script_policy": 37
+      }
+    },
+    "eval": {
+      "rows": 1432,
+      "chars": 167707,
+      "approx_tokens": 41927,
+      "slices": {
+        "translation": 1402,
+        "other": 16,
+        "schema_policy": 9,
+        "script_policy": 3,
+        "family_card": 2
+      }
+    }
+  },
+  "4l_policy_repair": {
+    "train": {
+      "rows": 23720,
+      "chars": 3241318,
+      "approx_tokens": 810330,
+      "slices": {
+        "other": 853,
+        "translation": 21752,
+        "schema_policy": 344,
+        "session_policy": 384,
+        "script_policy": 111,
+        "family_card": 84,
+        "g1_repair": 192
+      }
+    },
+    "eval": {
+      "rows": 1218,
+      "chars": 153583,
+      "approx_tokens": 38396,
+      "slices": {
+        "translation": 1142,
+        "family_card": 4,
+        "other": 47,
+        "script_policy": 9,
+        "schema_policy": 16
+      }
+    }
+  },
+  "4l_family_repair": {
+    "train": {
+      "rows": 18819,
+      "chars": 2589623,
+      "approx_tokens": 647406,
+      "slices": {
+        "translation": 17566,
+        "session_policy": 288,
+        "family_card": 238,
+        "g1_repair": 288,
+        "other": 284,
+        "schema_policy": 117,
+        "script_policy": 38
+      }
+    },
+    "eval": {
+      "rows": 960,
+      "chars": 117855,
+      "approx_tokens": 29464,
+      "slices": {
+        "translation": 928,
+        "other": 16,
+        "schema_policy": 3,
+        "script_policy": 2,
+        "family_card": 11
+      }
+    }
+  },
+  "4l_no_policy_repair": {
+    "train": {
+      "rows": 27249,
+      "chars": 3297249,
+      "approx_tokens": 824312,
+      "slices": {
+        "translation": 26687,
+        "session_policy": 288,
+        "g1_repair": 192,
+        "family_card": 82
+      }
+    },
+    "eval": {
+      "rows": 1408,
+      "chars": 156767,
+      "approx_tokens": 39192,
+      "slices": {
+        "translation": 1407,
+        "family_card": 1
+      }
+    }
+  },
+  "4l_policy_family_repair": {
+    "train": {
+      "rows": 58476,
+      "chars": 7139422,
+      "approx_tokens": 1784856,
+      "slices": {
+        "translation": 57039,
+        "session_policy": 600,
+        "g1_repair": 408,
+        "other": 300,
+        "schema_policy": 72,
+        "family_card": 17,
+        "script_policy": 40
+      }
+    },
+    "eval": {
+      "rows": 1600,
+      "chars": 195692,
+      "approx_tokens": 48923,
+      "slices": {
+        "translation": 1533,
+        "other": 40,
+        "family_card": 9,
+        "schema_policy": 12,
+        "script_policy": 6
+      }
+    }
+  }
+}

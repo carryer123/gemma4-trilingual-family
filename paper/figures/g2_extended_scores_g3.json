@@ -1,0 +1,2234 @@
+{
+  "variants": {
+    "v1ra_r16_a32": {
+      "name": "v1ra_r16_a32",
+      "g2_score": 51,
+      "g2_total": 52,
+      "g2_pass_rate": 0.9807692307692307,
+      "by_direction": {
+        "ko->cyr": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        },
+        "ru->han": {
+          "correct": 12,
+          "total": 13,
+          "pass_rate": 0.9230769230769231
+        },
+        "ko->lat": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        },
+        "ru->lat": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        }
+      },
+      "per_probe": [
+        {
+          "id": "phonetic_ko_to_cyr_01",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "аннёнъё",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_02",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "ури аги",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_03",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Кимчиччигэ",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_04",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Хаккё галлае?",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_05",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Сеулхосильболь",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_06",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Омма аппа",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_07",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Пибимбап мокджа",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_08",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Ипёнсан",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_09",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Онуринын вольйоиль-иеёйя.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_10",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "чикин илланд колла",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_11",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Шинчонегэ манта.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_12",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Чибе гаго сипоё.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_13",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Двенадцать часов тридцать минут.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_01",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "스파시바",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_02",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "모이 말리쉬",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_03",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "프리벳",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_04",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "хлеб с маслом",
+          "script_correct": false,
+          "target_ratio": 0.0
+        },
+        {
+          "id": "phonetic_ru_to_han_05",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "모스크바",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_06",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "마마 파파",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_07",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "야 티아 불러요",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_08",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "이반",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_09",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "포니델닉",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_10",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "쇼콜라",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_11",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "일리가 레니나",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_12",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "돔 이 사드",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_13",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "도브리 체르",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_01",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Jubang-eseo bap meogeoyo.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_02",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Annyeonghaseyo",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_03",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Gimchijjigae",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_04",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "seoul",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_05",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "eomma",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_06",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Gangnam-gu Yeoksam-dong",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_07",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Hong Gildong",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_08",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Hangug-eo gongbu",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_09",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Saranghaeyo",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_10",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "keopi han jan",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_11",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Bibimbapgwa Kimchi",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_12",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Busan Haeundae",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_13",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Oneul nalssi",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_01",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Spasibo, moy malysh.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_02",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "mama",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_03",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Moskva",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_04",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "khleb",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_05",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "ya lyublyu moskvu",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_06",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Ivan Petrov",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_07",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "do svidaniya",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_08",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "shkola i dom",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_09",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "ulitsa Tverskaya",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_10",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "dobryy den'.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_11",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "pyatnitsa",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_12",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "krasnaya ploshchad'.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_13",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "tri bratá",
+          "script_correct": true,
+          "target_ratio": 1.0
+        }
+      ]
+    },
+    "v1ra_r16_a64": {
+      "name": "v1ra_r16_a64",
+      "g2_score": 49,
+      "g2_total": 52,
+      "g2_pass_rate": 0.9423076923076923,
+      "by_direction": {
+        "ko->cyr": {
+          "correct": 11,
+          "total": 13,
+          "pass_rate": 0.8461538461538461
+        },
+        "ru->han": {
+          "correct": 12,
+          "total": 13,
+          "pass_rate": 0.9230769230769231
+        },
+        "ko->lat": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        },
+        "ru->lat": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        }
+      },
+      "per_probe": [
+        {
+          "id": "phonetic_ko_to_cyr_01",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "аннёнъё",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_02",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "ури аги",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_03",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Кимчиччигэ",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_04",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "хакколэ галлаэ?",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_05",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "сеолтхо́льбольи",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_06",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Омма аппа",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_07",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Пибимбап мокджа.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_08",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Ипёнджэ",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_09",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Онури́н во́йди́йе.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_10",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Чикиниран колла.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_11",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "신촌역에서 만나.",
+          "script_correct": false,
+          "target_ratio": 0.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_12",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Чибэ гаго сипоё.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_13",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Dva-tsa-dzyat'",
+          "script_correct": false,
+          "target_ratio": 0.0
+        },
+        {
+          "id": "phonetic_ru_to_han_01",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "스파시바",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_02",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "모이 말리쉬",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_03",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "프리벳",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_04",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "хлеб с маслом",
+          "script_correct": false,
+          "target_ratio": 0.0
+        },
+        {
+          "id": "phonetic_ru_to_han_05",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "모스크바",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_06",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "마마 파파",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_07",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "야 티아 륍륍",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_08",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "이반",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_09",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "포네델닉",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_10",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "쇼콜라",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_11",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "일리가 레니나",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_12",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "돔 이 사드",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_13",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "도브리 예치르",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_01",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Jubang-eseo bap meogeoyo.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_02",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Annyeonghaseyo",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_03",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Gimchijjigae",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_04",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "seoul",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_05",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "eomma",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_06",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Gangnam-gu Yeoksam-dong",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_07",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Hong Gildong",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_08",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Hangugeo ibugi",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_09",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Saranghaeyo",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_10",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "keopi han jan",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_11",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Bibimbapgwa Kimchi",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_12",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Busan Haeundae",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_13",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "oneul nalssi",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_01",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Spasibo, moy malysh.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_02",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "mama",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_03",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Moskva",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_04",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "hleb",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_05",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "ya lyublyu moskvu",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_06",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Ivan Petrov",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_07",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "do svidaniya",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_08",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "shkola i dom",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_09",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "ulitsa Tverskaya",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_10",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "dobryy den'.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_11",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "pyatnitsa",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_12",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "krasnaya ploshchad'.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_13",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "tri brata",
+          "script_correct": true,
+          "target_ratio": 1.0
+        }
+      ]
+    },
+    "v1ra_r64_a128": {
+      "name": "v1ra_r64_a128",
+      "g2_score": 44,
+      "g2_total": 52,
+      "g2_pass_rate": 0.8461538461538461,
+      "by_direction": {
+        "ko->cyr": {
+          "correct": 12,
+          "total": 13,
+          "pass_rate": 0.9230769230769231
+        },
+        "ru->han": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        },
+        "ko->lat": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        },
+        "ru->lat": {
+          "correct": 6,
+          "total": 13,
+          "pass_rate": 0.46153846153846156
+        }
+      },
+      "per_probe": [
+        {
+          "id": "phonetic_ko_to_cyr_01",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "аннёнъё",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_02",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "우리 아기",
+          "script_correct": false,
+          "target_ratio": 0.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_03",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Кимчиччигэ",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_04",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Я в школу иду?",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_05",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Сеулхо́льбольи",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_06",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Эмма Аппа",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_07",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Пибимбап мокджа.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_08",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Ипёнсан",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_09",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Сегодня понедельник.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_10",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Чикин и колла.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_11",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Шинчоне-ёкэ-эсо-э манта.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_12",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Джибе гаго сиво.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_13",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Двенадцать часов тридцать минут.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_01",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "스파시바",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_02",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "모이 말리쉬",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_03",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "프리베트",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_04",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "흘렙 스 마슈름",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_05",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "모스크바",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_06",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "마마 파파",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_07",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "야 티아 롸른",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_08",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "이반",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_09",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "포니델닉",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_10",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "쇼콜라",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_11",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "울리차 레니나",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_12",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "돔 이 사드",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_13",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "도브리 예치르",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_01",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Jubang-eseo bapeoyo.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_02",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Annyeonghaseyo.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_03",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Kimchijjigae",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_04",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "seoul",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_05",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "eomma",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_06",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Gangnam-gu, Yeoksam-dong",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_07",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Hong Gildong",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_08",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Hangug-eul seongbu.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_09",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Saranghaeyo",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_10",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Keopi han jan.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_11",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Bibimbapgwa Gimchi",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_12",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Busan Haeundae",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_13",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Oneul nalssi.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_01",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Spasibo, moy malysh!",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_02",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "mama",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_03",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Москва",
+          "script_correct": false,
+          "target_ratio": 0.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_04",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "hleb",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_05",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Ya lyublyu Moskvu.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_06",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Иван Петров",
+          "script_correct": false,
+          "target_ratio": 0.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_07",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "До свидания.",
+          "script_correct": false,
+          "target_ratio": 0.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_08",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Школа и дом.",
+          "script_correct": false,
+          "target_ratio": 0.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_09",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "улица Тверская",
+          "script_correct": false,
+          "target_ratio": 0.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_10",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "dobryy den'.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_11",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "pyatnitsa",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_12",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Красная площадь",
+          "script_correct": false,
+          "target_ratio": 0.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_13",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "три брата",
+          "script_correct": false,
+          "target_ratio": 0.0
+        }
+      ]
+    },
+    "v1ra_r64_a16": {
+      "name": "v1ra_r64_a16",
+      "g2_score": 52,
+      "g2_total": 52,
+      "g2_pass_rate": 1.0,
+      "by_direction": {
+        "ko->cyr": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        },
+        "ru->han": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        },
+        "ko->lat": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        },
+        "ru->lat": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        }
+      },
+      "per_probe": [
+        {
+          "id": "phonetic_ko_to_cyr_01",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Аннёнъаё",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_02",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Ури аги",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_03",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Кимчиччигэ",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_04",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Хакё галлае?",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_05",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Сонтхоннсон-тхон",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_06",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Омма апаппа",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_07",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Бибимбап мокджа",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_08",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Ипёнсан",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_09",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Онуриндэ мулёйилэё.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_10",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Чикиниран колла",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_11",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Шинчхонёкэсо манна.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_12",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Чибе гаго сипоё.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_13",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Двенадцать часов тридцать минут.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_01",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "스파시바",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_02",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "모이 말리쉬",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_03",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "프리벳",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_04",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "흘렙 스 마이슬런",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_05",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "모스크바",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_06",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "마마 파파",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_07",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "야 티라 륍륍",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_08",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "이반",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_09",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "포니델니크",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_10",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "쇼콜라",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_11",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "울리차 레닌나",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_12",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "돔 이 사드",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_13",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "도브리예브셰르",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_01",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Jubang-eseo bap meogeoyo.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_02",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Annyeonghaseyo",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_03",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Gimchijjigae",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_04",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Seoul",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_05",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "eomma",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_06",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Gangnam-gu Yeoksam-dong",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_07",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Hong Gildong",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_08",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Hangug-eo gongbu",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_09",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Saranghaeyo",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_10",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Keopi han jan",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_11",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Bibimbapgwa Kimchi",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_12",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Busan Haeundae",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_13",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Oneul nalssi",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_01",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Spasibo, moy malysh.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_02",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "mama",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_03",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Moskva",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_04",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "hleb",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_05",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Ya lyublyu Moskvu",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_06",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Ivan Petrov",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_07",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Do svidaniya",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_08",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "shkola i dom",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_09",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "ulitsa Tverskaya",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_10",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "dobryy den'",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_11",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "pyatnitsa",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_12",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "krasnaya ploshchad'.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_13",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "tri brata",
+          "script_correct": true,
+          "target_ratio": 1.0
+        }
+      ]
+    },
+    "v1ra_r64_a64": {
+      "name": "v1ra_r64_a64",
+      "g2_score": 51,
+      "g2_total": 52,
+      "g2_pass_rate": 0.9807692307692307,
+      "by_direction": {
+        "ko->cyr": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        },
+        "ru->han": {
+          "correct": 12,
+          "total": 13,
+          "pass_rate": 0.9230769230769231
+        },
+        "ko->lat": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        },
+        "ru->lat": {
+          "correct": 13,
+          "total": 13,
+          "pass_rate": 1.0
+        }
+      },
+      "per_probe": [
+        {
+          "id": "phonetic_ko_to_cyr_01",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "аннёнъаё",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_02",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "ури аги",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_03",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Кимчиччигэ",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_04",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Кёхаккальэ?",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_05",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "сеольтокёри",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_06",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Омма аппа",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_07",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Пибимбап мокджа",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_08",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Ипёнджэ",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_09",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Онульын вольёйэ.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_10",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Чикин и колла.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_11",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Шинчхонёкэсотэ манна.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_12",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Чибэ каго сипоё.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_cyr_13",
+          "direction": "ko->cyr",
+          "expect_script": "cyrillic",
+          "output": "Двенадцать часов тридцать минут.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_01",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "스파시바",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_02",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "모이 말리쉬",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_03",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "프리벳",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_04",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "흘렙 스 마슈ㅁ",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_05",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "모스크바",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_06",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "마마 파파",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_07",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "야 티아 롸륖",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_08",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "이반",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_09",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "понедельник",
+          "script_correct": false,
+          "target_ratio": 0.0
+        },
+        {
+          "id": "phonetic_ru_to_han_10",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "슈콜라",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_11",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "울리차 레닌",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_12",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "돔 이 사드",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_han_13",
+          "direction": "ru->han",
+          "expect_script": "hangul",
+          "output": "도브리 예치르",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_01",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Jubang-eseo bap meogeoyo.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_02",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Annyeonghaseyo",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_03",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Gimchijjigae",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_04",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "seoul",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_05",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "eomma",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_06",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Gangnam-gu Yeoksam-dong",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_07",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Hong Gildong",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_08",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Hangug-eo gongbu",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_09",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Saranghaeyo",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_10",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "keopi han jan",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_11",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Bibimbapgwa Kimchi",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_12",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "Busan Haeundae",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ko_to_lat_13",
+          "direction": "ko->lat",
+          "expect_script": "latin",
+          "output": "oneul nalssi",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_01",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Spasibo, moy malysh.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_02",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "mama",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_03",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Moskva",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_04",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "hleb",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_05",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "ya lyublyu moskvu",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_06",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "Ivan Petrov",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_07",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "do svidaniya",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_08",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "shkola i dom",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_09",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "ulitsa Tverskaya",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_10",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "dobryy den'.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_11",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "pyatnitsa",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_12",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "krasnaya ploshchad'.",
+          "script_correct": true,
+          "target_ratio": 1.0
+        },
+        {
+          "id": "phonetic_ru_to_lat_13",
+          "direction": "ru->lat",
+          "expect_script": "latin",
+          "output": "tri bratá",
+          "script_correct": true,
+          "target_ratio": 1.0
+        }
+      ]
+    }
+  }
+}

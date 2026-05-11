@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>NSCameraUsageDescription</key>
+    <string>Used to recognize objects so the app can teach the word in three languages.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Used to listen to the parent's speech so the app can respond in three languages.</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>Used to convert your speech into text on-device.</string>
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>arm64</string>
+    </array>
+</dict>
+</plist>

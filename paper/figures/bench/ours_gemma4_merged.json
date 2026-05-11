@@ -1,0 +1,11 @@
+{
+  "label": "ours_gemma4_merged",
+  "model_path": "/scratch/hpc198a01/\uc82c\ub9c84\ud574\ucee4\ud1a4/lora_out/lora_4l_winner_merged_export/merged_hf",
+  "n_prompts": 10,
+  "total_new_tokens": 1280,
+  "total_wall_sec": 55.43313264846802,
+  "tokens_per_sec_endtoend": 23.090883355216167,
+  "tokens_per_sec_decodeonly": 23.453620403551778,
+  "ttft_sec_mean": 0.07822372913360595,
+  "ttft_sec_median": 0.05160951614379883
+}

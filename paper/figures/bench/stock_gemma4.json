@@ -1,0 +1,11 @@
+{
+  "label": "stock_gemma4",
+  "model_path": "/scratch/hpc198a01/\uc82c\ub9c84\ud574\ucee4\ud1a4/models/unsloth-gemma-4-E2B-it",
+  "n_prompts": 10,
+  "total_new_tokens": 1280,
+  "total_wall_sec": 56.44973611831665,
+  "tokens_per_sec_endtoend": 22.67503956647672,
+  "tokens_per_sec_decodeonly": 23.02597986353239,
+  "ttft_sec_mean": 0.07854702472686767,
+  "ttft_sec_median": 0.05297994613647461
+}

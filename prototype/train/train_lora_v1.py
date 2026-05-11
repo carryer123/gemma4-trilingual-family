@@ -21,9 +21,9 @@ os.environ.setdefault("HF_HUB_ENABLE_HF_TRANSFER", "1")
 os.environ.setdefault("WANDB_DISABLED", "true")  # opt-in only
 
 MODEL_ID = os.environ.get("MODEL_ID", "google/gemma-4-E2B-it")
-TRAIN_FILE = PROJ / "prototype/data/train_v1.jsonl"
-EVAL_FILE = PROJ / "prototype/data/eval_v1.jsonl"
-OUT_DIR = PROJ / "lora_out/lora_v1"
+TRAIN_FILE = pathlib.Path(os.environ.get("TRAIN_FILE", str(PROJ / "prototype/data/train_v1.jsonl")))
+EVAL_FILE = pathlib.Path(os.environ.get("EVAL_FILE", str(PROJ / "prototype/data/eval_v1.jsonl")))
+OUT_DIR = pathlib.Path(os.environ.get("OUT_DIR", str(PROJ / "lora_out/lora_v1")))
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 MAX_SEQ = int(os.environ.get("MAX_SEQ", "4096"))
@@ -83,6 +83,8 @@ def train_unsloth():
         eval_steps=100,
         bf16=True,
         max_seq_length=MAX_SEQ,
+        packing=True,
+        packing_strategy="bfd",
         report_to="none",
         save_total_limit=3,
         dataset_text_field="text",
@@ -135,6 +137,8 @@ def train_hf_peft():
         eval_steps=100,
         bf16=True,
         max_seq_length=MAX_SEQ,
+        packing=True,
+        packing_strategy="bfd",
         report_to="none",
         save_total_limit=3,
         dataset_text_field="text",

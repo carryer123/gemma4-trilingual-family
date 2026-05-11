@@ -1,0 +1,52 @@
+[
+  {
+    "variant": "4l_no_policy_seed10_s1500",
+    "G1": 0.0,
+    "G2": 0.925,
+    "G3": 0.0,
+    "G4": 0.0,
+    "G1_structural": 0.0,
+    "G1_age_policy": 0.875,
+    "action": "RED"
+  },
+  {
+    "variant": "4l_no_policy_seed11_s1500",
+    "G1": 0.25,
+    "G2": 0.925,
+    "G3": 0.0,
+    "G4": 0.0,
+    "G1_structural": 0.7083333333333334,
+    "G1_age_policy": 0.5,
+    "action": "RED"
+  },
+  {
+    "variant": "4l_policy_family_repair_seed09_s1500",
+    "G1": 0.625,
+    "G2": 0.925,
+    "G3": 1.0,
+    "G4": 0.75,
+    "G1_structural": 0.8333333333333334,
+    "G1_age_policy": 0.7916666666666666,
+    "action": "AMBER"
+  },
+  {
+    "variant": "4l_policy_family_repair_seed10_s1500",
+    "G1": 0.5416666666666666,
+    "G2": 0.925,
+    "G3": 1.0,
+    "G4": 1.0,
+    "G1_structural": 0.5416666666666666,
+    "G1_age_policy": 1.0,
+    "action": "RED"
+  },
+  {
+    "variant": "4l_policy_family_repair_seed11_s1500",
+    "G1": 0.5,
+    "G2": 0.9,
+    "G3": 0.875,
+    "G4": 1.0,
+    "G1_structural": 0.5,
+    "G1_age_policy": 1.0,
+    "action": "RED"
+  }
+]

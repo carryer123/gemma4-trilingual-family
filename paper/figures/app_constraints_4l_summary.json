@@ -1,0 +1,92 @@
+[
+  {
+    "variant": "4l_balanced_repair_s1500",
+    "source": "audit4l_repair_scores.json",
+    "model_G2": 0.95,
+    "model_G1_age_policy": 0.25,
+    "app_G1_structural": 1.0,
+    "app_G3_schema": 1.0,
+    "app_G4_session": 1.0,
+    "app_constrained_action": "RED"
+  },
+  {
+    "variant": "4l_family_repair_s1500",
+    "source": "audit4l_repair_scores.json",
+    "model_G2": 0.925,
+    "model_G1_age_policy": 0.08333333333333333,
+    "app_G1_structural": 1.0,
+    "app_G3_schema": 1.0,
+    "app_G4_session": 1.0,
+    "app_constrained_action": "RED"
+  },
+  {
+    "variant": "4l_no_policy_repair_s1500",
+    "source": "audit4l_repair_scores.json",
+    "model_G2": 0.85,
+    "model_G1_age_policy": 0.4166666666666667,
+    "app_G1_structural": 1.0,
+    "app_G3_schema": 1.0,
+    "app_G4_session": 1.0,
+    "app_constrained_action": "RED"
+  },
+  {
+    "variant": "4l_policy_repair_s1500",
+    "source": "audit4l_repair_scores.json",
+    "model_G2": 0.95,
+    "model_G1_age_policy": 0.041666666666666664,
+    "app_G1_structural": 1.0,
+    "app_G3_schema": 1.0,
+    "app_G4_session": 1.0,
+    "app_constrained_action": "RED"
+  },
+  {
+    "variant": "4l_no_policy_seed10_s1500",
+    "source": "audit4l_main_boost_scores.json",
+    "model_G2": 0.925,
+    "model_G1_age_policy": 0.875,
+    "app_G1_structural": 1.0,
+    "app_G3_schema": 1.0,
+    "app_G4_session": 1.0,
+    "app_constrained_action": "GREEN"
+  },
+  {
+    "variant": "4l_no_policy_seed11_s1500",
+    "source": "audit4l_main_boost_scores.json",
+    "model_G2": 0.925,
+    "model_G1_age_policy": 0.5,
+    "app_G1_structural": 1.0,
+    "app_G3_schema": 1.0,
+    "app_G4_session": 1.0,
+    "app_constrained_action": "RED"
+  },
+  {
+    "variant": "4l_policy_family_repair_seed09_s1500",
+    "source": "audit4l_main_boost_scores.json",
+    "model_G2": 0.925,
+    "model_G1_age_policy": 0.7916666666666666,
+    "app_G1_structural": 1.0,
+    "app_G3_schema": 1.0,
+    "app_G4_session": 1.0,
+    "app_constrained_action": "AMBER"
+  },
+  {
+    "variant": "4l_policy_family_repair_seed10_s1500",
+    "source": "audit4l_main_boost_scores.json",
+    "model_G2": 0.925,
+    "model_G1_age_policy": 1.0,
+    "app_G1_structural": 1.0,
+    "app_G3_schema": 1.0,
+    "app_G4_session": 1.0,
+    "app_constrained_action": "GREEN"
+  },
+  {
+    "variant": "4l_policy_family_repair_seed11_s1500",
+    "source": "audit4l_main_boost_scores.json",
+    "model_G2": 0.9,
+    "model_G1_age_policy": 1.0,
+    "app_G1_structural": 1.0,
+    "app_G3_schema": 1.0,
+    "app_G4_session": 1.0,
+    "app_constrained_action": "GREEN"
+  }
+]

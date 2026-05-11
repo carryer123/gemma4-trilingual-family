@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "stock": {
+      "variant": "stock",
+      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/models/unsloth-gemma-4-E2B-it",
+      "is_adapter": false,
+      "common_eval_file": "/scratch/hpc198a01/젬마4해커톤/prototype/data/eval_4l_common.jsonl",
+      "examples": 1200,
+      "tokens": 52795,
+      "loss": 7.191877060657266,
+      "perplexity": 1328.594482421875,
+      "elapsed_sec": 136.16
+    },
+    "4l_balanced_repair_s1500": {
+      "variant": "4l_balanced_repair_s1500",
+      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_balanced_repair_s1500/adapter",
+      "is_adapter": true,
+      "common_eval_file": "/scratch/hpc198a01/젬마4해커톤/prototype/data/eval_4l_common.jsonl",
+      "examples": 1200,
+      "tokens": 52795,
+      "loss": 0.6638873117448356,
+      "perplexity": 1.9423280954360962,
+      "elapsed_sec": 166.37
+    },
+    "4l_balanced_s1500": {
+      "variant": "4l_balanced_s1500",
+      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_balanced_s1500/adapter",
+      "is_adapter": true,
+      "common_eval_file": "/scratch/hpc198a01/젬마4해커톤/prototype/data/eval_4l_common.jsonl",
+      "examples": 1200,
+      "tokens": 52795,
+      "loss": 0.661753426877409,
+      "perplexity": 1.938187837600708,
+      "elapsed_sec": 138.64
+    },
+    "lora_v2": {
+      "variant": "lora_v2",
+      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/lora_v2/adapter",
+      "is_adapter": true,
+      "common_eval_file": "/scratch/hpc198a01/젬마4해커톤/prototype/data/eval_4l_common.jsonl",
+      "examples": 1200,
+      "tokens": 52795,
+      "loss": 2.4248936907096232,
+      "perplexity": 11.301027297973633,
+      "elapsed_sec": 125.65
+    }
+  },
+  "common_eval_file": "/scratch/hpc198a01/젬마4해커톤/prototype/data/eval_4l_common.jsonl"
+}

@@ -1,0 +1,3509 @@
+{
+  "run_id": "20260511_050402",
+  "variants": {
+    "cross_llama32_4l_pf_s1500": {
+      "name": "cross_llama32_4l_pf_s1500",
+      "run_id": "20260511_050402",
+      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/cross_llama32_4l_pf_s1500/checkpoint-1125",
+      "is_adapter": true,
+      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
+      "adapter_config_sha256": "a89a423d5d9bf139303593c748fa8be97bceea1b059d3e75355bdea1c002f3e8",
+      "by_gate": {
+        "G1": {
+          "correct": 22,
+          "total": 24,
+          "pass_rate": 0.9166666666666666
+        },
+        "G2": {
+          "correct": 30,
+          "total": 40,
+          "pass_rate": 0.75
+        },
+        "G3": {
+          "correct": 24,
+          "total": 24,
+          "pass_rate": 1.0
+        },
+        "G4": {
+          "correct": 24,
+          "total": 24,
+          "pass_rate": 1.0
+        }
+      },
+      "by_group": {
+        "family_baby_ko_ru_en": {
+          "correct": 12,
+          "total": 12,
+          "pass_rate": 1.0
+        },
+        "family_child_ko_fr_en": {
+          "correct": 10,
+          "total": 12,
+          "pass_rate": 0.8333333333333334
+        },
+        "ko_to_lat": {
+          "correct": 7,
+          "total": 8,
+          "pass_rate": 0.875
+        },
+        "ko_to_cyr": {
+          "correct": 8,
+          "total": 8,
+          "pass_rate": 1.0
+        },
+        "ru_to_han": {
+          "correct": 3,
+          "total": 8,
+          "pass_rate": 0.375
+        },
+        "fr_to_han": {
+          "correct": 5,
+          "total": 8,
+          "pass_rate": 0.625
+        },
+        "fr_to_lat": {
+          "correct": 7,
+          "total": 8,
+          "pass_rate": 0.875
+        },
+        "schema_baby_0_2": {
+          "correct": 12,
+          "total": 12,
+          "pass_rate": 1.0
+        },
+        "schema_child_3_6": {
+          "correct": 12,
+          "total": 12,
+          "pass_rate": 1.0
+        },
+        "family_a_ko_ru_en": {
+          "correct": 12,
+          "total": 12,
+          "pass_rate": 1.0
+        },
+        "family_b_ko_fr_en": {
+          "correct": 12,
+          "total": 12,
+          "pass_rate": 1.0
+        }
+      },
+      "by_subgate": {
+        "G1_structural": {
+          "correct": 22,
+          "total": 24,
+          "pass_rate": 0.9166666666666666
+        },
+        "G1_age_policy": {
+          "correct": 24,
+          "total": 24,
+          "pass_rate": 1.0
+        }
+      },
+      "per_probe": [
+        {
+          "id": "g1_baby_a_01",
+          "gate": "G1",
+          "group": "family_baby_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"우산\", \"ru\": \"зонт\", \"en\": \"umbrella\"}, \"parent_bridge\": \"Let's build a parent-led ca",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "next_action",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "parent_bridge"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_baby_a_02",
+          "gate": "G1",
+          "group": "family_baby_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"이 잇몸에 치아가 나올 때 마다 이 부채로 치아를 깨끗히 해 주지\", \"ru\": \"Когда зубы выходят, для каждого зуба ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "baby_bridge",
+              "parent_bridge"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_baby_a_03",
+          "gate": "G1",
+          "group": "family_baby_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"blanket\", \"ru\": \"пленка\", \"en\": \"blanket\"}, \"parent_bridge\": \"Let's build a parent-",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "baby_bridge",
+              "parent_bridge"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_baby_a_04",
+          "gate": "G1",
+          "group": "family_baby_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"토끼\", \"ru\": \"кролик\", \"en\": \"rabbit\"}, \"parent_bridge\": \"Let's build a parent-led ca",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "next_action",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "baby_0_2_action",
+              "child_2_5_bridge",
+              "parent_bridge",
+              "parent_bridge_next_speech"
+            ],
+            "json_parse_reason": "ok_extracted",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_baby_a_05",
+          "gate": "G1",
+          "group": "family_baby_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"오렌지\", \"ru\": \"апельсин\", \"en\": \"orange\"}, \"parent_bridge\": \"Look! A fruit.\", \"baby_b",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "baby_bridge",
+              "parent_bridge"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_baby_a_06",
+          "gate": "G1",
+          "group": "family_baby_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"연필\", \"ru\": \"костyuк\", \"en\": \"pencil\"}, \"parent_bridge\": \"Let's show the baby the pe",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "baby_bridge",
+              "parent_bridge"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_baby_a_07",
+          "gate": "G1",
+          "group": "family_baby_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"신발\", \"ru\": \"обувь\", \"en\": \"socks\"}, \"parent_bridge\": \"Let's show the baby the sock!",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "baby_bridge",
+              "parent_bridge"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_baby_a_08",
+          "gate": "G1",
+          "group": "family_baby_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"수영장에 가요\", \"ru\": \"В ванной\", \"en\": \"in the bathroom\"}, \"parent_bridge\": \"Let's show ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "baby_bridge",
+              "parent_bridge"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_baby_a_09",
+          "gate": "G1",
+          "group": "family_baby_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"plate\", \"ru\": \"platino\", \"en\": \"plate\"}, \"parent_bridge\": \"Let's build a parent-led",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "next_action",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "baby_0_2_action",
+              "child_2_3_target",
+              "parent_bridge",
+              "parent_bridge_next_speech"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_baby_a_10",
+          "gate": "G1",
+          "group": "family_baby_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"우산\", \"ru\": \"палто\", \"en\": \"towel\"}, \"parent_bridge\": \"Let's build a parent-led card",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "next_action",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "baby_0_2_action",
+              "child_2_5",
+              "parent_bridge"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_baby_a_11",
+          "gate": "G1",
+          "group": "family_baby_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"바나나\", \"ru\": \"банан\", \"en\": \"banana\"}, \"parent_bridge\": \"Look! A banana.\", \"baby_bri",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "baby_bridge",
+              "parent_bridge"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_baby_a_12",
+          "gate": "G1",
+          "group": "family_baby_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \" 모자 \", \"ru\": \"шляпу\", \"en\": \"hat\"}, \"parent_bridge\": \"Let's show the baby this obje",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "baby_bridge",
+              "parent_bridge"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_child_b_01",
+          "gate": "G1",
+          "group": "family_child_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"object\": {\"ko\": \"우산\", \"fr\": \"parapluie\", \"en\": \"umbrella\"}, \"card\": {\"ko\": \"우산!\", \"fr\": \"Paraplui",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "object"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_child_b_02",
+          "gate": "G1",
+          "group": "family_child_ko_fr_en",
+          "gate_correct": false,
+          "output_preview": "{\"mode\": \"child_3_6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"object\": {\"ko\": \"이 이빨\", \"fr\": \"cette dente\", \"en\": \"this tooth\"}, \"card\": {\"ko\": \"우유와 사과를 먹고 있어요.",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": false,
+            "reason": "json_parse_error:JSONDecodeError",
+            "missing_keys": [
+              "mode",
+              "age_band",
+              "active_languages",
+              "card",
+              "next_action",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "json_parse_error:JSONDecodeError",
+            "mode_ok": false,
+            "age_ok": false,
+            "active_languages": [],
+            "active_ok": false,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": false,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": false
+          }
+        },
+        {
+          "id": "g1_child_b_03",
+          "gate": "G1",
+          "group": "family_child_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"object\": {\"ko\": \"blanket\", \"fr\": \"couverture\", \"en\": \"blanket\"}, \"card\": {\"ko\": \"blanket\", \"fr\": ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "object"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_child_b_04",
+          "gate": "G1",
+          "group": "family_child_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"object\": {\"ko\": \"토끼\", \"fr\": \"lapin\", \"en\": \"rabbit\"}, \"card\": {\"ko\": \"토끼\", \"fr\": \"lapin\", \"en\": \"",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "object"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_child_b_05",
+          "gate": "G1",
+          "group": "family_child_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"object\": {\"ko\": \"오렌지\", \"fr\": \"orange\", \"en\": \"orange\"}, \"card\": {\"ko\": \"오렌지\", \"fr\": \"orange\", \"en",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "next_action",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "object",
+              "prompt"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_child_b_06",
+          "gate": "G1",
+          "group": "family_child_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"object\": {\"ko\": \"연필\", \"fr\": \"crayon\", \"en\": \"pencil\"}, \"card\": {\"ko\": \"연필!\", \"fr\": \"crayon!\", \"en",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "object"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_child_b_07",
+          "gate": "G1",
+          "group": "family_child_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"object\": {\"ko\": \"신발끈\", \"fr\": \"chaussettes\", \"en\": \"socks\"}, \"card\": {\"ko\": \"신발끈!\", \"fr\": \"chausse",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "object"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_child_b_08",
+          "gate": "G1",
+          "group": "family_child_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"object\": {\"ko\": \"소프\", \"fr\": \"savon\", \"en\": \"soap\"}, \"card\": {\"ko\": \"소프\", \"fr\": \"savon\", \"en\": \"so",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "object"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_child_b_09",
+          "gate": "G1",
+          "group": "family_child_ko_fr_en",
+          "gate_correct": false,
+          "output_preview": "{\"mode\": \"child_3_6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"object\": {\"ko\": \"plate\", \"fr\": \"assiette\", \"en\": \"plate\"}, \"card\": {\"ko\": \"plate\", \"fr\": \"assiett",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": false,
+            "reason": "json_parse_error:JSONDecodeError",
+            "missing_keys": [
+              "mode",
+              "age_band",
+              "active_languages",
+              "card",
+              "next_action",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "json_parse_error:JSONDecodeError",
+            "mode_ok": false,
+            "age_ok": false,
+            "active_languages": [],
+            "active_ok": false,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": false,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": false
+          }
+        },
+        {
+          "id": "g1_child_b_10",
+          "gate": "G1",
+          "group": "family_child_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"object\": {\"ko\": \"手拭\", \"fr\": \"serviette\", \"en\": \"towel\"}, \"card\": {\"ko\": \"手拭\", \"fr\": \"serviette\", ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "object"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_child_b_11",
+          "gate": "G1",
+          "group": "family_child_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"object\": {\"ko\": \"바나나\", \"fr\": \"banane\", \"en\": \"banana\"}, \"card\": {\"ko\": \"바나나\", \"fr\": \"banane\", \"en",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "object"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g1_child_b_12",
+          "gate": "G1",
+          "group": "family_child_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"object\": {\"ko\": \"모자\", \"fr\": \"chapeau\", \"en\": \"hat\"}, \"card\": {\"ko\": \"모자\", \"fr\": \"chapeau\", \"en\": ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "object"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_lat_01",
+          "gate": "G2",
+          "group": "ko_to_lat",
+          "gate_correct": true,
+          "output_preview": "annyeonghaseyo",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 14,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "annyeong",
+              "annyong"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_lat_02",
+          "gate": "G2",
+          "group": "ko_to_lat",
+          "gate_correct": true,
+          "output_preview": "uri agi",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 6,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "uri",
+              "agi"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_lat_03",
+          "gate": "G2",
+          "group": "ko_to_lat",
+          "gate_correct": true,
+          "output_preview": "sagwa",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 5,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "sagwa",
+              "sa gwa"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_lat_04",
+          "gate": "G2",
+          "group": "ko_to_lat",
+          "gate_correct": true,
+          "output_preview": "Goyangi",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 7,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "goyang",
+              "koyang"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_lat_05",
+          "gate": "G2",
+          "group": "ko_to_lat",
+          "gate_correct": true,
+          "output_preview": "mul juseyo",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 9,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "mul",
+              "juse"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_lat_06",
+          "gate": "G2",
+          "group": "ko_to_lat",
+          "gate_correct": true,
+          "output_preview": "chaek ikja",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 9,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "chaek",
+              "jaek",
+              "ikja"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_lat_07",
+          "gate": "G2",
+          "group": "ko_to_lat",
+          "gate_correct": true,
+          "output_preview": "jalhaesseoyo",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 12,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "jal",
+              "haess",
+              "haet"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_lat_08",
+          "gate": "G2",
+          "group": "ko_to_lat",
+          "gate_correct": false,
+          "output_preview": "mu-ma-pa",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 6,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": false,
+            "content_sanity_terms": [
+              "eomma",
+              "umma",
+              "appa"
+            ],
+            "gate_correct": false
+          }
+        },
+        {
+          "id": "g2_ko_to_cyr_01",
+          "gate": "G2",
+          "group": "ko_to_cyr",
+          "gate_correct": true,
+          "output_preview": "Аннёнхэё",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 8,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "cyrillic",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_cyr_02",
+          "gate": "G2",
+          "group": "ko_to_cyr",
+          "gate_correct": true,
+          "output_preview": "Ули аги",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 6,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "cyrillic",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_cyr_03",
+          "gate": "G2",
+          "group": "ko_to_cyr",
+          "gate_correct": true,
+          "output_preview": "Кимчиджеэ",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 9,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "cyrillic",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_cyr_04",
+          "gate": "G2",
+          "group": "ko_to_cyr",
+          "gate_correct": true,
+          "output_preview": "Хочешь пойти в школу?",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 17,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "cyrillic",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_cyr_05",
+          "gate": "G2",
+          "group": "ko_to_cyr",
+          "gate_correct": true,
+          "output_preview": "Сеулль",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 6,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "cyrillic",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_cyr_06",
+          "gate": "G2",
+          "group": "ko_to_cyr",
+          "gate_correct": true,
+          "output_preview": "Умма аппа",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 8,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "cyrillic",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_cyr_07",
+          "gate": "G2",
+          "group": "ko_to_cyr",
+          "gate_correct": true,
+          "output_preview": "Залья.",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 5,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "cyrillic",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ko_to_cyr_08",
+          "gate": "G2",
+          "group": "ko_to_cyr",
+          "gate_correct": true,
+          "output_preview": "Санхаэ",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 6,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "cyrillic",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ru_to_han_01",
+          "gate": "G2",
+          "group": "ru_to_han",
+          "gate_correct": false,
+          "output_preview": "спасибо",
+          "score": {
+            "script_correct": false,
+            "target_ratio": 0.0,
+            "other_max_ratio": 1.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 7,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": false,
+            "content_sanity_terms": [
+              "스파",
+              "스빠"
+            ],
+            "gate_correct": false
+          }
+        },
+        {
+          "id": "g2_ru_to_han_02",
+          "gate": "G2",
+          "group": "ru_to_han",
+          "gate_correct": false,
+          "output_preview": "모코로",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 3,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": false,
+            "content_sanity_terms": [
+              "몰로",
+              "말라",
+              "밀로"
+            ],
+            "gate_correct": false
+          }
+        },
+        {
+          "id": "g2_ru_to_han_03",
+          "gate": "G2",
+          "group": "ru_to_han",
+          "gate_correct": false,
+          "output_preview": "코шка",
+          "score": {
+            "script_correct": false,
+            "target_ratio": 0.25,
+            "other_max_ratio": 0.75,
+            "counts": {
+              "hangul": 1,
+              "cyrillic": 3,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": false,
+            "content_sanity_terms": [
+              "코시",
+              "코슈",
+              "카시"
+            ],
+            "gate_correct": false
+          }
+        },
+        {
+          "id": "g2_ru_to_han_04",
+          "gate": "G2",
+          "group": "ru_to_han",
+          "gate_correct": true,
+          "output_preview": "메드베드",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 4,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "메드",
+              "메드베",
+              "메드볘"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ru_to_han_05",
+          "gate": "G2",
+          "group": "ru_to_han",
+          "gate_correct": false,
+          "output_preview": "도보루",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 3,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": false,
+            "content_sanity_terms": [
+              "도브",
+              "우트",
+              "우뜨"
+            ],
+            "gate_correct": false
+          }
+        },
+        {
+          "id": "g2_ru_to_han_06",
+          "gate": "G2",
+          "group": "ru_to_han",
+          "gate_correct": true,
+          "output_preview": "마마",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 2,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "마마"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ru_to_han_07",
+          "gate": "G2",
+          "group": "ru_to_han",
+          "gate_correct": true,
+          "output_preview": "파파",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 2,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "파파",
+              "빠빠"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_ru_to_han_08",
+          "gate": "G2",
+          "group": "ru_to_han",
+          "gate_correct": false,
+          "output_preview": "다이 کش아",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 3,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": false,
+            "content_sanity_terms": [
+              "다바",
+              "쿠샤",
+              "쿠샤트"
+            ],
+            "gate_correct": false
+          }
+        },
+        {
+          "id": "g2_fr_to_han_01",
+          "gate": "G2",
+          "group": "fr_to_han",
+          "gate_correct": true,
+          "output_preview": "봉주르지 않아요",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 7,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "봉",
+              "본주",
+              "봉주"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_fr_to_han_02",
+          "gate": "G2",
+          "group": "fr_to_han",
+          "gate_correct": true,
+          "output_preview": "메르시",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 3,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "메르",
+              "메시"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_fr_to_han_03",
+          "gate": "G2",
+          "group": "fr_to_han",
+          "gate_correct": false,
+          "output_preview": "마마",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 2,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": false,
+            "content_sanity_terms": [
+              "마망",
+              "마만"
+            ],
+            "gate_correct": false
+          }
+        },
+        {
+          "id": "g2_fr_to_han_04",
+          "gate": "G2",
+          "group": "fr_to_han",
+          "gate_correct": true,
+          "output_preview": "파파",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 2,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "파파",
+              "빠빠"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_fr_to_han_05",
+          "gate": "G2",
+          "group": "fr_to_han",
+          "gate_correct": false,
+          "output_preview": "포메",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 2,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": false,
+            "content_sanity_terms": [
+              "폼",
+              "뽐"
+            ],
+            "gate_correct": false
+          }
+        },
+        {
+          "id": "g2_fr_to_han_06",
+          "gate": "G2",
+          "group": "fr_to_han",
+          "gate_correct": true,
+          "output_preview": "샤",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 1,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "샤",
+              "차"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_fr_to_han_07",
+          "gate": "G2",
+          "group": "fr_to_han",
+          "gate_correct": true,
+          "output_preview": "시엔",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 2,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "시앵",
+              "시엔",
+              "샹"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_fr_to_han_08",
+          "gate": "G2",
+          "group": "fr_to_han",
+          "gate_correct": false,
+          "output_preview": "프라즈메",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 4,
+              "cyrillic": 0,
+              "latin": 0,
+              "other": 0
+            },
+            "expect_script": "hangul",
+            "content_sanity_ok": false,
+            "content_sanity_terms": [
+              "프로",
+              "프로마",
+              "프호"
+            ],
+            "gate_correct": false
+          }
+        },
+        {
+          "id": "g2_fr_to_lat_01",
+          "gate": "G2",
+          "group": "fr_to_lat",
+          "gate_correct": true,
+          "output_preview": "bonjour !",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 7,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "bonjour"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_fr_to_lat_02",
+          "gate": "G2",
+          "group": "fr_to_lat",
+          "gate_correct": true,
+          "output_preview": "merci !",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 5,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "merci"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_fr_to_lat_03",
+          "gate": "G2",
+          "group": "fr_to_lat",
+          "gate_correct": true,
+          "output_preview": "Je veux de l'eau.",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 12,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "veux",
+              "eau"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_fr_to_lat_04",
+          "gate": "G2",
+          "group": "fr_to_lat",
+          "gate_correct": true,
+          "output_preview": "Encore une fois",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 13,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "encore",
+              "fois"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_fr_to_lat_05",
+          "gate": "G2",
+          "group": "fr_to_lat",
+          "gate_correct": false,
+          "output_preview": "Dormez bien.",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 10,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": false,
+            "content_sanity_terms": [
+              "bonne",
+              "nuit"
+            ],
+            "gate_correct": false
+          }
+        },
+        {
+          "id": "g2_fr_to_lat_06",
+          "gate": "G2",
+          "group": "fr_to_lat",
+          "gate_correct": true,
+          "output_preview": "Où est le livre ?",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 12,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "livre"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_fr_to_lat_07",
+          "gate": "G2",
+          "group": "fr_to_lat",
+          "gate_correct": true,
+          "output_preview": "C'est une pomme.",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 12,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "pomme"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g2_fr_to_lat_08",
+          "gate": "G2",
+          "group": "fr_to_lat",
+          "gate_correct": true,
+          "output_preview": "Très bien",
+          "score": {
+            "script_correct": true,
+            "target_ratio": 1.0,
+            "other_max_ratio": 0.0,
+            "counts": {
+              "hangul": 0,
+              "cyrillic": 0,
+              "latin": 8,
+              "other": 0
+            },
+            "expect_script": "latin",
+            "content_sanity_ok": true,
+            "content_sanity_terms": [
+              "très",
+              "tres",
+              "bien"
+            ],
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_baby_01",
+          "gate": "G3",
+          "group": "schema_baby_0_2",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"age_band\": \"0-2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"우산\", \"ru\": \"зонтик\", \"en\": \"umbrella\"}, \"next_action\": \"show\", \"",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_child_01",
+          "gate": "G3",
+          "group": "schema_child_3_6",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"age_band\": \"3-6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"우산\", \"fr\": \"parapluie\", \"en\": \"umbrella\"}, \"next_action\": \"show",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_baby_02",
+          "gate": "G3",
+          "group": "schema_baby_0_2",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"age_band\": \"0-2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"이 짚손\", \"ru\": \"Это зубная щека\", \"en\": \"this bracket\"}, \"next_act",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_child_02",
+          "gate": "G3",
+          "group": "schema_child_3_6",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"age_band\": \"3-6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"이 치아brush!\", \"fr\": \"Cette brosse à dents!\", \"en\": \"this toothbr",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_baby_03",
+          "gate": "G3",
+          "group": "schema_baby_0_2",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"age_band\": \"0-2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"en\": \"blanket\", \"ko\": \"blank\", \"ru\": \"пустой карандаш\"}, \"next_action\"",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_child_03",
+          "gate": "G3",
+          "group": "schema_child_3_6",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"age_band\": \"3-6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"blanket\", \"fr\": \"couverture\", \"en\": \"blanket\"}, \"next_action\": ",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_baby_04",
+          "gate": "G3",
+          "group": "schema_baby_0_2",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"age_band\": \"0-2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"토끼\", \"ru\": \"кошка\", \"en\": \"rabbit\"}, \"next_action\": \"show\", \"saf",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_child_04",
+          "gate": "G3",
+          "group": "schema_child_3_6",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"age_band\": \"3-6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"토끼\", \"fr\": \"lapin\", \"en\": \"rabbit\"}, \"next_action\": \"speak\", \"s",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_baby_05",
+          "gate": "G3",
+          "group": "schema_baby_0_2",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"age_band\": \"0-2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"en\": \"ball\", \"ko\": \"사물\", \"ru\": \"предмет\"}, \"next_action\": \"show\", \"saf",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_child_05",
+          "gate": "G3",
+          "group": "schema_child_3_6",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"age_band\": \"3-6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"en\": \"ball\", \"fr\": \"balle\", \"ko\": \"사물\", \"ru\": \"предмет\"}, \"next_actio",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_baby_06",
+          "gate": "G3",
+          "group": "schema_baby_0_2",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"age_band\": \"0-2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"en\": \"pencil\", \"ko\": \"연필\", \"ru\": \"костюм\", \"xadult\": \"wooden spoon\"}, ",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_child_06",
+          "gate": "G3",
+          "group": "schema_child_3_6",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"age_band\": \"3-6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"연필\", \"fr\": \"crayon\", \"en\": \"pencil\"}, \"next_action\": \"speak\", \"",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_baby_07",
+          "gate": "G3",
+          "group": "schema_baby_0_2",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"age_band\": \"0-2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"en\": \"socks\", \"ko\": \"신발\", \"ru\": \"обувь\"}, \"next_action\": \"show\", \"safe",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_child_07",
+          "gate": "G3",
+          "group": "schema_child_3_6",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"age_band\": \"3-6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"en\": \"socks\", \"fr\": \"chaussettes\", \"ko\": \"신발\"}, \"next_action\": \"show\"",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_baby_08",
+          "gate": "G3",
+          "group": "schema_baby_0_2",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"age_band\": \"0-2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"soap\", \"ru\": \"sapога\", \"en\": \"soap\"}, \"next_action\": \"show\", \"sa",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_child_08",
+          "gate": "G3",
+          "group": "schema_child_3_6",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"age_band\": \"3-6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"en\": \"soap\", \"fr\": \"savon\", \"ko\": \"sihlak\"}, \"next_action\": \"show\", \"",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_baby_09",
+          "gate": "G3",
+          "group": "schema_baby_0_2",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"age_band\": \"0-2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"en\": \"plate\", \"ko\": \"밥\", \"ru\": \"плакат\"}, \"next_action\": \"show\", \"safe",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_child_09",
+          "gate": "G3",
+          "group": "schema_child_3_6",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"age_band\": \"3-6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"en\": \"plate\", \"fr\": \"plat\", \"ko\": \"사물\"}, \"next_action\": \"speak\", \"saf",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_baby_10",
+          "gate": "G3",
+          "group": "schema_baby_0_2",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"age_band\": \"0-2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"우산\", \"ru\": \"пальто\", \"en\": \"towel\"}, \"next_action\": \"show\", \"saf",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_child_10",
+          "gate": "G3",
+          "group": "schema_child_3_6",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"age_band\": \"3-6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"手拭\", \"fr\": \"éponge\", \"en\": \"towel\"}, \"next_action\": \"speak\", \"s",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_baby_11",
+          "gate": "G3",
+          "group": "schema_baby_0_2",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"age_band\": \"0-2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"바나나\", \"ru\": \"банан\", \"en\": \"banana\"}, \"next_action\": \"show\", \"sa",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_child_11",
+          "gate": "G3",
+          "group": "schema_child_3_6",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"age_band\": \"3-6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"바나나\", \"fr\": \"banane\", \"en\": \"banana\"}, \"next_action\": \"speak\", ",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_baby_12",
+          "gate": "G3",
+          "group": "schema_baby_0_2",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"baby_0_2\", \"age_band\": \"0-2\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"옷\", \"ru\": \"предмет\", \"en\": \"object\"}, \"next_action\": \"show\", \"sa",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g3_schema_child_12",
+          "gate": "G3",
+          "group": "schema_child_3_6",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"child_3_6\", \"age_band\": \"3-6\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"hat\", \"fr\": \"chapeau\", \"en\": \"hat\"}, \"next_action\": \"speak\", \"s",
+          "score": {
+            "schema_correct": true,
+            "json_parse_ok": true,
+            "reason": "ok",
+            "missing_keys": [],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_a_ko_ru_en_01",
+          "gate": "G4",
+          "group": "family_a_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"우산\", \"ru\": \"зонтик\", \"en\": \"umbrella\"}, \"next_action\": \"Use only ko, ru, en fo",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_a_ko_ru_en_02",
+          "gate": "G4",
+          "group": "family_a_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"이 잇몸에 치아가 두개 missing이야\", \"ru\": \"У меня есть два беззаботных зуба\", \"en\": \"I ha",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "object",
+              "parent_bridge"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_a_ko_ru_en_03",
+          "gate": "G4",
+          "group": "family_a_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"blanket\", \"ru\": \"blanket\", \"en\": \"blanket\"}, \"next_action\": \"Use only ko, ru, ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_a_ko_ru_en_04",
+          "gate": "G4",
+          "group": "family_a_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"토끼\", \"ru\": \"кролик\", \"en\": \"rabbit\"}, \"next_action\": \"Use only ko, ru, en for ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_a_ko_ru_en_05",
+          "gate": "G4",
+          "group": "family_a_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"오렌지\", \"ru\": \"апельсин\", \"en\": \"orange\"}, \"next_action\": \"Use only ko, ru, en f",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_a_ko_ru_en_06",
+          "gate": "G4",
+          "group": "family_a_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"연필\", \"ru\": \"кадр\", \"en\": \"pencil\"}, \"next_action\": \"Use only ko, ru, en for th",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_a_ko_ru_en_07",
+          "gate": "G4",
+          "group": "family_a_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"신발\", \"ru\": \"обувь\", \"en\": \"socks\"}, \"next_action\": \"Use only ko, ru, en for th",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_a_ko_ru_en_08",
+          "gate": "G4",
+          "group": "family_a_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"주름\", \"ru\": \"кожа skinя\", \"en\": \"soap\"}, \"next_action\": \"Use only ko, ru, en fo",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_a_ko_ru_en_09",
+          "gate": "G4",
+          "group": "family_a_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"plate\", \"ru\": \"platino\", \"en\": \"plate\"}, \"next_action\": \"Use only ko, ru, en f",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_a_ko_ru_en_10",
+          "gate": "G4",
+          "group": "family_a_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"手拭\", \"ru\": \"пустыра\", \"en\": \"towel\"}, \"next_action\": \"Use only ko, ru, en for ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_a_ko_ru_en_11",
+          "gate": "G4",
+          "group": "family_a_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \"바나나\", \"ru\": \"банан\", \"en\": \"banana\"}, \"next_action\": \"Use only ko, ru, en for ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_a_ko_ru_en_12",
+          "gate": "G4",
+          "group": "family_a_ko_ru_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"ru\", \"en\"], \"card\": {\"ko\": \" 모자 \", \"ru\": \"шляпка\", \"en\": \"hat\"}, \"next_action\": \"Use only ko, ru, en for t",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "ru",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_b_ko_fr_en_01",
+          "gate": "G4",
+          "group": "family_b_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"우산\", \"fr\": \"parapluie\", \"en\": \"umbrella\"}, \"next_action\": \"Use only ko, fr, en",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_b_ko_fr_en_02",
+          "gate": "G4",
+          "group": "family_b_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"이 잇몸에 치아가 두개 있어요\", \"fr\": \"Il y a deux dents dans cette dentition\", \"en\": \"this",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band",
+              "safety"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [
+              "version"
+            ],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_b_ko_fr_en_03",
+          "gate": "G4",
+          "group": "family_b_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"blanket\", \"fr\": \"couverture\", \"en\": \"blanket\"}, \"next_action\": \"Use only ko, f",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_b_ko_fr_en_04",
+          "gate": "G4",
+          "group": "family_b_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"토끼\", \"fr\": \"lapin\", \"en\": \"rabbit\"}, \"next_action\": \"Use only ko, fr, en for t",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_b_ko_fr_en_05",
+          "gate": "G4",
+          "group": "family_b_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"오렌지\", \"fr\": \"orange\", \"en\": \"orange\"}, \"next_action\": \"Use only ko, fr, en for",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_b_ko_fr_en_06",
+          "gate": "G4",
+          "group": "family_b_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"연필\", \"fr\": \"crayon\", \"en\": \"pencil\"}, \"next_action\": \"Use only ko, fr, en for ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_b_ko_fr_en_07",
+          "gate": "G4",
+          "group": "family_b_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"신발\", \"fr\": \"chaussettes\", \"en\": \"socks\"}, \"next_action\": \"Use only ko, fr, en ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_b_ko_fr_en_08",
+          "gate": "G4",
+          "group": "family_b_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"수건\", \"fr\": \"savon\", \"en\": \"soap\"}, \"next_action\": \"Use only ko, fr, en for thi",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_b_ko_fr_en_09",
+          "gate": "G4",
+          "group": "family_b_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"plate\", \"fr\": \"plat\", \"en\": \"plate\"}, \"next_action\": \"Use only ko, fr, en for ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_b_ko_fr_en_10",
+          "gate": "G4",
+          "group": "family_b_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"手拭\", \"fr\": \"oublet\", \"en\": \"towel\"}, \"next_action\": \"Use only ko, fr, en for t",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": false,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_b_ko_fr_en_11",
+          "gate": "G4",
+          "group": "family_b_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \"바나나\", \"fr\": \"banane\", \"en\": \"banana\"}, \"next_action\": \"Use only ko, fr, en for",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        },
+        {
+          "id": "g4_family_b_ko_fr_en_12",
+          "gate": "G4",
+          "group": "family_b_ko_fr_en",
+          "gate_correct": true,
+          "output_preview": "{\"mode\": \"parent_bridge\", \"active_languages\": [\"ko\", \"fr\", \"en\"], \"card\": {\"ko\": \" 모자 \", \"fr\": \"chapeau\", \"en\": \"hat\"}, \"next_action\": \"Use only ko, fr, en for ",
+          "score": {
+            "schema_correct": false,
+            "json_parse_ok": true,
+            "reason": "schema_violation",
+            "missing_keys": [
+              "age_band"
+            ],
+            "type_errors": [],
+            "enum_errors": [],
+            "extra_keys": [],
+            "json_parse_reason": "ok",
+            "mode_ok": true,
+            "age_ok": true,
+            "active_languages": [
+              "ko",
+              "fr",
+              "en"
+            ],
+            "active_ok": true,
+            "forbidden_ok": true,
+            "inactive_output_ok": true,
+            "card_lang_ok": true,
+            "age_policy_ok": true,
+            "materialized_languages_ok": true,
+            "gate_correct": true
+          }
+        }
+      ],
+      "action": "AMBER"
+    }
+  },
+  "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+  "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125"
+}

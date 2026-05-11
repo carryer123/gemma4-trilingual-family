@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Trilingual Family</string>
+    <string name="setup_title">Tell me about your family</string>
+    <string name="setup_age_band">Child age band</string>
+    <string name="setup_bridge_lang">Parents bridge language</string>
+    <string name="setup_household_langs">Languages at home</string>
+    <string name="learning_camera">Point at object</string>
+    <string name="learning_voice">Hold to speak</string>
+    <string name="learning_text">Type</string>
+    <string name="learning_age_mode">Age mode</string>
+    <string name="card_object">Object</string>
+    <string name="card_korean">Korean</string>
+    <string name="card_russian">Russian</string>
+    <string name="card_english">English</string>
+    <string name="card_l1_note">L1 bridge note</string>
+    <string name="card_pronunciation_aid">Pronunciation aid</string>
+    <string name="model_loading">Loading on-device model…</string>
+    <string name="model_load_error">Could not load model. Check that gemma-4-E2B-it.litertlm is in app data.</string>
+    <string name="permission_camera">Camera permission needed for object recognition</string>
+    <string name="permission_mic">Microphone permission needed for voice mode</string>
+</resources>

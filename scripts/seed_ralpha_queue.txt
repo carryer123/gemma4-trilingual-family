@@ -1,0 +1,15 @@
+# name|train_file|max_steps|lora_r|lora_alpha|seed|lr
+# Multi-seed sweep (5 seeds, lora_v1 mix, r=32 a=64)
+v1seed_42|prototype/data/ablation/L_v1_recreate_train.jsonl|4500|32|64|42|2e-4
+v1seed_1234|prototype/data/ablation/L_v1_recreate_train.jsonl|4500|32|64|1234|2e-4
+v1seed_7777|prototype/data/ablation/L_v1_recreate_train.jsonl|4500|32|64|7777|2e-4
+v1seed_99999|prototype/data/ablation/L_v1_recreate_train.jsonl|4500|32|64|99999|2e-4
+v1seed_2026|prototype/data/ablation/L_v1_recreate_train.jsonl|4500|32|64|2026|2e-4
+# r/alpha sweep (lora_v1 mix, fixed seed=20260507)
+v1ra_r08_a16|prototype/data/ablation/L_v1_recreate_train.jsonl|4500|8|16|20260507|2e-4
+v1ra_r08_a64|prototype/data/ablation/L_v1_recreate_train.jsonl|4500|8|64|20260507|2e-4
+v1ra_r16_a32|prototype/data/ablation/L_v1_recreate_train.jsonl|4500|16|32|20260507|2e-4
+v1ra_r16_a64|prototype/data/ablation/L_v1_recreate_train.jsonl|4500|16|64|20260507|2e-4
+v1ra_r64_a16|prototype/data/ablation/L_v1_recreate_train.jsonl|4500|64|16|20260507|2e-4
+v1ra_r64_a64|prototype/data/ablation/L_v1_recreate_train.jsonl|4500|64|64|20260507|2e-4
+v1ra_r64_a128|prototype/data/ablation/L_v1_recreate_train.jsonl|4500|64|128|20260507|2e-4

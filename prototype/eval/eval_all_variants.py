@@ -1,48 +1,72 @@
 #!/usr/bin/env python3
 """Evaluate stock + every trained LoRA variant on the 30-probe FaE set.
 
+Auto-discovers adapters under lora_out/:
+  - <variant>/adapter/             — final adapter
+  - <variant>/checkpoint-N/        — intermediate checkpoint (only if VARIANTS_INCLUDE_CHECKPOINTS=1)
+
 Saves one JSONL per (variant) with side-by-side output, plus a master
-summary JSON pointing to all of them.
+ledger pointing to all of them.
+
+Env:
+  CUDA_VISIBLE_DEVICES — GPU id
+  VARIANTS_INCLUDE_CHECKPOINTS=1 — also evaluate intermediate checkpoint-N dirs
+  VARIANTS_FILTER=L_step_dense    — only eval variants whose name contains this substring
+  ONLY_NEW=1 — skip variants whose JSONL already exists
 """
 from __future__ import annotations
-import os, json, time, pathlib
+import os, json, time, pathlib, re
 os.environ.setdefault("HF_HOME", "/scratch/hpc198a01/젬마4해커톤/hf_cache")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
 import torch
-# Unsloth's FastLanguageModel.from_pretrained accepts an adapter dir directly
-# and reads adapter_config.json:base_model_name_or_path to load base + adapter.
-# Plain PEFT can't load these adapters because they target Gemma4ClippableLinear
-# (a custom layer type PEFT doesn't recognize).
 import unsloth
 from unsloth import FastLanguageModel
 
 PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
 PROBES_FILE = PROJ / "paper/data_release/family_as_evaluator_probes_v1.jsonl"
 STOCK_MODEL = str(PROJ / "models/unsloth-gemma-4-E2B-it")
-
 OUT_DIR = PROJ / "prototype/eval"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-# (variant_name, model_path_or_adapter_dir, is_adapter)
-VARIANTS = [
-    ("stock",            STOCK_MODEL,                                    False),
-    ("lora_v1",          str(PROJ / "lora_out/lora_v1/gguf-q4_k_m"),     False),  # merged
-    ("lora_v2",          str(PROJ / "lora_out/lora_v2/adapter"),          True),
-    ("L_direct",         str(PROJ / "lora_out/L_direct/adapter"),         True),
-    ("L_pivot_only",     str(PROJ / "lora_out/L_pivot_only/adapter"),     True),
-    ("L_pivot_filtered", str(PROJ / "lora_out/L_pivot_filtered/adapter"), True),
-    ("L_multilingual",   str(PROJ / "lora_out/L_multilingual/adapter"),   True),
-    ("L_policy_00",      str(PROJ / "lora_out/L_policy_00/adapter"),      True),
-    ("L_policy_01",      str(PROJ / "lora_out/L_policy_01/adapter"),      True),
-    ("L_policy_03",      str(PROJ / "lora_out/L_policy_03/adapter"),      True),
-    ("L_policy_05",      str(PROJ / "lora_out/L_policy_05/adapter"),      True),
-    ("L_policy_10",      str(PROJ / "lora_out/L_policy_10/adapter"),      True),
-    # Training-duration ablation (PF-2): how regression emerges with steps
-    ("lora_v1_step4000", str(PROJ / "lora_out/lora_v1/checkpoint-4000"),  True),
-    ("lora_v2_step4500", str(PROJ / "lora_out/lora_v2/checkpoint-4500"),  True),
-    ("lora_v2_step5000", str(PROJ / "lora_out/lora_v2/checkpoint-5000"),  True),
-]
+LORA_OUT = PROJ / "lora_out"
+INCLUDE_CHKPT = bool(int(os.environ.get("VARIANTS_INCLUDE_CHECKPOINTS", "0")))
+FILTER = os.environ.get("VARIANTS_FILTER", "")
+ONLY_NEW = bool(int(os.environ.get("ONLY_NEW", "1")))
+
+
+def _filter_match(name: str) -> bool:
+    if not FILTER:
+        return True
+    parts = [p.strip() for p in FILTER.split(",") if p.strip()]
+    if not parts:
+        return True
+    return any(p in name for p in parts)
+
+
+def discover_variants():
+    """Return list of (name, path, is_adapter) tuples."""
+    items = [("stock", STOCK_MODEL, False)]
+    for d in sorted(LORA_OUT.iterdir()):
+        if not d.is_dir(): continue
+        if not _filter_match(d.name): continue
+        # Final adapter
+        adapter = d / "adapter"
+        if adapter.is_dir() and (adapter / "adapter_config.json").exists():
+            items.append((d.name, str(adapter), True))
+        # The Unsloth merge dir from earlier (lora_v1)
+        merged = d / "gguf-q4_k_m"
+        if merged.is_dir() and (merged / "model.safetensors").exists() and not adapter.is_dir():
+            items.append((d.name, str(merged), False))
+        # Intermediate checkpoints (opt-in; for step-axis curves)
+        if INCLUDE_CHKPT:
+            for ck in sorted(d.glob("checkpoint-*")):
+                if not ck.is_dir(): continue
+                if not (ck / "adapter_config.json").exists(): continue
+                m = re.match(r"checkpoint-(\d+)", ck.name)
+                step = int(m.group(1)) if m else 0
+                items.append((f"{d.name}_step{step:05d}", str(ck), True))
+    return items
 
 
 def load_probes():
@@ -50,16 +74,11 @@ def load_probes():
 
 
 def load_variant(name, path, is_adapter):
-    print(f"[load] {name} from {path} (adapter={is_adapter})")
+    print(f"[load] {name} from {path}")
     t0 = time.time()
-    # FastLanguageModel.from_pretrained handles both: a base model dir, OR an
-    # adapter dir (auto-loads base from adapter_config.json then attaches LoRA).
     model, tok = FastLanguageModel.from_pretrained(
-        model_name=path,
-        max_seq_length=2048,
-        load_in_4bit=False,
-        load_in_16bit=True,
-        full_finetuning=False,
+        model_name=path, max_seq_length=2048,
+        load_in_4bit=False, load_in_16bit=True, full_finetuning=False,
     )
     FastLanguageModel.for_inference(model)
     print(f"[load] {name} done in {time.time()-t0:.1f}s")
@@ -87,20 +106,28 @@ def gen(model, tok, prompt, max_new=512):
 
 
 def main():
+    variants = discover_variants()
+    print(f"[discover] {len(variants)} variants found")
+    for name, path, _ in variants[:8]:
+        print(f"  {name}  ←  {path}")
+    if len(variants) > 8:
+        print(f"  ... and {len(variants)-8} more")
+
     probes = load_probes()
-    print(f"[probes] {len(probes)}")
     ledger = {"variants": []}
 
-    for name, path, is_adapter in VARIANTS:
+    for name, path, is_adapter in variants:
         out_path = OUT_DIR / f"variant_{name}.jsonl"
-        if out_path.exists():
-            print(f"[skip] {name} already evaluated → {out_path}")
-            ledger["variants"].append({"name": name, "out": str(out_path)})
-            continue
+        if ONLY_NEW and out_path.exists():
+            n = sum(1 for _ in out_path.open())
+            if n >= len(probes) - 1:
+                print(f"[skip] {name} already evaluated ({n} rows)")
+                ledger["variants"].append({"name": name, "out": str(out_path)})
+                continue
         try:
             model, tok = load_variant(name, path, is_adapter)
         except Exception as e:
-            print(f"[err] {name} load failed: {e}")
+            print(f"[err] {name} load failed: {type(e).__name__}: {str(e)[:120]}")
             continue
         rows = []
         for i, p in enumerate(probes):

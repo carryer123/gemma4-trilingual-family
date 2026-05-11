@@ -5,36 +5,52 @@
       "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_stock.jsonl"
     },
     {
-      "name": "lora_v1",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_lora_v1.jsonl"
+      "name": "v1ra_r64_a128",
+      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a128.jsonl"
     },
     {
-      "name": "lora_v2",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_lora_v2.jsonl"
+      "name": "v1ra_r64_a128_step01500",
+      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a128_step01500.jsonl"
     },
     {
-      "name": "L_direct",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_L_direct.jsonl"
+      "name": "v1ra_r64_a128_step03000",
+      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a128_step03000.jsonl"
     },
     {
-      "name": "L_pivot_only",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_L_pivot_only.jsonl"
+      "name": "v1ra_r64_a128_step04500",
+      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a128_step04500.jsonl"
     },
     {
-      "name": "L_pivot_filtered",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_L_pivot_filtered.jsonl"
+      "name": "v1ra_r64_a16",
+      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a16.jsonl"
     },
     {
-      "name": "L_multilingual",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_L_multilingual.jsonl"
+      "name": "v1ra_r64_a16_step01500",
+      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a16_step01500.jsonl"
     },
     {
-      "name": "L_policy_00",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_L_policy_00.jsonl"
+      "name": "v1ra_r64_a16_step03000",
+      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a16_step03000.jsonl"
     },
     {
-      "name": "L_policy_01",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_L_policy_01.jsonl"
+      "name": "v1ra_r64_a16_step04500",
+      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a16_step04500.jsonl"
+    },
+    {
+      "name": "v1ra_r64_a64",
+      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a64.jsonl"
+    },
+    {
+      "name": "v1ra_r64_a64_step01500",
+      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a64_step01500.jsonl"
+    },
+    {
+      "name": "v1ra_r64_a64_step03000",
+      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a64_step03000.jsonl"
+    },
+    {
+      "name": "v1ra_r64_a64_step04500",
+      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a64_step04500.jsonl"
     }
   ]
 }

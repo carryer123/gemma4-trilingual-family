@@ -1,0 +1,11 @@
+{
+  "label": "stock_llama32",
+  "model_path": "/scratch/hpc198a01/\uc82c\ub9c84\ud574\ucee4\ud1a4/models/cross/llama32_3b_instruct",
+  "n_prompts": 10,
+  "total_new_tokens": 957,
+  "total_wall_sec": 16.768980979919434,
+  "tokens_per_sec_endtoend": 57.069657431539284,
+  "tokens_per_sec_decodeonly": 58.07160311087199,
+  "ttft_sec_mean": 0.02570607662200928,
+  "ttft_sec_median": 0.020029544830322266
+}

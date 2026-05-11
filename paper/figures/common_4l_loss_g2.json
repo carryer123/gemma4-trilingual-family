@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "4l_family_high_s1500": {
+      "variant": "4l_family_high_s1500",
+      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_family_high_s1500/adapter",
+      "is_adapter": true,
+      "common_eval_file": "/scratch/hpc198a01/젬마4해커톤/prototype/data/eval_4l_common.jsonl",
+      "examples": 1200,
+      "tokens": 52795,
+      "loss": 0.6659415038490764,
+      "perplexity": 1.9463220834732056,
+      "elapsed_sec": 186.36
+    },
+    "4l_family_repair_s1500": {
+      "variant": "4l_family_repair_s1500",
+      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_family_repair_s1500/adapter",
+      "is_adapter": true,
+      "common_eval_file": "/scratch/hpc198a01/젬마4해커톤/prototype/data/eval_4l_common.jsonl",
+      "examples": 1200,
+      "tokens": 52795,
+      "loss": 0.6683783503092112,
+      "perplexity": 1.951070785522461,
+      "elapsed_sec": 174.92
+    }
+  },
+  "common_eval_file": "/scratch/hpc198a01/젬마4해커톤/prototype/data/eval_4l_common.jsonl"
+}
