@@ -1,75 +1,54 @@
-# venv + caches (large, regenerable)
-venv/
-hf_cache/
-torch_cache/
-pip_cache/
-tmp/
-
-# model weights (download from HF / Ollama, do not commit)
-models/
-ollama/
-ollama_models/
-
-# training outputs (large, but adapter is released separately)
-lora_out/*/checkpoint-*/
-lora_out/*/runs/
-lora_out/*/gguf-q4_k_m/
-
-# logs (regenerable)
-logs/
-wandb/
-
-# raw data (Tatoeba, etc. — re-download via scripts)
-prototype/data/raw/tatoeba_*.csv
-prototype/data/raw/tatoeba_*.jsonl
-prototype/data/raw/object_cards*.jsonl
-prototype/data/raw/family_scenarios*.jsonl
-prototype/data/raw/transliteration.jsonl
-prototype/data/raw/function_calls.jsonl
-prototype/data/raw/trilingual_ko_ru_en.jsonl
-prototype/data/train_*.jsonl
-prototype/data/eval_*.jsonl
-
-# OS / IDE
+# macOS
 .DS_Store
-.vscode/
-.idea/
+
+# Python
 __pycache__/
-*.pyc
-*.pyo
-
-# secrets
-.envrc
-.env
-*.token
-hf_token.txt
-kaggle.json
-
-# private documents not for public release
-docs/세종_지역특화콘텐츠_제안서_*.md
-chain/
-auto_agent_output/
-
-# Disk-heavy / regenerable
-lora_out/
-ollama_models/
-ollama_install/
-hf_cache/
-torch_cache/
-pip_cache/
-tmp/
+*.py[cod]
+.venv/
 venv/
-models/
-logs/
-prototype/data/raw/
-prototype/data/ablation/
-prototype/data/train_*.jsonl
-prototype/data/eval_*.jsonl
-prototype/eval/variant_*.jsonl
-paper/build/
-.envrc
-*.token
-hf_token.txt
-kaggle.json
-chain/
-auto_agent_output/
+.env
+
+# Xcode build artifacts
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+project.xcworkspace/xcuserdata/
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+
+# llama.cpp prebuilt binary outputs (regenerable via build-xcframework.sh)
+vendor/llama.cpp/build/
+vendor/llama.cpp/build-apple/
+vendor/llama.cpp/build-ios-device/
+vendor/llama.cpp/build-ios-sim/
+vendor/llama.cpp/build-macos/
+vendor/llama.cpp/build-tvos-device/
+vendor/llama.cpp/build-tvos-sim/
+vendor/llama.cpp/build-visionos-device/
+vendor/llama.cpp/build-visionos-sim/
+
+# Large model files
+*.gguf
+gguf_models/
+ipad_transfer/
+
+# Training outputs (large)
+prototype/checkpoints/
+prototype/runs/
+prototype/lora_out/
+prototype/eval_runs/
+data_cache/
+
+# Logs
+*.log
+*.out
+slurm-*.out
+
+# Disabled / archived sources
+**/*.disabled
+
+# llama.cpp upstream tree (engine, referenced as submodule)
+vendor/
