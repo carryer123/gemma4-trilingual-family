@@ -2590,49 +2590,53 @@ final class TranslateEngine: ObservableObject {
         rawOutput = ""
         defer { isWorking = false }
 
-        let exampleSection = activeLangs
-            .map { exampleBlock(for: $0) }
-            .joined(separator: "\n\n")
-        let targetSection = activeLangs
-            .map { "=== \($0) ===\nTranslation: ...\nNote: ..." }
-            .joined(separator: "\n\n")
+        // Sequential per-language calls. Gemma E2B was unreliable when asked
+        // to produce a multi-block trilingual response in one shot (it would
+        // skip languages or drop the Note line). One call per target language
+        // is bulletproof — and the parent watches the cards stream in.
+        for target in activeLangs {
+            let block = await translateOne(target: target, llamaState: llamaState)
+            results[target] = block
+            rawOutput += "\n=== \(target) ===\n\(block)\n"
+        }
+    }
+
+    // Single-language translation. Returns the first non-empty line as the
+    // translation and any remaining lines as the explanatory note.
+    private func translateOne(target: String,
+                              llamaState: LlamaState) async -> String {
         let prompt = """
-        Translate text into multiple languages with cultural notes. ALWAYS produce every requested language block, ALWAYS include the Note line with 2–3 full sentences written in that same language (not English). The Note is the whole reason this is not a dictionary — when in doubt, write more, not less.
+        Translate the following text into \(target).
 
-        ---
-        EXAMPLE
-        Input: hello
-        Output:
-        \(exampleSection)
-        ---
+        Reply with exactly TWO lines:
+        Line 1 — the natural translation only (no labels, no quotes).
+        Line 2 — a 2–3 sentence note in \(target) (NOT in English) explaining tone, register, when to use it, or any cultural context a learner would miss.
 
-        Now do the same for the input below. Output the SAME \(activeLangs.count) blocks, in the same order, with Translation + Note for each. Do not stop after one language. Do not output anything before the first `=== ` header or after the last block.
-
-        Skeleton (fill it in):
-        \(targetSection)
-
-        Input: \(input)
-        Output:
+        Text: \(input)
         """
         let wrapped = "<|turn>user\n\(prompt)<turn|>\n<|turn>model\n"
         await llamaState.clear()
         let checkpoint = llamaState.messageLog.count
         await llamaState.complete(text: wrapped)
         let start = Date()
-        while Date().timeIntervalSince(start) < 60 {
+        while Date().timeIntervalSince(start) < 45 {
             if llamaState.messageLog.range(of: "\\n\\s*Done\\s*\\n",
                                            options: .regularExpression) != nil { break }
-            try? await Task.sleep(nanoseconds: 250_000_000)
+            try? await Task.sleep(nanoseconds: 200_000_000)
         }
         let tail = String(llamaState.messageLog.dropFirst(min(checkpoint + wrapped.count,
                                                               llamaState.messageLog.count)))
-        rawOutput = tail
-        if let card = parseLanguageBlocks(from: tail,
-                                          activeLanguages: activeLangs,
-                                          targetAge: 4,
-                                          mode: "translate") {
-            results = card.body
-        }
+        return cleanedSingleBlock(tail)
+    }
+
+    private func cleanedSingleBlock(_ raw: String) -> String {
+        var s = raw
+            .replacingOccurrences(of: "<|turn>", with: "")
+            .replacingOccurrences(of: "<turn|>", with: "")
+            .replacingOccurrences(of: "<bos>",   with: "")
+            .replacingOccurrences(of: "<eos>",   with: "")
+        if let r = s.range(of: "\nDone") { s = String(s[..<r.lowerBound]) }
+        return s.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
 
