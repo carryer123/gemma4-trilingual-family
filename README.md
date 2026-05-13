@@ -66,15 +66,30 @@ The pipeline is parameterised over `(L1, L2, bridge)`. To add EN + ES (no bridge
 
 ## B · Deployment layer (`app/`)
 
+The app ships as a six-tab consumer family app branded **Trio**:
+
+| Tab | What it does |
+|---|---|
+| **Today**     | Pick a moment (story / word card / song / say-it / family note / culture) and Gemma 4 writes it in all active languages. Each language card has an inline ▶︎ TTS button. |
+| **Library**   | Every generated card is auto-saved; replay TTS, swipe to delete. Persisted via `LibraryStore`. |
+| **Phrasebook**| 21 daily-routine phrases (morning / meal / bath / play / bedtime / praise / apology / greeting) preloaded in KO/EN/RU/FR with TTS — no model needed. |
+| **Words**     | Single words from every generation auto-ingest into a per-language Word Wall, filterable. |
+| **Camera**    | Photo → Apple `VNClassifyImageRequest` labels → tap any label → Gemma writes a 3-language word + one kid-friendly sentence + TTS. |
+| **Family**    | UI language picker (KO/EN/RU/FR), Visitor mode (grandmother / aunt / dad-only / mom-only), per-family-language activation toggles, per-language voice picker (Premium / Enhanced / Compact), kids, model, history. |
+
 | Component | File |
 |---|---|
-| iPad SwiftUI app (state-gated tutor) | `app/UI/ContentView.swift` |
+| iPad SwiftUI app (six tabs)          | `app/UI/ContentView.swift` |
 | Engine wrapper                       | `app/llama.cpp.swift/LibLlama.swift` |
-| Apple Speech wrapper (on-device ASR) | inlined in `ContentView.swift` |
 | Gemma 4 chat-template wrap           | `GemmaChat.wrap(_:)` in `ContentView.swift` |
 | G1–G4 evaluator                      | `StateGates` enum in `ContentView.swift` |
+| Soft block / partial-JSON parsers    | `parseLanguageBlocks`, `softParseCard` in `ContentView.swift` |
 | Audit log + JSON export              | `AuditLogStore` in `ContentView.swift` |
-| Family setup, session router, mode grid | `ContentView.swift` |
+| Persistent stores                    | `LibraryStore`, `WordStore` in `ContentView.swift` |
+| Phrasebook curation                  | `Phrasebook` in `ContentView.swift` |
+| Per-language TTS w/ voice picker     | `FamilyTTS`, `VoicePickerRow`, `bestVoice` in `ContentView.swift` |
+| Vision label → trilingual translate  | `CameraLabeler` in `ContentView.swift` |
+| UI localization (KO/EN/RU/FR)        | `Localization`, `LocKey` in `ContentView.swift` |
 
 ### Runtime gates
 
@@ -121,11 +136,15 @@ xcrun devicectl device copy to \
   --destination Documents/gemma4_e2b_policy.Q4_K_M.gguf
 ```
 
+### Generation format
+
+The original strict-JSON schema (`{"title":..., "body":{lang:str}}`) was dropped — it cost too many tokens on iPad, truncated mid-body, and made the family see raw `"title": "..."` text on failure. The current prompt asks Gemma 4 for **plain `=== <language> ===` blocks**, parsed by `parseLanguageBlocks`. If the model emits partial JSON (legacy / no-policy adapter), `softParseCard` extracts per-language body from the partial text, including unterminated trailing strings. The user never sees raw JSON.
+
 ### Multimodal status
 
-- **Speech in** (parent): Apple `SFSpeechRecognizer`, on-device, locale tracks the first active family language.
-- **Speech out**: deferred to system TTS in the demo flow.
-- **Camera + vision**: scaffolded in the app shell; Gemma 4 multimodal vision is gated behind the `mmproj` adapter and llama.cpp's multimodal Swift surface, both of which are still moving — a hybrid path using Apple `VNRecognizeTextRequest` and `VNClassifyImageRequest` for fallback labelling is the current plan.
+- **Speech in** (parent): handled by the **iOS keyboard's built-in dictation key** — tap the prompt field, press 🎙 on the system keyboard, dictate in any installed locale. We dropped the custom `SFSpeechRecognizer` + `AVAudioEngine` pipeline because remote-debugged audio-session configs kept cycling through OSStatus -50 / kAFAssistantErrorDomain 216 / "No speech detected" depending on the device's exact config; the keyboard mic is what every consumer iPad app uses and bypasses the audio session entirely.
+- **Speech out**: `AVSpeechSynthesizer` with quality-ranked voice selection (Siri-class → Premium → Enhanced → Compact). The Family tab exposes a per-language voice picker so the parent can lock in (for example) Kate Enhanced for English even when the request locale is `en-US`. Siri voices themselves require Apple's `com.apple.developer.speech.synthesis` entitlement (paid Developer Program); Personal Team sign-ins fall back to Premium, which uses the same neural engine.
+- **Camera + vision**: shipped. `VNClassifyImageRequest` produces English labels; tapping a label sends just that single word to Gemma with a block-tag prompt, which writes the matching word + a sub-12-word kid-friendly sentence in each active language. Each output has its own ▶︎ TTS. Gemma 4's `mmproj` vision adapter is not in this build — the photo never leaves Vision/Gemma, both on-device.
 
 ---
 

@@ -33,7 +33,7 @@ actor LlamaContext {
     /// This variable is used to store temporarily invalid cchars
     private var temporary_invalid_cchars: [CChar]
 
-    var n_len: Int32 = 1024
+    var n_len: Int32 = 512   // enough headroom for a trilingual story + JSON wrapper
     var n_cur: Int32 = 0
 
     var n_decode: Int32 = 0
@@ -116,6 +116,13 @@ actor LlamaContext {
 
     func completion_init(text: String) {
         print("attempting to complete \"\(text)\"")
+
+        // Reset every per-generation piece of state so the second call doesn't
+        // pile on top of the first one (KV cache + is_done + token counters).
+        is_done = false
+        n_decode = 0
+        n_cur = 0
+        llama_memory_clear(llama_get_memory(context), true)
 
         tokens_list = tokenize(text: text, add_bos: true)
         temporary_invalid_cchars = []
@@ -299,7 +306,7 @@ actor LlamaContext {
         let utf8Count = text.utf8.count
         let n_tokens = utf8Count + (add_bos ? 1 : 0) + 1
         let tokens = UnsafeMutablePointer<llama_token>.allocate(capacity: n_tokens)
-        let tokenCount = llama_tokenize(vocab, text, Int32(utf8Count), tokens, Int32(n_tokens), add_bos, false)
+        let tokenCount = llama_tokenize(vocab, text, Int32(utf8Count), tokens, Int32(n_tokens), add_bos, /*parse_special=*/true)
 
         var swiftTokens: [llama_token] = []
         for i in 0..<tokenCount {

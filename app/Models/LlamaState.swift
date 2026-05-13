@@ -14,6 +14,7 @@ class LlamaState: ObservableObject {
     @Published var cacheCleared = false
     @Published var downloadedModels: [Model] = []
     @Published var undownloadedModels: [Model] = []
+    @Published var isModelLoaded: Bool = false
     let NS_PER_S = 1_000_000_000.0
 
     private var llamaContext: LlamaContext?
@@ -31,9 +32,21 @@ class LlamaState: ObservableObject {
         do {
             let documentsURL = getDocumentsDirectory()
             let modelURLs = try FileManager.default.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
+            var firstGGUF: URL? = nil
             for modelURL in modelURLs {
                 let modelName = modelURL.deletingPathExtension().lastPathComponent
                 downloadedModels.append(Model(name: modelName, url: "", filename: modelURL.lastPathComponent, status: "downloaded"))
+                if firstGGUF == nil, modelURL.pathExtension.lowercased() == "gguf" {
+                    firstGGUF = modelURL
+                }
+            }
+            // Auto-load the first .gguf in Documents/ so the parent doesn't have
+            // to open the model drawer before the first generation. Without this
+            // llamaContext stays nil and complete() silently returns, leaving
+            // the UI stuck on "Generating…".
+            if let url = firstGGUF {
+                do { try loadModel(modelUrl: url) }
+                catch { messageLog += "Auto-load failed: \(error)\n" }
             }
         } catch {
             print("Error loading models from disk: \(error)")
@@ -104,6 +117,7 @@ class LlamaState: ObservableObject {
         if let modelUrl {
             messageLog += "Loading model...\n"
             llamaContext = try LlamaContext.create_context(path: modelUrl.path())
+            isModelLoaded = true
             messageLog += "Loaded model \(modelUrl.lastPathComponent)\n"
 
             // Assuming that the model is successfully loaded, update the downloaded models
