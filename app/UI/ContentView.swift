@@ -145,12 +145,12 @@ func parseLanguageBlocks(from raw: String,
     if let r = cleaned.range(of: "\nDone") { cleaned = String(cleaned[..<r.lowerBound]) }
     cleaned = cleaned.trimmingCharacters(in: .whitespacesAndNewlines)
 
-    // Build a regex that matches any of the header styles for our active
-    // languages. Captures: 1=language label.
-    let langAlt = activeLanguages
-        .map { NSRegularExpression.escapedPattern(for: $0) }
-        .joined(separator: "|")
-    let headerPattern = "(?m)^\\s*(?:={2,}|#{2,}|\\[)\\s*(\(langAlt))\\s*(?:={2,}|#{2,}|\\])?\\s*$"
+    // Header: capture ANY label inside `=== ... ===`, `## ... ##`, `**...**`,
+    // `[ ... ]`, or `<lang>:` at line start, then fuzzy-map the captured text
+    // to one of the canonical active languages. Models routinely substitute
+    // localized names (Russian / Russe / 러시아어) or use bare ASCII names where
+    // the prompt asked for `Русский`, so a substring map is required.
+    let headerPattern = #"(?m)^\s*(?:={2,}\s*([^=\n]+?)\s*={2,}|#{2,}\s*([^#\n]+?)\s*#*|\[\s*([^\]\n]+?)\s*\]|\*\*\s*([^*\n]+?)\s*\*\*|([\p{L}][\p{L} ]{1,30}?)\s*:)\s*$"#
 
     guard let regex = try? NSRegularExpression(pattern: headerPattern, options: []) else {
         return nil
@@ -159,22 +159,56 @@ func parseLanguageBlocks(from raw: String,
     let matches = regex.matches(in: cleaned, options: [], range: NSRange(location: 0, length: ns.length))
     guard !matches.isEmpty else { return nil }
 
-    var body: [String: String] = [:]
-    for i in 0..<matches.count {
-        let m = matches[i]
-        let lang = ns.substring(with: m.range(at: 1))
-        let blockStart = m.range.location + m.range.length
-        let blockEnd: Int
-        if i + 1 < matches.count {
-            blockEnd = matches[i + 1].range.location
-        } else {
-            blockEnd = ns.length
+    func canonical(for label: String) -> String? {
+        let needle = label.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        // Per-canonical aliases (lowercased).
+        let aliases: [String: [String]] = [
+            "Korean":  ["korean", "ko", "kor", "한국어", "한국말", "韓国語", "корейский", "coréen", "coreen"],
+            "English": ["english", "en", "eng", "영어", "английский", "anglais", "ingles", "inglés"],
+            "Русский": ["русский", "ru", "rus", "russian", "러시아어", "russe", "russisch", "ruso"],
+            "Français":["français", "francais", "fr", "fra", "french", "프랑스어", "французский", "francés"],
+            "中文":    ["中文", "zh", "zho", "chinese", "중국어", "китайский", "chinois"],
+            "日本語":  ["日本語", "ja", "jpn", "japanese", "일본어", "японский", "japonais"],
+            "Español": ["español", "espanol", "es", "spa", "spanish", "스페인어", "испанский", "espagnol"],
+            "Türkçe":  ["türkçe", "turkce", "tr", "tur", "turkish", "터키어", "튀르키예어", "турецкий", "turc"],
+        ]
+        // Try active langs first; only those get mapped back.
+        for canon in activeLanguages {
+            if let pool = aliases[canon], pool.contains(where: { needle == $0 || needle.contains($0) }) {
+                return canon
+            }
+            if needle == canon.lowercased() { return canon }
         }
+        return nil
+    }
+
+    // Collect (range, canonicalLang) for each successful header match.
+    struct Header { let location: Int; let length: Int; let lang: String }
+    var headers: [Header] = []
+    for m in matches {
+        var captured = ""
+        for g in 1...5 {
+            let r = m.range(at: g)
+            if r.location != NSNotFound, r.length > 0 {
+                captured = ns.substring(with: r)
+                break
+            }
+        }
+        guard !captured.isEmpty, let canon = canonical(for: captured) else { continue }
+        headers.append(Header(location: m.range.location, length: m.range.length, lang: canon))
+    }
+    guard !headers.isEmpty else { return nil }
+
+    var body: [String: String] = [:]
+    for i in 0..<headers.count {
+        let h = headers[i]
+        let blockStart = h.location + h.length
+        let blockEnd = i + 1 < headers.count ? headers[i + 1].location : ns.length
         guard blockEnd > blockStart else { continue }
         let block = ns.substring(with: NSRange(location: blockStart, length: blockEnd - blockStart))
             .trimmingCharacters(in: .whitespacesAndNewlines)
-        if !block.isEmpty {
-            body[lang] = block
+        if !block.isEmpty, body[h.lang] == nil {
+            body[h.lang] = block
         }
     }
     guard !body.isEmpty else { return nil }
@@ -2533,10 +2567,14 @@ final class TranslateEngine: ObservableObject {
         defer { isWorking = false }
 
         let blocks = activeLangs
-            .map { "=== \($0) ===\n<natural translation in \($0)>: <one short note (under 12 words) about tone or context>" }
+            .map { "=== \($0) ===\nTranslation: <natural translation in \($0)>\nNote: <2–3 sentences in \($0) explaining nuance, register, or cultural context. Always include this — it's the whole reason we use a language model and not a dictionary.>" }
             .joined(separator: "\n\n")
         let prompt = """
-        Translate the following text into each language below. For each language, output the natural translation followed by ": " and then ONE short note (under 12 words) about tone, register, or context — written in that same language.
+        Produce ALL THREE language blocks for the text below — never skip a language. For each:
+          1. A natural translation (not word-for-word, idiom-aware).
+          2. A 2–3 sentence note, written in that same language, explaining tone, register, when to use it, or any cultural context a learner would miss.
+
+        This is what makes the answer better than a dictionary. The Note section is REQUIRED.
 
         Format exactly:
         \(blocks)
@@ -2563,6 +2601,37 @@ final class TranslateEngine: ObservableObject {
             results = card.body
         }
     }
+}
+
+// Pulls the "Translation:" / "Note:" fields out of a block. Model may write
+// them in the target language (번역 / 메모, Перевод / Заметка, etc.), so we
+// fall back to splitting on the first blank line if labels aren't present.
+func splitTranslationAndNote(_ block: String) -> (translation: String, note: String) {
+    let labels = ["Translation", "translation", "번역", "Перевод", "Traduction", "翻译", "翻訳"]
+    let noteLabels = ["Note", "note", "메모", "Заметка", "Note culturelle", "주석", "Замечание"]
+    var translation = ""
+    var note = ""
+    for tLabel in labels {
+        if let r = block.range(of: "\(tLabel):", options: .caseInsensitive) {
+            let after = block[r.upperBound...]
+            for nLabel in noteLabels {
+                if let nr = after.range(of: "\(nLabel):", options: .caseInsensitive) {
+                    translation = String(after[..<nr.lowerBound]).trimmingCharacters(in: .whitespacesAndNewlines)
+                    note = String(after[nr.upperBound...]).trimmingCharacters(in: .whitespacesAndNewlines)
+                    return (translation, note)
+                }
+            }
+            translation = String(after).trimmingCharacters(in: .whitespacesAndNewlines)
+            return (translation, "")
+        }
+    }
+    // Fallback: first line = translation, rest = note.
+    let lines = block.split(separator: "\n", maxSplits: 1, omittingEmptySubsequences: true)
+    if lines.count == 2 {
+        return (String(lines[0]).trimmingCharacters(in: .whitespacesAndNewlines),
+                String(lines[1]).trimmingCharacters(in: .whitespacesAndNewlines))
+    }
+    return (block.trimmingCharacters(in: .whitespacesAndNewlines), "")
 }
 
 struct TranslateTab: View {
@@ -2635,13 +2704,20 @@ struct TranslateTab: View {
                                                   ? "stop.circle.fill" : "play.circle.fill")
                                                 .font(.system(size: 30)).foregroundColor(.indigo)
                                         }.buttonStyle(.plain)
-                                        VStack(alignment: .leading, spacing: 2) {
+                                        VStack(alignment: .leading, spacing: 4) {
                                             Text(loc.langName(lang))
                                                 .font(.caption.weight(.bold))
                                                 .foregroundColor(.secondary)
-                                            Text(text)
-                                                .font(.body)
+                                            let parts = splitTranslationAndNote(text)
+                                            Text(parts.translation)
+                                                .font(.title3.weight(.semibold))
                                                 .textSelection(.enabled)
+                                            if !parts.note.isEmpty {
+                                                Text(parts.note)
+                                                    .font(.footnote)
+                                                    .foregroundColor(.secondary)
+                                                    .textSelection(.enabled)
+                                            }
                                         }
                                         Spacer()
                                     }
