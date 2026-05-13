@@ -33,7 +33,7 @@ actor LlamaContext {
     /// This variable is used to store temporarily invalid cchars
     private var temporary_invalid_cchars: [CChar]
 
-    var n_len: Int32 = 512   // enough headroom for a trilingual story + JSON wrapper
+    var n_len: Int32 = 768   // headroom for a trilingual translation + per-language notes
     var n_cur: Int32 = 0
 
     var n_decode: Int32 = 0

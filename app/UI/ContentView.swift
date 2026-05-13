@@ -2556,7 +2556,30 @@ struct WordWallTab: View {
 final class TranslateEngine: ObservableObject {
     @Published var input: String = ""
     @Published var results: [String: String] = [:]
+    @Published var rawOutput: String = ""
     @Published var isWorking: Bool = false
+
+    // One-shot example built per language so the small model has a concrete
+    // template. Without this, short inputs ("아기") cause Gemma E2B to drop
+    // the Note line and sometimes skip an entire language block.
+    private func exampleBlock(for lang: String) -> String {
+        switch lang {
+        case "Korean":
+            return "=== Korean ===\nTranslation: 안녕\nNote: 또래나 친한 사이에 쓰는 가벼운 인사예요. 어른께는 \"안녕하세요\"라고 해야 해요."
+        case "English":
+            return "=== English ===\nTranslation: Hi\nNote: A casual everyday greeting. \"Hello\" is slightly more neutral; \"Hey\" is more familiar."
+        case "Русский":
+            return "=== Русский ===\nTranslation: Привет\nNote: Неформальное приветствие для друзей и сверстников. Старшим говорят \"Здравствуйте\"."
+        case "Français":
+            return "=== Français ===\nTranslation: Salut\nNote: Salutation familière entre amis ou collègues proches. Avec un inconnu on dit plutôt \"Bonjour\"."
+        case "中文":
+            return "=== 中文 ===\nTranslation: 你好\nNote: 通用问候，适合大多数场合。和熟人之间也可以说\"嗨\"。"
+        case "日本語":
+            return "=== 日本語 ===\nTranslation: こんにちは\nNote: 日中の標準的なあいさつ。親しい相手には「やっほー」なども使えます。"
+        default:
+            return "=== \(lang) ===\nTranslation: <translation>\nNote: <2–3 sentences of context>"
+        }
+    }
 
     func run(activeLangs: [String], llamaState: LlamaState) async {
         guard llamaState.isModelLoaded,
@@ -2564,23 +2587,32 @@ final class TranslateEngine: ObservableObject {
         else { return }
         isWorking = true
         results = [:]
+        rawOutput = ""
         defer { isWorking = false }
 
-        let blocks = activeLangs
-            .map { "=== \($0) ===\nTranslation: <natural translation in \($0)>\nNote: <2–3 sentences in \($0) explaining nuance, register, or cultural context. Always include this — it's the whole reason we use a language model and not a dictionary.>" }
+        let exampleSection = activeLangs
+            .map { exampleBlock(for: $0) }
+            .joined(separator: "\n\n")
+        let targetSection = activeLangs
+            .map { "=== \($0) ===\nTranslation: ...\nNote: ..." }
             .joined(separator: "\n\n")
         let prompt = """
-        Produce ALL THREE language blocks for the text below — never skip a language. For each:
-          1. A natural translation (not word-for-word, idiom-aware).
-          2. A 2–3 sentence note, written in that same language, explaining tone, register, when to use it, or any cultural context a learner would miss.
+        Translate text into multiple languages with cultural notes. ALWAYS produce every requested language block, ALWAYS include the Note line with 2–3 full sentences written in that same language (not English). The Note is the whole reason this is not a dictionary — when in doubt, write more, not less.
 
-        This is what makes the answer better than a dictionary. The Note section is REQUIRED.
+        ---
+        EXAMPLE
+        Input: hello
+        Output:
+        \(exampleSection)
+        ---
 
-        Format exactly:
-        \(blocks)
+        Now do the same for the input below. Output the SAME \(activeLangs.count) blocks, in the same order, with Translation + Note for each. Do not stop after one language. Do not output anything before the first `=== ` header or after the last block.
 
-        Text to translate:
-        \(input)
+        Skeleton (fill it in):
+        \(targetSection)
+
+        Input: \(input)
+        Output:
         """
         let wrapped = "<|turn>user\n\(prompt)<turn|>\n<|turn>model\n"
         await llamaState.clear()
@@ -2594,6 +2626,7 @@ final class TranslateEngine: ObservableObject {
         }
         let tail = String(llamaState.messageLog.dropFirst(min(checkpoint + wrapped.count,
                                                               llamaState.messageLog.count)))
+        rawOutput = tail
         if let card = parseLanguageBlocks(from: tail,
                                           activeLanguages: activeLangs,
                                           targetAge: 4,
@@ -2662,6 +2695,7 @@ struct TranslateTab: View {
     @ObservedObject var llamaState: LlamaState
     @EnvironmentObject var loc: Localization
     @StateObject private var engine = TranslateEngine()
+    @State private var showRaw = false
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -2712,6 +2746,27 @@ struct TranslateTab: View {
                         }.buttonStyle(.bordered)
                     }
 
+                    if !engine.rawOutput.isEmpty {
+                        Button {
+                            showRaw.toggle()
+                        } label: {
+                            Label(showRaw ? "Hide raw" : "Show raw model output",
+                                  systemImage: showRaw ? "eye.slash" : "eye")
+                                .font(.caption)
+                        }.buttonStyle(.bordered)
+                        if showRaw {
+                            ScrollView {
+                                Text(engine.rawOutput)
+                                    .font(.footnote.monospaced())
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .textSelection(.enabled)
+                            }
+                            .frame(maxHeight: 240)
+                            .padding(8)
+                            .background(Color.black.opacity(0.04))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
+                    }
                     if !engine.results.isEmpty {
                         VStack(spacing: 12) {
                             ForEach(familyLanguages.filter { activeLangs.contains($0) }, id: \.self) { lang in
