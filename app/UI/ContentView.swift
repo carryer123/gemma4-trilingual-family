@@ -863,6 +863,11 @@ struct ContentView: View {
                           tts: tts)
                 .tabItem { Label(loc.t(.phrasebook), systemImage: "text.bubble.fill") }
                 .tag(AppTab.phrasebook)
+            TranslateTab(activeLangs: Array(activeLangs),
+                         familyLanguages: familyLanguages,
+                         tts: tts, llamaState: llamaState)
+                .tabItem { Label(loc.t(.translate), systemImage: "character.bubble") }
+                .tag(AppTab.translate)
             WordWallTab(store: words, tts: tts)
                 .tabItem { Label(loc.t(.words), systemImage: "rectangle.stack.fill") }
                 .tag(AppTab.words)
@@ -1717,6 +1722,7 @@ enum LocKey: String, CaseIterable, Hashable {
     case familyLangsSection, child1, child2, nameLabel, ageStepper, addSecondChild, done, save
     case whosUsing, freeForm, makeAnother, madeOnIPad
     case allFilter, voiceSection, voicePickerHint, autoVoice
+    case translate, translateHint, translateButton, translating, translateClear
 }
 
 final class Localization: ObservableObject {
@@ -1891,6 +1897,11 @@ final class Localization: ObservableObject {
             .allFilter:"전체", .voiceSection:"음성 (TTS)",
             .voicePickerHint:"각 언어마다 설치된 음성을 골라요. Siri/Premium이 가장 자연스러워요.",
             .autoVoice:"자동 (최고 품질)",
+            .translate:"번역",
+            .translateHint:"어떤 언어로 적어도 돼요. 활성화된 3개 언어로 번역하고 짧은 설명도 같이 줘요.",
+            .translateButton:"번역하기",
+            .translating:"번역 중…",
+            .translateClear:"지우기",
         ],
         "en": [
             .today:"Today", .library:"Library", .phrasebook:"Phrasebook",
@@ -1941,6 +1952,11 @@ final class Localization: ObservableObject {
             .allFilter:"All", .voiceSection:"Voice (TTS)",
             .voicePickerHint:"Choose an installed voice per language. Siri/Premium sound most natural.",
             .autoVoice:"Auto (best available)",
+            .translate:"Translate",
+            .translateHint:"Type in any language. We render it in all three active languages with a short note.",
+            .translateButton:"Translate",
+            .translating:"Translating…",
+            .translateClear:"Clear",
         ],
         "ru": [
             .today:"Сегодня", .library:"Библиотека", .phrasebook:"Разговорник",
@@ -1991,6 +2007,11 @@ final class Localization: ObservableObject {
             .allFilter:"Все", .voiceSection:"Голос (TTS)",
             .voicePickerHint:"Выберите голос для каждого языка. Siri/Premium звучат естественнее.",
             .autoVoice:"Авто (лучший доступный)",
+            .translate:"Перевод",
+            .translateHint:"Можно писать на любом языке. Покажем перевод на все три активных языка с короткой заметкой.",
+            .translateButton:"Перевести",
+            .translating:"Переводим…",
+            .translateClear:"Очистить",
         ],
         "fr": [
             .today:"Aujourd'hui", .library:"Bibliothèque", .phrasebook:"Phrases",
@@ -2041,6 +2062,11 @@ final class Localization: ObservableObject {
             .allFilter:"Tout", .voiceSection:"Voix (TTS)",
             .voicePickerHint:"Choisissez une voix par langue. Siri/Premium sonnent le plus naturel.",
             .autoVoice:"Auto (meilleure dispo)",
+            .translate:"Traduire",
+            .translateHint:"Écrivez dans n'importe quelle langue. On rend les trois langues actives avec une petite note.",
+            .translateButton:"Traduire",
+            .translating:"Traduction…",
+            .translateClear:"Effacer",
         ],
     ]
 }
@@ -2048,7 +2074,7 @@ final class Localization: ObservableObject {
 // =============================================================================
 //  Tab + Visitor enums
 // =============================================================================
-enum AppTab: Hashable { case today, library, phrasebook, words, camera, family }
+enum AppTab: Hashable { case today, library, phrasebook, translate, words, camera, family }
 
 enum VisitorMode: String, CaseIterable, Identifiable {
     case none, grandmother, aunt, dadOnly, momOnly
@@ -2492,6 +2518,148 @@ struct WordWallTab: View {
 // =============================================================================
 //  Camera tab — Vision label + Gemma translation
 // =============================================================================
+@MainActor
+final class TranslateEngine: ObservableObject {
+    @Published var input: String = ""
+    @Published var results: [String: String] = [:]
+    @Published var isWorking: Bool = false
+
+    func run(activeLangs: [String], llamaState: LlamaState) async {
+        guard llamaState.isModelLoaded,
+              !input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        else { return }
+        isWorking = true
+        results = [:]
+        defer { isWorking = false }
+
+        let blocks = activeLangs
+            .map { "=== \($0) ===\n<natural translation in \($0)>: <one short note (under 12 words) about tone or context>" }
+            .joined(separator: "\n\n")
+        let prompt = """
+        Translate the following text into each language below. For each language, output the natural translation followed by ": " and then ONE short note (under 12 words) about tone, register, or context — written in that same language.
+
+        Format exactly:
+        \(blocks)
+
+        Text to translate:
+        \(input)
+        """
+        let wrapped = "<|turn>user\n\(prompt)<turn|>\n<|turn>model\n"
+        await llamaState.clear()
+        let checkpoint = llamaState.messageLog.count
+        await llamaState.complete(text: wrapped)
+        let start = Date()
+        while Date().timeIntervalSince(start) < 60 {
+            if llamaState.messageLog.range(of: "\\n\\s*Done\\s*\\n",
+                                           options: .regularExpression) != nil { break }
+            try? await Task.sleep(nanoseconds: 250_000_000)
+        }
+        let tail = String(llamaState.messageLog.dropFirst(min(checkpoint + wrapped.count,
+                                                              llamaState.messageLog.count)))
+        if let card = parseLanguageBlocks(from: tail,
+                                          activeLanguages: activeLangs,
+                                          targetAge: 4,
+                                          mode: "translate") {
+            results = card.body
+        }
+    }
+}
+
+struct TranslateTab: View {
+    let activeLangs: [String]
+    let familyLanguages: [String]
+    @ObservedObject var tts: FamilyTTS
+    @ObservedObject var llamaState: LlamaState
+    @EnvironmentObject var loc: Localization
+    @StateObject private var engine = TranslateEngine()
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 14) {
+                    Text(loc.t(.translateHint))
+                        .font(.footnote).foregroundColor(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    ZStack(alignment: .topLeading) {
+                        if engine.input.isEmpty {
+                            Text(loc.placeholder(for: .say))
+                                .foregroundColor(.secondary.opacity(0.5))
+                                .padding(.horizontal, 12).padding(.vertical, 10)
+                        }
+                        TextEditor(text: $engine.input)
+                            .scrollContentBackground(.hidden)
+                            .padding(.horizontal, 8).padding(.vertical, 4)
+                            .frame(minHeight: 110)
+                    }
+                    .background(Color.white)
+                    .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.black.opacity(0.08), lineWidth: 1))
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+
+                    HStack(spacing: 8) {
+                        Button {
+                            Task { await engine.run(activeLangs: activeLangs,
+                                                    llamaState: llamaState) }
+                        } label: {
+                            HStack(spacing: 6) {
+                                if engine.isWorking { ProgressView().controlSize(.small) }
+                                else { Image(systemName: "character.bubble.fill") }
+                                Text(engine.isWorking ? loc.t(.translating)
+                                                       : loc.t(.translateButton))
+                                    .fontWeight(.semibold)
+                            }
+                            .frame(maxWidth: .infinity).padding(.vertical, 10)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .disabled(engine.isWorking
+                                  || engine.input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                                  || !llamaState.isModelLoaded)
+
+                        Button {
+                            engine.input = ""
+                            engine.results = [:]
+                        } label: {
+                            Label(loc.t(.translateClear), systemImage: "trash")
+                        }.buttonStyle(.bordered)
+                    }
+
+                    if !engine.results.isEmpty {
+                        VStack(spacing: 12) {
+                            ForEach(familyLanguages.filter { activeLangs.contains($0) }, id: \.self) { lang in
+                                if let text = engine.results[lang] {
+                                    HStack(alignment: .top, spacing: 10) {
+                                        Text(flagFor(lang)).font(.title2)
+                                        Button {
+                                            tts.speak(text, language: lang)
+                                        } label: {
+                                            Image(systemName: tts.speakingLang == lang
+                                                  ? "stop.circle.fill" : "play.circle.fill")
+                                                .font(.system(size: 30)).foregroundColor(.indigo)
+                                        }.buttonStyle(.plain)
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            Text(loc.langName(lang))
+                                                .font(.caption.weight(.bold))
+                                                .foregroundColor(.secondary)
+                                            Text(text)
+                                                .font(.body)
+                                                .textSelection(.enabled)
+                                        }
+                                        Spacer()
+                                    }
+                                    .padding(12)
+                                    .background(RoundedRectangle(cornerRadius: 14).fill(Color.white))
+                                    .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.black.opacity(0.08), lineWidth: 1))
+                                }
+                            }
+                        }
+                    }
+                }
+                .padding(16)
+            }
+            .navigationTitle(loc.t(.translate))
+        }
+    }
+}
+
 struct CameraTab: View {
     let activeLangs: [String]
     let familyLanguages: [String]
