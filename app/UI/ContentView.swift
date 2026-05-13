@@ -2609,6 +2609,25 @@ final class TranslateEngine: ObservableObject {
 func splitTranslationAndNote(_ block: String) -> (translation: String, note: String) {
     let labels = ["Translation", "translation", "번역", "Перевод", "Traduction", "翻译", "翻訳"]
     let noteLabels = ["Note", "note", "메모", "Заметка", "Note culturelle", "주석", "Замечание"]
+
+    // Strip a leading label even if it's missing the colon, or has extra
+    // whitespace / dashes. The TTS must never read "번역" or "Translation"
+    // aloud — that's why we're stripping aggressively.
+    func stripLeadingLabel(_ s: String, _ pool: [String]) -> String {
+        var out = s.trimmingCharacters(in: .whitespacesAndNewlines)
+        for label in pool {
+            for trailer in [":", " :", " -", "–", "—", ""] {
+                let pat = "\(label)\(trailer)"
+                if out.lowercased().hasPrefix(pat.lowercased()) {
+                    out = String(out.dropFirst(pat.count))
+                        .trimmingCharacters(in: .whitespacesAndNewlines)
+                    break
+                }
+            }
+        }
+        return out
+    }
+
     var translation = ""
     var note = ""
     for tLabel in labels {
@@ -2618,20 +2637,22 @@ func splitTranslationAndNote(_ block: String) -> (translation: String, note: Str
                 if let nr = after.range(of: "\(nLabel):", options: .caseInsensitive) {
                     translation = String(after[..<nr.lowerBound]).trimmingCharacters(in: .whitespacesAndNewlines)
                     note = String(after[nr.upperBound...]).trimmingCharacters(in: .whitespacesAndNewlines)
-                    return (translation, note)
+                    return (stripLeadingLabel(translation, labels),
+                            stripLeadingLabel(note, noteLabels))
                 }
             }
             translation = String(after).trimmingCharacters(in: .whitespacesAndNewlines)
-            return (translation, "")
+            return (stripLeadingLabel(translation, labels), "")
         }
     }
-    // Fallback: first line = translation, rest = note.
+    // Fallback: first line = translation, rest = note (with any leading label
+    // still stripped in case the model wrote "번역 부드럽게" without a colon).
     let lines = block.split(separator: "\n", maxSplits: 1, omittingEmptySubsequences: true)
     if lines.count == 2 {
-        return (String(lines[0]).trimmingCharacters(in: .whitespacesAndNewlines),
-                String(lines[1]).trimmingCharacters(in: .whitespacesAndNewlines))
+        return (stripLeadingLabel(String(lines[0]), labels),
+                stripLeadingLabel(String(lines[1]), noteLabels))
     }
-    return (block.trimmingCharacters(in: .whitespacesAndNewlines), "")
+    return (stripLeadingLabel(block, labels), "")
 }
 
 struct TranslateTab: View {
@@ -2695,10 +2716,11 @@ struct TranslateTab: View {
                         VStack(spacing: 12) {
                             ForEach(familyLanguages.filter { activeLangs.contains($0) }, id: \.self) { lang in
                                 if let text = engine.results[lang] {
+                                    let parts = splitTranslationAndNote(text)
                                     HStack(alignment: .top, spacing: 10) {
                                         Text(flagFor(lang)).font(.title2)
                                         Button {
-                                            tts.speak(text, language: lang)
+                                            tts.speak(parts.translation, language: lang)
                                         } label: {
                                             Image(systemName: tts.speakingLang == lang
                                                   ? "stop.circle.fill" : "play.circle.fill")
@@ -2708,7 +2730,6 @@ struct TranslateTab: View {
                                             Text(loc.langName(lang))
                                                 .font(.caption.weight(.bold))
                                                 .foregroundColor(.secondary)
-                                            let parts = splitTranslationAndNote(text)
                                             Text(parts.translation)
                                                 .font(.title3.weight(.semibold))
                                                 .textSelection(.enabled)
