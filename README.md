@@ -169,11 +169,38 @@ The original strict-JSON schema (`{"title":..., "body":{lang:str}}`) was dropped
 
 ```bibtex
 @inproceedings{lee2026stategated,
-  title  = {From False-Green Detection to Gate-Aware Repair:
-            State-Gated Data Curricula for Multilingual LoRA Adapters},
+  title  = {State-Gated Promotion: Auditable Repair of Multilingual
+            LoRA Adapters via Frozen Deployment Gates},
   author = {Lee, Byoungsang and Kim, Yunchul and Shim, Youmin and Kwak, Chaewon and Lee, Jung Heon},
   booktitle = {Proceedings of EMNLP},
   year   = {2026},
-  note   = {to appear}
+  note   = {under review}
 }
 ```
+
+---
+
+## Paper PDF (current draft)
+
+| File | Size | Description |
+|---|---|---|
+| [`paper/state_gated_lora_main.pdf`](paper/state_gated_lora_main.pdf) | 189 KB | Main paper (9 pages incl. references) |
+| [`paper/state_gated_lora_supplement.pdf`](paper/state_gated_lora_supplement.pdf) | 110 KB | Supplementary material (3 pages) |
+
+**Abstract (EMNLP 2026 submission):**
+
+> A LoRA adapter can win on validation loss yet emit unparseable JSON, drift into the wrong script, or answer in a language the session never activated — breaking the deployed interface even though scalar metrics look fine. We introduce *state-gated promotion*: a small set of automatic gates that name the deployment states an interface must preserve, freeze them before model selection, and turn each gate failure into targeted repair data. On a four-language KO/RU/FR/EN deployment with Gemma 4 E2B, a gate-aware repair curriculum lifts JSON-schema pass rate from **0% to 95.8%** and session-language routing from **0% to 91.7%** against a no-policy ablation matched on base, hyper-parameters, audit, and translation corpus but not on data volume, with no held-out loss penalty. The same stock failure replicates on four other instruction-tuned bases (Gemma 4 E4B, Qwen 2.5 3B, Llama 3.2 3B, Phi-3.5 mini), and the repair recipe recovers schema compliance to ≥91.7% on every base we repaired — evidence that the failure is a property of the deployment interface, not of any one base model.
+
+**Headline numbers:**
+
+| Metric | No-policy ablation | Policy+family repair |
+|---|---:|---:|
+| Held-out loss (mean) | 0.804 | 0.667 |
+| G2 script-state (%) | 92.5 | 91.7 |
+| **G3 JSON schema (%)** | **0.0** | **95.8** |
+| **G4 session routing (%)** | **0.0** | **91.7** |
+| Cross-base G3 (Qwen / Llama / Phi) | 0 / 0 / 0 | 91.7 / 100 / 100 |
+
+The contribution is the **loop itself** — frozen gates that simultaneously diagnose failure, define repair data, and re-evaluate the result — plus cross-base evidence that the failure pattern is a property of the deployment interface, not of any one base model.
+
+**Why no arXiv ID yet:** arXiv cs.CL requires endorsement from an existing cs.* contributor and the lead author's home department (Materials Science) doesn't have one in-house. Endorsement is being requested in parallel; this README will be updated with the arXiv ID and Hugging Face Papers link as soon as the upload is approved. The paper is otherwise complete and is being submitted to EMNLP 2026 (deadline 2026-05-25).
