@@ -1,4 +1,4 @@
-package com.moontech.trilingual.llm
+package com.example.trilingual.llm
 
 import android.content.Context
 import com.google.ai.edge.litertlm.Backend

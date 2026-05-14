@@ -1,7 +1,7 @@
 #!/bin/bash
 # Build the compressed EMNLP/ARR-style draft.
 set -euo pipefail
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 
 OUT="$PROJ/paper/build_emnlp8"

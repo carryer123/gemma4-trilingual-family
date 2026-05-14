@@ -1,18 +1,12 @@
 # Family-as-Evaluator (FaE) Protocol — Specification v1.0
 
-**Authors**: Byoungsang Lee, Jung Heon Lee
 **License**: CC-BY 4.0
-**Status**: v1.0 (released alongside arXiv preprint, 2026-05-17)
-**Companion paper**: *Beyond BLEU: Family-as-Evaluator for Trilingual L1-Aware
-On-Device Tutoring with Gemma 4* (arXiv preprint).
+**Status**: v1.0
+**Companion paper**: a paper documenting the gate suite and curriculum is
+currently under double-blind review at a peer-reviewed venue; a full citation
+will be added here after the review outcome.
 
 This document is the canonical specification of the FaE protocol.
-Appendix F of the companion paper is a copy of this file. If they ever
-diverge, this file is the authority.
-
----
-
-See `SPEC.md` rendered into the paper at `paper/sections/appendix_F_protocol.md`.
 
 ## Files in this directory
 
@@ -24,7 +18,7 @@ See `SPEC.md` rendered into the paper at `paper/sections/appendix_F_protocol.md`
 | `preregistration_template.yaml` | YAML template to fork |
 | `scoring_template.csv` | CSV header for evaluator scoring |
 | `taxonomy_v1.txt` | failure-mode tag list |
-| `examples/run_lee2026.yaml` | the pre-registration of our N=1 case study |
+| `examples/run_2026.yaml` | the pre-registration of our N=1 case study |
 
 ## Protocol versioning
 
@@ -52,12 +46,6 @@ See `SPEC.md` rendered into the paper at `paper/sections/appendix_F_protocol.md`
 
 ## Citation
 
-```bibtex
-@misc{lee2026fae,
-  title  = {Family-as-Evaluator: A Protocol Specification for Niche-Population LLM Evaluation},
-  author = {Lee, Byoungsang and Lee, Jung Heon},
-  year   = {2026},
-  howpublished = {Version 1.0, CC-BY 4.0,
-                  \url{https://github.com/[author]/gemma4-trilingual-family/blob/main/tools/fae_protocol/SPEC.md}}
-}
-```
+A citation will be added here after the companion paper's review outcome.
+Until then, please cite the spec by its version (`FaE v1.0`) and the
+repository commit hash.

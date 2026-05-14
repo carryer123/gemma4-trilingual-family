@@ -18,7 +18,7 @@ import json
 import pathlib
 
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 RAW = PROJ / "prototype/data/raw"
 SENT_CSV = RAW / "tatoeba_sentences.csv"
 LINK_CSV = RAW / "tatoeba_links.csv"

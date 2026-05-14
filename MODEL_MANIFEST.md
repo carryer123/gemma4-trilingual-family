@@ -4,7 +4,7 @@
 
 ```text
 name: gemma4_e2b_policy.Q4_K_M.gguf
-path: /Users/lee/Downloads/gguf_models/gemma4_e2b_policy.Q4_K_M.gguf
+path: <HOME>/Downloads/gguf_models/gemma4_e2b_policy.Q4_K_M.gguf
 format: GGUF
 quantization: Q4_K_M
 size_bytes: 3416118112

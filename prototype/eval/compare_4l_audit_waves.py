@@ -6,7 +6,7 @@ import json
 import pathlib
 
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 FIRST = PROJ / "paper/figures/audit4l_summary.json"
 REPAIR = PROJ / "paper/figures/audit4l_repair_summary.json"
 LOSS = PROJ / "paper/figures/common_4l_loss.json"

@@ -13,7 +13,7 @@ Run example:
 from __future__ import annotations
 import os, json, pathlib, time
 
-os.environ.setdefault("HF_HOME", "/scratch/hpc198a01/젬마4해커톤/hf_cache")
+os.environ.setdefault("HF_HOME", "/PATH/REDACTED")
 os.environ.setdefault("HF_HUB_ENABLE_HF_TRANSFER", "1")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 os.environ.setdefault("WANDB_DISABLED", "true")
@@ -23,7 +23,7 @@ from unsloth import FastLanguageModel
 from datasets import load_dataset
 from trl import SFTTrainer, SFTConfig
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 MODEL = os.environ.get("BASE_MODEL", str(PROJ / "models/unsloth-gemma-4-E2B-it"))
 TRAIN_FILE = os.environ.get("TRAIN_FILE")
 OUT_DIR = os.environ.get("OUT_DIR")

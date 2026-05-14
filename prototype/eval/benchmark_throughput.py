@@ -69,7 +69,7 @@ def main():
     ap.add_argument('--model', required=True)
     ap.add_argument('--label', required=True)
     ap.add_argument('--out', required=True)
-    ap.add_argument('--probes', default='/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl')
+    ap.add_argument('--probes', default='/PATH/REDACTED')
     ap.add_argument('--n', type=int, default=10)
     ap.add_argument('--max_new', type=int, default=128)
     args = ap.parse_args()

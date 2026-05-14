@@ -2,7 +2,7 @@
 """LoRA fine-tune Gemma 4 E2B for trilingual family co-learning.
 
 Run:
-  cd /scratch/hpc198a01/젬마4해커톤
+  cd /PATH/REDACTED
   source venv/bin/activate
   source setup_env.sh
   python prototype/train/train_lora_v1.py
@@ -15,7 +15,7 @@ plain HF + PEFT if Unsloth import fails.
 from __future__ import annotations
 import os, sys, json, pathlib, time
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 os.environ.setdefault("HF_HOME", str(PROJ / "hf_cache"))
 os.environ.setdefault("HF_HUB_ENABLE_HF_TRANSFER", "1")
 os.environ.setdefault("WANDB_DISABLED", "true")  # opt-in only

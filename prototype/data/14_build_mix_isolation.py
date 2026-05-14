@@ -15,7 +15,7 @@ isolates the trigger component.
 import json, pathlib, random
 random.seed(20260506)
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 RAW = PROJ / "prototype/data/raw"
 ABL = PROJ / "prototype/data/ablation"
 

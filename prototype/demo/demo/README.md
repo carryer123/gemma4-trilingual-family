@@ -3,7 +3,7 @@
 ## Local run
 
 ```bash
-cd /scratch/hpc198a01/젬마4해커톤
+cd /PATH/REDACTED
 source venv/bin/activate
 pip install gradio
 ADAPTER_PATH=lora_out/lora_v2/adapter \

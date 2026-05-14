@@ -9,7 +9,7 @@ from __future__ import annotations
 import json, pathlib, re, unicodedata
 import collections
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 EVAL = PROJ / "prototype/eval"
 OUT = PROJ / "paper/figures"
 OUT.mkdir(parents=True, exist_ok=True)

@@ -4,7 +4,7 @@
 # every old checkpoint as new ones are written. This recovery launches a fresh
 # 5000-step run that keeps every save_steps=250 checkpoint.
 set -u
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 source venv/bin/activate
 

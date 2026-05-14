@@ -1,7 +1,7 @@
 import Foundation
 
 enum PromptBuilder {
-    /// Mirrors com.moontech.trilingual.llm.PromptBuilder.objectCard on Android
+    /// Mirrors com.example.trilingual.llm.PromptBuilder.objectCard on Android
     /// — keep both in sync verbatim so card schema is identical across platforms.
     static func objectCard(object: String, ageBand: String, bridge: String) -> String {
         """

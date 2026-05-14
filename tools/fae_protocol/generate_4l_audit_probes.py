@@ -15,7 +15,7 @@ import json
 import pathlib
 
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 OUT = PROJ / "tools/fae_protocol/probes_v4_4l_audit.jsonl"
 
 # Audit objects are intentionally disjoint from the training family-card object

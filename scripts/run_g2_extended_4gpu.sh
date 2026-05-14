@@ -2,7 +2,7 @@
 # 4-GPU parallel: each GPU handles a subset of the 16 paper-critical variants.
 # G2 extended (52 probes, ko-cyr/ru-han/ko-lat/ru-lat × 13 each).
 set -u
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 source venv/bin/activate
 

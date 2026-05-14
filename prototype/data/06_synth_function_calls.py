@@ -15,7 +15,7 @@ Format follows transformers chat template + tools list.
 from __future__ import annotations
 import json, pathlib, random
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 RAW = PROJ / "prototype/data/raw"
 OUT = RAW / "function_calls.jsonl"
 

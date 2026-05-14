@@ -12,7 +12,7 @@ train_v1_recreated = Tatoeba 6-direction + triples + object_cards + scenarios + 
 import json, pathlib, random
 random.seed(20260506)  # match lora_v1's seed
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 RAW = PROJ / "prototype/data/raw"
 ABL = PROJ / "prototype/data/ablation"
 OUT = ABL / "L_v1_recreate_train.jsonl"

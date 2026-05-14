@@ -3,7 +3,7 @@
 # Run: nohup bash scripts/run_ablation_queue.sh > logs/ablation_queue.log 2>&1 &
 set -u
 
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 source venv/bin/activate
 

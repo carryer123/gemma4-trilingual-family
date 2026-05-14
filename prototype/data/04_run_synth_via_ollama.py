@@ -17,7 +17,7 @@ from __future__ import annotations
 import os, json, pathlib, time, urllib.request, threading
 import queue
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 RAW = PROJ / "prototype/data/raw"
 
 MODEL = os.environ.get("MODEL", "gemma4:26b")

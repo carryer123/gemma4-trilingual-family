@@ -14,7 +14,7 @@ Run mode:
 from __future__ import annotations
 import os, json, pathlib, random, time
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 RAW = PROJ / "prototype/data/raw"
 RAW.mkdir(parents=True, exist_ok=True)
 OUT = RAW / "object_cards.jsonl"

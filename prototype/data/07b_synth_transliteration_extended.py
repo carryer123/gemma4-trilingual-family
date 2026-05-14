@@ -10,7 +10,7 @@ Total target: ~2400 pairs → effective policy share up to 12% on a 16K base.
 from __future__ import annotations
 import json, pathlib
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 OUT = PROJ / "prototype/data/raw/transliteration_v2.jsonl"
 
 # extend the 07_*.py KO_TO_CYR set (already 30 pairs) to 100 pairs

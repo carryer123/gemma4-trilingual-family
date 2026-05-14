@@ -7,7 +7,7 @@ import os
 import pathlib
 
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 IN = pathlib.Path(os.environ.get(
     "AUDIT4L_IN_FILE",
     str(PROJ / "paper/figures/audit4l_scores.json"),

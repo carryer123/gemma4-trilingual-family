@@ -2,55 +2,55 @@
   "variants": [
     {
       "name": "stock",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_stock.jsonl"
+      "out": "/PATH/REDACTED"
     },
     {
       "name": "v1ra_r64_a128",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a128.jsonl"
+      "out": "/PATH/REDACTED"
     },
     {
       "name": "v1ra_r64_a128_step01500",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a128_step01500.jsonl"
+      "out": "/PATH/REDACTED"
     },
     {
       "name": "v1ra_r64_a128_step03000",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a128_step03000.jsonl"
+      "out": "/PATH/REDACTED"
     },
     {
       "name": "v1ra_r64_a128_step04500",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a128_step04500.jsonl"
+      "out": "/PATH/REDACTED"
     },
     {
       "name": "v1ra_r64_a16",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a16.jsonl"
+      "out": "/PATH/REDACTED"
     },
     {
       "name": "v1ra_r64_a16_step01500",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a16_step01500.jsonl"
+      "out": "/PATH/REDACTED"
     },
     {
       "name": "v1ra_r64_a16_step03000",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a16_step03000.jsonl"
+      "out": "/PATH/REDACTED"
     },
     {
       "name": "v1ra_r64_a16_step04500",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a16_step04500.jsonl"
+      "out": "/PATH/REDACTED"
     },
     {
       "name": "v1ra_r64_a64",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a64.jsonl"
+      "out": "/PATH/REDACTED"
     },
     {
       "name": "v1ra_r64_a64_step01500",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a64_step01500.jsonl"
+      "out": "/PATH/REDACTED"
     },
     {
       "name": "v1ra_r64_a64_step03000",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a64_step03000.jsonl"
+      "out": "/PATH/REDACTED"
     },
     {
       "name": "v1ra_r64_a64_step04500",
-      "out": "/scratch/hpc198a01/젬마4해커톤/prototype/eval/variant_v1ra_r64_a64_step04500.jsonl"
+      "out": "/PATH/REDACTED"
     }
   ]
 }

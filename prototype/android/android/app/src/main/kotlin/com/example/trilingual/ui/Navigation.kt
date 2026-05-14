@@ -1,4 +1,4 @@
-package com.moontech.trilingual.ui
+package com.example.trilingual.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -13,8 +13,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.moontech.trilingual.llm.LlmBackend
-import com.moontech.trilingual.ui.screens.*
+import com.example.trilingual.llm.LlmBackend
+import com.example.trilingual.ui.screens.*
 
 private enum class Tab(val route: String, val label: String, val icon: ImageVector) {
     Card("card", "Card", Icons.Filled.PhotoCamera),

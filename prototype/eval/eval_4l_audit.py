@@ -22,14 +22,14 @@ import time
 import hashlib
 from typing import Any
 
-os.environ.setdefault("HF_HOME", "/scratch/hpc198a01/젬마4해커톤/hf_cache")
+os.environ.setdefault("HF_HOME", "/PATH/REDACTED")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
 import torch
 import unsloth
 from unsloth import FastLanguageModel
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 sys.path.insert(0, str(PROJ / "tools/fae_protocol"))
 from score_schema_auto import extract_json, score_one as score_schema  # noqa: E402
 from score_translit_auto import score_one as score_script, script_counts  # noqa: E402

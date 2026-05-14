@@ -1,4 +1,4 @@
-package com.moontech.trilingual.camera
+package com.example.trilingual.camera
 
 import android.content.Context
 import androidx.camera.core.*

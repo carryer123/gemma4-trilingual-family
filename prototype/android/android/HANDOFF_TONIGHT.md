@@ -5,11 +5,11 @@
 생산되는 단일 산출물: `gemma-4-E2B-it-merged.task` (Android + iOS 동일 파일).
 
 ```bash
-cd /scratch/hpc198a01/젬마4해커톤/prototype/android
+cd /PATH/REDACTED
 
 # (a) 참고 .litertlm 다운로드 — 백그라운드, ~10GB (sanity 비교용)
 nohup bash scripts/download_base_model.sh \
-    > /scratch/hpc198a01/젬마4해커톤/logs/dl_base_$(date +%Y%m%d_%H%M).log 2>&1 &
+    > /PATH/REDACTED +%Y%m%d_%H%M).log 2>&1 &
 
 # (b) 변환 의존성 설치 (HPC venv)
 source ../../venv/bin/activate
@@ -17,10 +17,10 @@ pip install -U ai-edge-torch ai-edge-litert ai-edge-quantizer 'mediapipe>=0.10.2
 
 # (c) merge + export 시작 — 4-8h, GPU 1개
 nohup python3 scripts/merge_lora_and_export.py \
-    > /scratch/hpc198a01/젬마4해커톤/logs/merge_export_$(date +%Y%m%d_%H%M).log 2>&1 &
+    > /PATH/REDACTED +%Y%m%d_%H%M).log 2>&1 &
 
 # 진행 확인
-tail -f /scratch/hpc198a01/젬마4해커톤/logs/merge_export_*.log
+tail -f /PATH/REDACTED
 ```
 
 자고 일어나면 끝나있는 정도가 목표. 실패하면 MODEL_SETUP.md의 fallback 표.
@@ -39,7 +39,7 @@ tail -f /scratch/hpc198a01/젬마4해커톤/logs/merge_export_*.log
 mkdir -p ~/work && cd ~/work
 rsync -avhP --info=progress2 --partial --append-verify \
     --exclude='app/src/main/assets/*.litertlm' \
-    hpc198a01@neuron.ksc.re.kr:/scratch/hpc198a01/젬마4해커톤/prototype/android/ \
+    REDACTED@neuron.ksc.re.kr:/PATH/REDACTED \
     ./TrilingualFamily/
 
 # (모델 .litertlm은 무거우니 별도로 변환 끝나고 나서 받기)
@@ -61,7 +61,7 @@ rsync -avhP --info=progress2 --partial --append-verify \
 ```bash
 # Mac에서
 cd ~/work
-rsync -avhP hpc198a01@neuron.ksc.re.kr:/scratch/hpc198a01/젬마4해커톤/prototype/ios/ ./TrilingualFamilyIOS/
+rsync -avhP REDACTED@neuron.ksc.re.kr:/PATH/REDACTED ./TrilingualFamilyIOS/
 
 # Xcode → File → New → iOS App → name "TrilingualFamily", SwiftUI, iOS 16+
 # 그 다음 우리 Swift 파일들을 navigator에 drag-in

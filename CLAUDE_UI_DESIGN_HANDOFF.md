@@ -140,7 +140,7 @@
 아래 명령으로 빌드 성공 확인됨.
 
 ```bash
-cd "/Users/lee/Library/CloudStorage/Dropbox/Scapple/2026_연구노트/해커톤/Gemma4Good_iPad/vendor/llama.cpp"
+cd "<repo-root>/Gemma4Good_iPad/vendor/llama.cpp"
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcodebuild \
   -project examples/llama.swiftui/llama.swiftui.xcodeproj \
   -scheme llama.swiftui \

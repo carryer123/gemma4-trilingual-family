@@ -2,7 +2,7 @@
 # Gemma 4 해커톤 패키지 설치 — venv 안에서 격리
 set -euo pipefail
 
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 source venv/bin/activate
 export PIP_CACHE_DIR="$PROJ/pip_cache"

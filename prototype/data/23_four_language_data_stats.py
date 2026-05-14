@@ -12,7 +12,7 @@ import pathlib
 from collections import Counter
 
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 DATA = PROJ / "prototype/data"
 OUT_MD = PROJ / "docs/FOUR_LANGUAGE_DATA_STATS_20260509.md"
 OUT_JSON = PROJ / "paper/figures/four_language_data_stats.json"

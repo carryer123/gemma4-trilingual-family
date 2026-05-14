@@ -3,7 +3,7 @@
 # Robust signal: lora_out/{NAME}/checkpoint-5000 directory existence (4/4 → done).
 # (process counting is unreliable — wrappers/zsh self-match the pgrep pattern.)
 set -u
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 source venv/bin/activate
 

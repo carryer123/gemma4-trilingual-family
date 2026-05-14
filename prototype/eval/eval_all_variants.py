@@ -16,14 +16,14 @@ Env:
 """
 from __future__ import annotations
 import os, json, time, pathlib, re
-os.environ.setdefault("HF_HOME", "/scratch/hpc198a01/젬마4해커톤/hf_cache")
+os.environ.setdefault("HF_HOME", "/PATH/REDACTED")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
 import torch
 import unsloth
 from unsloth import FastLanguageModel
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 PROBES_FILE = PROJ / "paper/data_release/family_as_evaluator_probes_v1.jsonl"
 STOCK_MODEL = str(PROJ / "models/unsloth-gemma-4-E2B-it")
 OUT_DIR = PROJ / "prototype/eval"

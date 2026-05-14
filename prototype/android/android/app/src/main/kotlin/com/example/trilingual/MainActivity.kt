@@ -1,4 +1,4 @@
-package com.moontech.trilingual
+package com.example.trilingual
 
 import android.Manifest
 import android.os.Build
@@ -11,15 +11,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.lifecycleScope
-import com.moontech.trilingual.audio.SpeechManager
-import com.moontech.trilingual.audio.TtsManager
-import com.moontech.trilingual.data.Persistence
-import com.moontech.trilingual.llm.LlmBackend
-import com.moontech.trilingual.llm.LiteRtLmBackend
-import com.moontech.trilingual.notify.DailyPhraseWorker
-import com.moontech.trilingual.ui.TrilingualApp
-import com.moontech.trilingual.ui.screens.AppState
-import com.moontech.trilingual.ui.screens.FamilySetupScreen
+import com.example.trilingual.audio.SpeechManager
+import com.example.trilingual.audio.TtsManager
+import com.example.trilingual.data.Persistence
+import com.example.trilingual.llm.LlmBackend
+import com.example.trilingual.llm.LiteRtLmBackend
+import com.example.trilingual.notify.DailyPhraseWorker
+import com.example.trilingual.ui.TrilingualApp
+import com.example.trilingual.ui.screens.AppState
+import com.example.trilingual.ui.screens.FamilySetupScreen
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

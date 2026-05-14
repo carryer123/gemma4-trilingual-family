@@ -2,14 +2,14 @@
 """LoRA smoke test: 200 samples, 50 steps, on 1 GPU. Verifies pipeline end-to-end.
 
 Run:
-  cd /scratch/hpc198a01/젬마4해커톤
+  cd /PATH/REDACTED
   source venv/bin/activate
   CUDA_VISIBLE_DEVICES=0 python prototype/train/lora_smoke_test.py
 """
 from __future__ import annotations
 import os, json, pathlib
 
-os.environ.setdefault("HF_HOME", "/scratch/hpc198a01/젬마4해커톤/hf_cache")
+os.environ.setdefault("HF_HOME", "/PATH/REDACTED")
 os.environ.setdefault("HF_HUB_ENABLE_HF_TRANSFER", "1")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 os.environ.setdefault("WANDB_DISABLED", "true")
@@ -19,9 +19,9 @@ from unsloth import FastLanguageModel
 from datasets import load_dataset
 from trl import SFTTrainer, SFTConfig
 
-MODEL = os.environ.get("MODEL", "/scratch/hpc198a01/젬마4해커톤/models/unsloth-gemma-4-E2B-it")
-DATA = os.environ.get("DATA", "/scratch/hpc198a01/젬마4해커톤/prototype/data/train_v1.jsonl")
-OUT = os.environ.get("OUT", "/scratch/hpc198a01/젬마4해커톤/lora_out/smoke_test")
+MODEL = os.environ.get("MODEL", "/PATH/REDACTED")
+DATA = os.environ.get("DATA", "/PATH/REDACTED")
+OUT = os.environ.get("OUT", "/PATH/REDACTED")
 MAX_SEQ = int(os.environ.get("MAX_SEQ", "2048"))
 N_SAMPLES = int(os.environ.get("N_SAMPLES", "200"))
 MAX_STEPS = int(os.environ.get("MAX_STEPS", "50"))

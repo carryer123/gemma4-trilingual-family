@@ -12,14 +12,14 @@ Runs the LoRA-v2 adapter on Gemma 4 E2B and exposes:
 Deploy as HuggingFace Space (CPU/GPU) or run locally.
 """
 import os, json, pathlib
-os.environ.setdefault("HF_HOME", "/scratch/hpc198a01/젬마4해커톤/hf_cache")
+os.environ.setdefault("HF_HOME", "/PATH/REDACTED")
 
 import gradio as gr
 import torch
 import unsloth
 from unsloth import FastLanguageModel
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 ADAPTER = os.environ.get("ADAPTER_PATH", str(PROJ / "lora_out/lora_v2/adapter"))
 
 print(f"[demo] loading {ADAPTER}")

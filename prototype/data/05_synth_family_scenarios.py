@@ -9,7 +9,7 @@ Output: prototype/data/raw/family_scenarios_prompts.jsonl  (model-fillable)
 from __future__ import annotations
 import json, pathlib, random
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 RAW = PROJ / "prototype/data/raw"
 RAW.mkdir(parents=True, exist_ok=True)
 OUT = RAW / "family_scenarios_prompts.jsonl"

@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.moontech.trilingual"
+    namespace = "com.example.trilingual"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.moontech.trilingual"
+        applicationId = "com.example.trilingual"
         minSdk = 31
         targetSdk = 35
         versionCode = 1

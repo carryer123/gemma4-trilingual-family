@@ -15,7 +15,7 @@ from collections import defaultdict
 from typing import Any
 
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 FIG = PROJ / "paper/figures"
 DOC = PROJ / "docs/FOUR_LANGUAGE_MAIN_BOOST_RESULTS_20260509.md"
 

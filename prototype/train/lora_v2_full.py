@@ -6,7 +6,7 @@ vs v1: +300 transliteration training pairs to fix script-direction regression.
 from __future__ import annotations
 import os, json, pathlib, time
 
-os.environ.setdefault("HF_HOME", "/scratch/hpc198a01/젬마4해커톤/hf_cache")
+os.environ.setdefault("HF_HOME", "/PATH/REDACTED")
 os.environ.setdefault("HF_HUB_ENABLE_HF_TRANSFER", "1")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 os.environ.setdefault("WANDB_DISABLED", "true")
@@ -16,10 +16,10 @@ from unsloth import FastLanguageModel
 from datasets import load_dataset
 from trl import SFTTrainer, SFTConfig
 
-MODEL = "/scratch/hpc198a01/젬마4해커톤/models/unsloth-gemma-4-E2B-it"
-DATA = "/scratch/hpc198a01/젬마4해커톤/prototype/data/train_v2.jsonl"
-EVAL = "/scratch/hpc198a01/젬마4해커톤/prototype/data/eval_v2.jsonl"
-OUT = "/scratch/hpc198a01/젬마4해커톤/lora_out/lora_v2"
+MODEL = "/PATH/REDACTED"
+DATA = "/PATH/REDACTED"
+EVAL = "/PATH/REDACTED"
+OUT = "/PATH/REDACTED"
 MAX_SEQ = 2048
 
 print(f"[v2] start {time.strftime('%H:%M:%S')}")

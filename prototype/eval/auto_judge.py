@@ -13,7 +13,7 @@ Output: prototype/eval/auto_judge_summary.json
 """
 import json, pathlib, re, unicodedata
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 SIDE = PROJ / "prototype/eval/lora_v1_vs_stock.jsonl"
 OUT = PROJ / "prototype/eval/auto_judge_summary.json"
 

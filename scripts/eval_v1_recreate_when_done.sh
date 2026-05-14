@@ -2,7 +2,7 @@
 # Wait for L_v1_recreate to finish, then evaluate its checkpoints (single-GPU fallback).
 # Same fix: pgrep on cmdline, not on env-only NAME.
 set -u
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 source venv/bin/activate
 

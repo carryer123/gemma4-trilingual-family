@@ -2,7 +2,7 @@
 # Watch for the current eval to finish, then relaunch to pick up new variants.
 # Each iteration the script's skip-logic ensures we don't re-eval completed ones.
 set -u
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 
 # wait for current eval

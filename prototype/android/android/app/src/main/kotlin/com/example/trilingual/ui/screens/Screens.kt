@@ -1,4 +1,4 @@
-package com.moontech.trilingual.ui.screens
+package com.example.trilingual.ui.screens
 
 import android.Manifest
 import androidx.compose.foundation.layout.*
@@ -12,12 +12,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberPermissionState
-import com.moontech.trilingual.audio.SpeechManager
-import com.moontech.trilingual.audio.TtsManager
-import com.moontech.trilingual.camera.CameraPreview
-import com.moontech.trilingual.data.*
-import com.moontech.trilingual.llm.LlmBackend
-import com.moontech.trilingual.llm.PromptLibrary
+import com.example.trilingual.audio.SpeechManager
+import com.example.trilingual.audio.TtsManager
+import com.example.trilingual.camera.CameraPreview
+import com.example.trilingual.data.*
+import com.example.trilingual.llm.LlmBackend
+import com.example.trilingual.llm.PromptLibrary
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive

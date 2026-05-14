@@ -16,7 +16,7 @@
 set -euo pipefail
 
 REPO_ID="litert-community/gemma-4-E2B-it-litert-lm"
-DEST="/scratch/hpc198a01/젬마4해커톤/hf_cache/litert/${REPO_ID//\//__}"
+DEST="/PATH/REDACTED"
 mkdir -p "$DEST"
 
 # Use huggingface_hub if available; fall back to git lfs.

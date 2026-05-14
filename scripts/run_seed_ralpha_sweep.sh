@@ -2,7 +2,7 @@
 # 4-GPU queue runner: pulls jobs from seed_ralpha_queue.txt, runs ≤4 in parallel.
 # Each line: name|train_file|max_steps|lora_r|lora_alpha|seed|lr
 set -u
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 source venv/bin/activate
 

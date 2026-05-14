@@ -10,7 +10,7 @@ Output: prototype/data/raw/trilingual_ko_ru_en.jsonl
 from __future__ import annotations
 import json, pathlib, collections
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 RAW = PROJ / "prototype/data/raw"
 OUT = RAW / "trilingual_ko_ru_en.jsonl"
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-MODEL="/Users/lee/Downloads/gguf_models/gemma4_e2b_policy.Q4_K_M.gguf"
-OUT_DIR="/Users/lee/Library/CloudStorage/Dropbox/Scapple/2026_연구노트/해커톤/Gemma4Good_iPad/ipad_transfer"
+MODEL="<HOME>/Downloads/gguf_models/gemma4_e2b_policy.Q4_K_M.gguf"
+OUT_DIR="<repo-root>/Gemma4Good_iPad/ipad_transfer"
 EXPECTED_SHA="2ea9dffb0af54e88d15a17bec5ea0c4bcd4a37d88045a0f158771555907b3575"
 
 if [ ! -f "$MODEL" ]; then

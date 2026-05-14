@@ -20,7 +20,7 @@ import json, pathlib, random, sys
 
 random.seed(20260506)
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 RAW = PROJ / "prototype/data/raw"
 DATA = PROJ / "prototype/data"
 TRAIN_OUT = DATA / "train_v1.jsonl"

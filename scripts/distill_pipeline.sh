@@ -2,7 +2,7 @@
 # Auto-pipeline: when object distill finishes, kick off scenario distill.
 set -euo pipefail
 
-cd /scratch/hpc198a01/젬마4해커톤
+cd /PATH/REDACTED
 
 echo "[wait] for object distill to finish..."
 while pgrep -f "04_run_synth_via_ollama" >/dev/null; do

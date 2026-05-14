@@ -6,7 +6,7 @@ Output: prototype/data/raw/transliteration.jsonl
 """
 import json, pathlib
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 OUT = PROJ / "prototype/data/raw/transliteration.jsonl"
 OUT.parent.mkdir(parents=True, exist_ok=True)
 

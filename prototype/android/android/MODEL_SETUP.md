@@ -35,7 +35,7 @@ gemma-4-E2B-it-merged.task   (~1.5–2.0 GB target, SAME file for Android + iOS)
 ## Run order (HPC)
 
 ```bash
-cd /scratch/hpc198a01/젬마4해커톤/prototype/android
+cd /PATH/REDACTED
 
 # 1. Pull reference artifacts from HF (small, runs in background)
 bash scripts/download_base_model.sh
@@ -47,7 +47,7 @@ pip install -U ai-edge-torch ai-edge-litert ai-edge-quantizer 'mediapipe>=0.10.2
 
 # 3. Merge + export. Wall time 4-8h on a GPU. Run with nohup; output is large.
 nohup python3 scripts/merge_lora_and_export.py \
-    > /scratch/hpc198a01/젬마4해커톤/logs/merge_export_$(date +%Y%m%d_%H%M).log 2>&1 &
+    > /PATH/REDACTED +%Y%m%d_%H%M).log 2>&1 &
 
 # 4. Verify size and integrity
 ls -lh app/src/main/assets/gemma-4-E2B-it-merged.task

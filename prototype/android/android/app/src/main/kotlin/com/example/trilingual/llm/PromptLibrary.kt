@@ -1,8 +1,8 @@
-package com.moontech.trilingual.llm
+package com.example.trilingual.llm
 
-import com.moontech.trilingual.data.FamilySetup
-import com.moontech.trilingual.data.FamilyWord
-import com.moontech.trilingual.data.Lang
+import com.example.trilingual.data.FamilySetup
+import com.example.trilingual.data.FamilyWord
+import com.example.trilingual.data.Lang
 
 /** Mirrors prototype/PROMPT_LIBRARY.md. Both Kotlin + Swift must stay
  *  byte-aligned. The 4L LoRA was trained on this prompt-style with

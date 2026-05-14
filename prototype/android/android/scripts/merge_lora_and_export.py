@@ -15,8 +15,8 @@ Run on HPC GPU (≥24GB recommended). Wall time: 4-8 h on a single H100.
 
 Env knobs:
   BASE_MODEL=hf_cache/...gemma-4-E2B-it
-  LORA_PATH=/scratch/hpc198a01/젬마4해커톤/lora_out/lora_v2/adapter
-  OUT_LITERTLM=/scratch/hpc198a01/젬마4해커톤/prototype/android/app/src/main/assets/gemma-4-E2B-it-merged.litertlm
+  LORA_PATH=/PATH/REDACTED
+  OUT_LITERTLM=/PATH/REDACTED
 
 NOTE: ai-edge-torch + LiteRT-LM bundler API surfaces evolve fast. If a step
 fails, consult:
@@ -31,20 +31,20 @@ from pathlib import Path
 
 BASE_MODEL = os.environ.get(
     "BASE_MODEL",
-    "/scratch/hpc198a01/젬마4해커톤/models/unsloth-gemma-4-E2B-it",
+    "/PATH/REDACTED",
 )
 LORA_PATH = os.environ.get(
     "LORA_PATH",
-    "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_policy_family_repair_seed10_s1500/adapter",
+    "/PATH/REDACTED",
 )
 OUT_DIR = Path(os.environ.get(
     "OUT_DIR",
-    "/scratch/hpc198a01/젬마4해커톤/prototype/android/app/src/main/assets",
+    "/PATH/REDACTED",
 ))
 OUT_LITERTLM = OUT_DIR / "gemma-4-E2B-it-merged.litertlm"
 WORK = Path(os.environ.get(
     "WORK_DIR",
-    "/scratch/hpc198a01/젬마4해커톤/lora_out/lora_v2_merged_export",
+    "/PATH/REDACTED",
 ))
 
 

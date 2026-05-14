@@ -11,7 +11,7 @@ from __future__ import annotations
 import json
 import pathlib
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 G3 = PROJ / "paper/figures/g3_extended_scores.json"
 OUT = PROJ / "paper/figures/g3_extended_selector_table.md"
 

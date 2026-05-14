@@ -9,7 +9,7 @@ Output: prototype/data/raw/tatoeba_{kor-rus,kor-eng,rus-eng}.jsonl
 from __future__ import annotations
 import os, csv, json, urllib.request, gzip, io, pathlib, time
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 RAW = PROJ / "prototype/data/raw"
 RAW.mkdir(parents=True, exist_ok=True)
 

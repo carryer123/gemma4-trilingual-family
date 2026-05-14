@@ -9,7 +9,7 @@ import sys
 import time
 from typing import Iterable
 
-os.environ.setdefault("HF_HOME", "/scratch/hpc198a01/젬마4해커톤/hf_cache")
+os.environ.setdefault("HF_HOME", "/PATH/REDACTED")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 os.environ.setdefault("WANDB_DISABLED", "true")
 
@@ -20,7 +20,7 @@ from torch.utils.data import DataLoader
 from unsloth import FastLanguageModel
 
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 DATA_FILE = pathlib.Path(os.environ.get(
     "COMMON_EVAL_FILE",
     str(PROJ / "prototype/data/eval_4l_common.jsonl"),

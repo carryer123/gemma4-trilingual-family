@@ -1,4 +1,4 @@
-package com.moontech.trilingual.data
+package com.example.trilingual.data
 
 import android.content.Context
 import androidx.datastore.preferences.core.edit

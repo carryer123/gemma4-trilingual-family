@@ -1,7 +1,7 @@
 #!/bin/bash
 # Launch the Gradio demo locally on port 7860 with the LoRA-v2 adapter.
 set -euo pipefail
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 source venv/bin/activate
 

@@ -16,7 +16,7 @@ import json
 import pathlib
 
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 INPUTS = [
     PROJ / "paper/figures/audit4l_repair_scores.json",
     PROJ / "paper/figures/audit4l_main_boost_scores.json",

@@ -12,7 +12,7 @@ from __future__ import annotations
 import os, json, pathlib, time, sys
 import torch
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 os.environ.setdefault("HF_HOME", str(PROJ / "hf_cache"))
 os.environ.setdefault("HF_HUB_ENABLE_HF_TRANSFER", "1")
 

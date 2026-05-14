@@ -5,7 +5,7 @@
 현재 모델은 GGUF입니다.
 
 ```text
-/Users/lee/Downloads/gguf_models/gemma4_e2b_policy.Q4_K_M.gguf
+<HOME>/Downloads/gguf_models/gemma4_e2b_policy.Q4_K_M.gguf
 size: 3.416 GB
 sha256: 2ea9dffb0af54e88d15a17bec5ea0c4bcd4a37d88045a0f158771555907b3575
 ```
@@ -50,14 +50,14 @@ App Store 또는 Apple Developer에서 full Xcode를 설치합니다.
 2. llama.cpp XCFramework 빌드
 
 ```bash
-cd "/Users/lee/Library/CloudStorage/Dropbox/Scapple/2026_연구노트/해커톤/Gemma4Good_iPad/vendor/llama.cpp"
+cd "<repo-root>/Gemma4Good_iPad/vendor/llama.cpp"
 ./build-xcframework.sh
 ```
 
 3. Xcode 프로젝트 열기
 
 ```bash
-open "/Users/lee/Library/CloudStorage/Dropbox/Scapple/2026_연구노트/해커톤/Gemma4Good_iPad/vendor/llama.cpp/examples/llama.swiftui/llama.swiftui.xcodeproj"
+open "<repo-root>/Gemma4Good_iPad/vendor/llama.cpp/examples/llama.swiftui/llama.swiftui.xcodeproj"
 ```
 
 4. iPad 연결 후 Run

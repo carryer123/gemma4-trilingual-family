@@ -5,7 +5,7 @@
 {"id":"phonetic_ko_to_cyr_05","category":"phonetic","direction":"ko->cyr","prompt":"Output ONLY a Cyrillic phonetic transliteration of '서울특별시'. No translation.","expect_script":"cyrillic","note":"placename"}
 {"id":"phonetic_ko_to_cyr_06","category":"phonetic","direction":"ko->cyr","prompt":"Output ONLY a Cyrillic phonetic transliteration of '엄마 아빠'. No translation.","expect_script":"cyrillic","note":"family terms"}
 {"id":"phonetic_ko_to_cyr_07","category":"phonetic","direction":"ko->cyr","prompt":"Output ONLY a Cyrillic phonetic transliteration of '비빔밥 먹자'. No translation.","expect_script":"cyrillic","note":"food + suggestion"}
-{"id":"phonetic_ko_to_cyr_08","category":"phonetic","direction":"ko->cyr","prompt":"Output ONLY a Cyrillic phonetic transliteration of the name '이병상'. No translation.","expect_script":"cyrillic","note":"Korean name"}
+{"id":"phonetic_ko_to_cyr_08","category":"phonetic","direction":"ko->cyr","prompt":"Output ONLY a Cyrillic phonetic transliteration of the name '김철수'. No translation.","expect_script":"cyrillic","note":"Korean name"}
 {"id":"phonetic_ko_to_cyr_09","category":"phonetic","direction":"ko->cyr","prompt":"Output ONLY a Cyrillic phonetic transliteration of '오늘은 월요일이에요'. No translation.","expect_script":"cyrillic","note":"day of week"}
 {"id":"phonetic_ko_to_cyr_10","category":"phonetic","direction":"ko->cyr","prompt":"Output ONLY a Cyrillic phonetic transliteration of '치킨이랑 콜라'. No translation.","expect_script":"cyrillic","note":"loanwords"}
 {"id":"phonetic_ko_to_cyr_11","category":"phonetic","direction":"ko->cyr","prompt":"Output ONLY a Cyrillic phonetic transliteration of '신촌역에서 만나'. No translation.","expect_script":"cyrillic","note":"meet at station"}

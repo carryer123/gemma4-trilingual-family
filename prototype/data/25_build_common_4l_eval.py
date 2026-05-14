@@ -13,7 +13,7 @@ import pathlib
 import random
 
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 DATA = PROJ / "prototype/data"
 OUT = DATA / "eval_4l_common.jsonl"
 MANIFEST = DATA / "eval_4l_common_manifest.json"

@@ -1,4 +1,4 @@
-package com.moontech.trilingual.llm
+package com.example.trilingual.llm
 
 object PromptBuilder {
     /**

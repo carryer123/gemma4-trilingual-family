@@ -3,7 +3,7 @@
 # all workers finish. This avoids stale shared JSON writes and uses all 4 A100s.
 set -u
 
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ" || exit 1
 source venv/bin/activate
 
@@ -46,7 +46,7 @@ import json
 import pathlib
 import shutil
 
-proj = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+proj = pathlib.Path("/PATH/REDACTED")
 fig = proj / "paper/figures"
 merged = {"run_id": None, "variants": {}}
 for path in sorted(fig.glob("audit4l_scores_g*.json")):

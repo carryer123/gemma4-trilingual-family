@@ -3,20 +3,20 @@
 20-probe baseline. Outputs side-by-side JSONL + summary.
 
 Run:
-  cd /scratch/hpc198a01/젬마4해커톤
+  cd /PATH/REDACTED
   source venv/bin/activate
   CUDA_VISIBLE_DEVICES=0 ./venv/bin/python prototype/eval/lora_v1_vs_stock.py
 """
 from __future__ import annotations
 import os, json, time, pathlib
-os.environ.setdefault("HF_HOME", "/scratch/hpc198a01/젬마4해커톤/hf_cache")
+os.environ.setdefault("HF_HOME", "/PATH/REDACTED")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
 import torch
 import unsloth  # apply patches early
 from unsloth import FastLanguageModel
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 PROBES_FILE = PROJ / "paper/data_release/family_as_evaluator_probes_v1.jsonl"
 STOCK_MODEL = str(PROJ / "models/unsloth-gemma-4-E2B-it")
 LORA_MERGED = str(PROJ / "lora_out/lora_v1/gguf-q4_k_m")  # merged safetensors dir

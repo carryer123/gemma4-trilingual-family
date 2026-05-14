@@ -1,4 +1,4 @@
-package com.moontech.trilingual.audio
+package com.example.trilingual.audio
 
 import android.content.Context
 import android.content.Intent

@@ -1,4 +1,4 @@
-package com.moontech.trilingual.data
+package com.example.trilingual.data
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName

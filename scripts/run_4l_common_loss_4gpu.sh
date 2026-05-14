@@ -2,7 +2,7 @@
 # Shared common-eval loss for first-wave + repair-wave 4L adapters.
 set -u
 
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ" || exit 1
 source venv/bin/activate
 
@@ -42,7 +42,7 @@ echo "[common-loss] workers complete; merging"
 import json
 import pathlib
 
-proj = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+proj = pathlib.Path("/PATH/REDACTED")
 fig = proj / "paper/figures"
 merged = {"variants": {}}
 for path in sorted(fig.glob("common_4l_loss_g*.json")):

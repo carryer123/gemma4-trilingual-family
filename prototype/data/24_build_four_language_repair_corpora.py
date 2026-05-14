@@ -15,7 +15,7 @@ import random
 
 random.seed(20260509)
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 DATA = PROJ / "prototype/data"
 
 TRAIN_OBJECTS = [

@@ -11,7 +11,7 @@
 # Skip-logic in eval_all_variants.py prevents re-evaluation.
 set -u
 
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 source venv/bin/activate
 

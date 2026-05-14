@@ -1,4 +1,4 @@
-package com.moontech.trilingual.llm
+package com.example.trilingual.llm
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json

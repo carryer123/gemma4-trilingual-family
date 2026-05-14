@@ -9,7 +9,7 @@ Output: prototype/eval/baseline_ollama_results.jsonl + summary.json
 from __future__ import annotations
 import os, json, pathlib, time, urllib.request
 
-PROJ = pathlib.Path("/scratch/hpc198a01/젬마4해커톤")
+PROJ = pathlib.Path("/PATH/REDACTED")
 OUT = PROJ / "prototype/eval/baseline_ollama_results.jsonl"
 SUMMARY = PROJ / "prototype/eval/baseline_ollama_summary.json"
 OUT.parent.mkdir(parents=True, exist_ok=True)

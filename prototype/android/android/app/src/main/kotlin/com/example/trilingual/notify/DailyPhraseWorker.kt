@@ -1,4 +1,4 @@
-package com.moontech.trilingual.notify
+package com.example.trilingual.notify
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -7,8 +7,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.work.*
-import com.moontech.trilingual.MainActivity
-import com.moontech.trilingual.R
+import com.example.trilingual.MainActivity
+import com.example.trilingual.R
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 

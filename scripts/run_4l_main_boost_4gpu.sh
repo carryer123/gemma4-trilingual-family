@@ -3,7 +3,7 @@
 # seed controls. Uses all 4 GPUs in the first wave.
 set -u
 
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ" || exit 1
 source venv/bin/activate
 

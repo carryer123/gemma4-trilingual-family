@@ -1,8 +1,8 @@
 #!/bin/bash
-# Gemma 4 해커톤 환경 셋업 — 모든 것을 /scratch/hpc198a01/젬마4해커톤/ 안에 격리
+# Gemma 4 해커톤 환경 셋업 — 모든 것을 /PATH/REDACTED 안에 격리
 set -euo pipefail
 
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 
 # venv 가 이미 있어야 함 (python3.10 -m venv 로 생성됨)

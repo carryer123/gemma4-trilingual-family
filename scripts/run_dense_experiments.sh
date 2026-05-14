@@ -5,7 +5,7 @@
 # Run after E4B 4-arm phase 1 finishes (GPU 1/2/3 freed up).
 set -u
 
-PROJ=/scratch/hpc198a01/젬마4해커톤
+PROJ=/PATH/REDACTED
 cd "$PROJ"
 source venv/bin/activate
 
