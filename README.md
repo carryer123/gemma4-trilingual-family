@@ -6,7 +6,7 @@
 
 A **multilingual family tutor** built on **Gemma 4 E2B** that runs **fully on-device on an iPad** and verifies every generation against a four-gate runtime audit suite (G1–G4) before the family ever sees it. Designed for **multi-script, multi-generation households** where the parents speak different first languages and grandparents / aunts / cousins drop in mid-week with yet another language.
 
-The reference deployment ships with **four languages active** (Korean · Russian · French · English) and two pre-configured sessions, but the data, training, and runtime gates are fully parameterised over a `(L1, L2, bridge)` tuple — adding a new language triple is a single config change. The seven-tab app is branded **Trio** because the runtime almost always shows the parent **three** active languages on screen (two parent-side + one bridge), even though the configured pool is four. We call the underlying system *Gemma Family* and the consumer app *Trio*; we use "multilingual" consistently when referring to capability and the concrete language count only when reporting numbers on the four-language audit.
+The reference deployment ships with **four languages active** (Korean · Russian · French · English) and two pre-configured sessions, but the data, training, and runtime gates are fully parameterised over a `(L1, L2, bridge)` tuple — adding a new language triple is a small config + data-spec change (three named touch-points: the Tatoeba pair list, the bridge-pivot spec, and an optional probe-set localisation; see *Adding a new language triple* below). The seven-tab app is branded **Trio** because the runtime almost always shows the parent **three** active languages on screen (two parent-side + one bridge), even though the configured pool is four. We call the underlying system *Gemma Family* and the consumer app *Trio*; we use "multilingual" consistently when referring to capability and the concrete language count only when reporting numbers on the four-language audit.
 
 > **One sentence.** A multilingual family tutor that ships its evaluator in the same binary as its model, so a parent can see — on every single answer — whether the model wrote in the right script, produced parseable JSON, and stayed inside the languages the session activated.
 
@@ -125,7 +125,7 @@ Every generation is parsed and scored against four gates, each named after a dep
 | **G1 — output-card structure + age policy** | the model emits a complete, usable card and the body sentences obey an age-budget (length and vocabulary scaled to the target age) | 24 (4-language) | live, every generation |
 | **G2 — cross-script state discipline** | the requested script (Hangul / Cyrillic / Latin) accounts for ≥ 85 % of non-whitespace characters and no other tracked script exceeds 10 % | 52 (legacy KO/RU rerun) + 40 (4-language) | live, every generation |
 | **G3 — JSON / schema validity** | a single JSON object is extractable, has the required keys, correct types, allowed enum values, and no forbidden extra keys | 80 (legacy KO/RU rerun) + 24 (4-language) | live, every generation |
-| **G4 — session-language routing** | the response uses only the languages the current session has activated (no leakage of the inactive third language) | 24 (4-language) | live, every generation |
+| **G4 — session-language routing** | the response uses only the languages the current session has activated (no leakage of any non-session language from the configured pool) | 24 (4-language) | live, every generation |
 
 The app's dashboard renders all four scores plus a Green / Amber / Red band on every answer; the rationale strings are surfaced inline. The full event stream is captured in `AuditLogStore` and exported as `audit_capsule.json` for parent review.
 
@@ -218,7 +218,7 @@ Five stock instruction-tuned bases spanning four model families (Gemma 4 E2B / E
 
 ### FP16 inference parity (bf16 → FP16)
 
-The seed-10 deployment-state winner, re-evaluated under FP16 inference, matches the bf16 numbers within rounding (G3 = 100, G4 = 100, G2 = 92.5) — so the gate scores are *not* a bf16-precision artefact. The shipped GGUF uses **Q4_K_M** (a different, more aggressive quantization than FP16). Q4_K_M shipping audit is included in `paper/figures/` per-gate JSONs and re-confirms the deployment-state behaviour in-app, but we report it separately from the bf16 / FP16 parity claim because the two are different precision regimes.
+The seed-10 deployment-state winner, re-evaluated under FP16 inference, matches the bf16 numbers within rounding (G3 = 100, G4 = 100, G2 = 92.5) — so the gate scores are *not* a bf16-precision artefact. The shipped GGUF uses **Q4_K_M** (a different, more aggressive quantization than FP16); the in-app audit dashboard runs the same gate suite against every Q4_K_M generation and exports the per-generation result as `audit_capsule.json` for parent review. The Q4_K_M behavioural numbers from in-app use are captured live rather than as a separate offline JSON; we list this explicitly because the bf16/FP16 parity check is the only precision-vs-quantization claim we make with offline aggregate numbers.
 
 ### Data scale
 
@@ -258,7 +258,7 @@ Each mode is a different *prompt template* over the same `(active_languages, tar
 | **Family note** | A short caregiver-to-caregiver note (greeting + fact + ask + time) in every active language, for when the parent has to brief grandma or the aunt on a routine. | — |
 | **Culture** | One culture moment per topic, with **daily-rotation chips** (today: 5 of 20 curated topics — Chuseok / 송편, Seollal / 세배, Russian Novy God, Maslenitsa pancakes, Pelmeni night, Russian banya, Matryoshka, French Galette des Rois, La Chandeleur, lullabies across cultures, table manners across cultures, etc.). Tap a chip → input is auto-filled with a well-formed Korean prompt → no drift. | — |
 
-### Guest mode (Guest mode)
+### Guest mode
 
 Real-life trigger: Russian grandmother + aunt + cousin arrive for a week. Korean and French should not switch off, but Russian needs to dominate during the visit. The Family tab has four named presets:
 
@@ -349,7 +349,7 @@ We use a tiny, deliberately minimal design system added in this hackathon round:
 | Curriculum decomposition | `paper/figures/audit4l_repair_scores.json` |
 | Cross-base replication | `paper/figures/audit4l_stock_{gemma4_e4b,qwen25_3b,llama32_3b,phi35_mini}.json` (stock baselines) + `paper/figures/audit4l_cross_{qwen,llama,phi,gemma_ctrl}{,_s1500}.json` (early and final-checkpoint repaired runs) + `paper/figures/audit4l_summary.json` (Gemma 4 E2B stock reference row) |
 | FP16 parity | `paper/figures/audit4l_parity_fp16.json` |
-| Q4_K_M shipping audit | `paper/figures/audit4l_main_boost_scores.json` re-evaluated under the in-app Q4_K_M GGUF; the on-device dashboard records and exports this stream as `audit_capsule.json` for every generation |
+| Q4_K_M behavioural check | live, in-app: every generation goes through the same gate suite and is recorded into the on-device `audit_capsule.json` stream. No separate offline aggregate JSON for this; the live audit *is* the artefact. |
 
 The aggregator `prototype/eval/analyze_all_variants.py` reads these JSONs and prints the README tables; it is currently tied to one specific training scratch layout, so the cleanest path to re-derive the numbers from scratch is to point any small jq/python script at the JSONs above.
 
@@ -478,7 +478,7 @@ The current prompt asks Gemma 4 for **plain `=== <language> ===` blocks**, parse
 | Generated card content | never (TTS is local, audit-log JSON stays in app container) |
 | Audit capsule | exported to local share-sheet only; no cloud sync |
 
-Airplane mode: **everything works identically**. No analytics SDKs, no telemetry, no remote crash reporter.
+Airplane mode: **the app-owned pipeline works identically** — generation, audit, TTS, Vision, persistence. The only platform-level call that depends on connectivity is iOS keyboard dictation, and only when the user has on-device dictation disabled in Settings. No analytics SDKs, no telemetry, no remote crash reporter.
 
 ---
 
