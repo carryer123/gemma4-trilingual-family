@@ -14,11 +14,11 @@ The reference deployment ships with **four languages active** (Korean · Russian
 
 ## Why this is 1등-worthy (judge card)
 
-1. **Offline family privacy** — every byte stays on the iPad. The hackathon demo runs in airplane mode with the wifi badge off.
+1. **Offline family privacy** — every byte the app owns stays on the iPad (model, KV cache, audit, TTS, Vision). The hackathon demo runs in airplane mode with the wifi badge off. The only off-device hop is the iOS system-keyboard dictation key, and only when the user has on-device dictation disabled in Settings — that is an iOS platform property, not an app one.
 2. **The evaluator ships with the model** — every single generation is graded by four named gates and tagged Green / Amber / Red, *live*, before the family sees it. Judges can watch the gauge update on every tap during the demo.
-3. **A measured deployment-state failure** — stock Gemma 4 E2B is 0 % on JSON-schema and 0 % on session-language routing despite passing G2 (script) at 95 %. Loss alone can't see this. We name it (G3, G4) and show it.
+3. **A measured deployment-state failure** — a same-base translation-only fine-tune of Gemma 4 E2B reaches 0 % on JSON-schema and 0 % on session-language routing while still passing G2 (script) at ≥ 92 % and held-out loss in the standard 0.80 band. Loss and a script-only filter both admit this run. We name the failure (G3, G4) and show it.
 4. **A repair recipe that actually closes the gap** — the deployment-state curriculum lifts G3 to 95.8 % and G4 to 91.7 % on the same Gemma 4 E2B base, with no held-out loss penalty. The exact recipe (data + curriculum + seed list) is in this repo.
-5. **A real working iPad product** — seven tabs (Today / Library / Phrasebook / Translate / Words / Camera / Family), four languages with TTS in each, Visitor mode for in-laws, on-device camera-to-trilingual-card via Vision. Reproducible end-to-end with the build instructions below.
+5. **A real working iPad product** — seven tabs (Today / Library / Phrasebook / Translate / Words / Camera / Family), four languages with TTS in each, **Guest mode** for in-laws, on-device camera-to-trilingual-card via Vision. Reproducible end-to-end with the build instructions below.
 
 ---
 
@@ -61,18 +61,18 @@ WHY IT WINS    Privacy (airplane-mode demo works), measurable evaluator on every
 
 ## Real-household evidence (anonymised)
 
-The system was iteratively shaped by two real OPOL households over the hackathon window. Every app feature in this repo traces back to a concrete pain point a parent named while using the build.
+The system was iteratively shaped by two real OPOL households over the hackathon window. Several core family-facing features in this repo trace back to a concrete pain point a parent surfaced while using the build.
 
 | Household | Active set | Child age | Visiting relative scenario | App feature this directly produced |
 |---|---|---|---|---|
-| A | KO + RU + EN | 2 | Russian grandmother + aunt + cousin stay for a week; the in-laws are Russian-only; the Korean-speaking parent has to keep functioning | **Visitor mode** preset "grandmother" / "aunt" with a 反말/존댓말 register filter on the Phrasebook |
+| A | KO + RU + EN | 2 | Russian grandmother + aunt + cousin stay for a week; the in-laws are Russian-only; the Korean-speaking parent has to keep functioning | **Guest mode** preset "grandmother" / "aunt" with a 반말/존댓말 register filter on the Phrasebook |
 | A | KO + RU + EN | 2 | Toddler asks "what is this" pointing at things on the dinner table | **Camera** tab → Vision label → trilingual word card with one kid-friendly sentence in each active language + TTS |
 | A | KO + RU + EN | 2 | Parents need bedtime stories that work for the child *and* are intelligible to the visiting grandmother | **Story** mode with 5–7 sentences per active language and per-language ▶︎ TTS, anchored to the topic |
 | B | KO + FR + EN | 4 | Preschooler bringing home a French word the parent doesn't know | **Word Wall** → tap a card → flip → multilingual sheet that translates that one word into every other active language with TTS |
 | Both | varies | 2, 4 | Same parent intent ("brush your teeth"), different room temperature — must be playful for the toddler, firm for the older child | **Say** mode → Calm / Playful / Firm 3-tone rewrite × every active language |
 | Both | varies | 2, 4 | Cultural literacy: today's holiday, why we eat songpyeon at Chuseok, why a banya, why Galette des Rois | **Culture** mode with daily-rotating chips from a 20-topic curated library |
 
-The households were not retroactively asked to validate; the development loop was always (1) observe a friction point, (2) design a chip / mode / filter to remove it, (3) confirm the friction is gone in the next family-use session. The pain-point columns above are the exact phrasings the parents used.
+The development loop throughout the hackathon window was (1) observe a friction point in family use, (2) design a chip / mode / filter to remove it, (3) check whether the friction is gone in the next family-use session. The pain-point column above summarises the parent-reported frictions; the feature column links each to the specific addition in the repo.
 
 ## How this maps to the Gemma 4 Good Hackathon criteria
 
@@ -243,7 +243,7 @@ The app ships as a **seven-tab consumer family app** branded **Trio**.
 | **Translate** | Free-text → all active languages, with an **alternative translation** line when the source word is ambiguous (e.g. Korean "시원하다" → English *refreshing* + alternative *cool* for temperature). |
 | **Words**     | Every generation's salient nouns auto-ingest into a per-language **Word Wall**. Tap a card to flip; tap again to open a sheet that translates that one word into every other active language with TTS. |
 | **Camera**    | Photo → Apple `VNClassifyImageRequest` labels → tap any label → Gemma writes the matching word + a sub-12-word kid-friendly sentence in each active language, each with its own ▶︎ TTS. |
-| **Family**    | UI language picker (KO/EN/RU/FR), Visitor mode (grandmother / aunt / dad-only / mom-only), per-family-language activation toggles, per-language voice picker (Premium / Enhanced / Compact), kids, model, history. |
+| **Family**    | UI language picker (KO/EN/RU/FR), Guest mode (grandmother / aunt / dad-only / mom-only), per-family-language activation toggles, per-language voice picker (Premium / Enhanced / Compact), kids, model, history. |
 
 ### Mode anatomy (Today tab)
 
@@ -258,7 +258,7 @@ Each mode is a different *prompt template* over the same `(active_languages, tar
 | **Family note** | A short caregiver-to-caregiver note (greeting + fact + ask + time) in every active language, for when the parent has to brief grandma or the aunt on a routine. | — |
 | **Culture** | One culture moment per topic, with **daily-rotation chips** (today: 5 of 20 curated topics — Chuseok / 송편, Seollal / 세배, Russian Novy God, Maslenitsa pancakes, Pelmeni night, Russian banya, Matryoshka, French Galette des Rois, La Chandeleur, lullabies across cultures, table manners across cultures, etc.). Tap a chip → input is auto-filled with a well-formed Korean prompt → no drift. | — |
 
-### Visitor mode (Guest mode)
+### Guest mode (Guest mode)
 
 Real-life trigger: Russian grandmother + aunt + cousin arrive for a week. Korean and French should not switch off, but Russian needs to dominate during the visit. The Family tab has four named presets:
 
