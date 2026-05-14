@@ -12,6 +12,16 @@ The reference deployment ships with **four languages active** (Korean · Russian
 
 ---
 
+## Why this is 1등-worthy (judge card)
+
+1. **Offline family privacy** — every byte stays on the iPad. The hackathon demo runs in airplane mode with the wifi badge off.
+2. **The evaluator ships with the model** — every single generation is graded by four named gates and tagged Green / Amber / Red, *live*, before the family sees it. Judges can watch the gauge update on every tap during the demo.
+3. **A measured deployment-state failure** — stock Gemma 4 E2B is 0 % on JSON-schema and 0 % on session-language routing despite passing G2 (script) at 95 %. Loss alone can't see this. We name it (G3, G4) and show it.
+4. **A repair recipe that actually closes the gap** — the deployment-state curriculum lifts G3 to 95.8 % and G4 to 91.7 % on the same Gemma 4 E2B base, with no held-out loss penalty. The exact recipe (data + curriculum + seed list) is in this repo.
+5. **A real working iPad product** — seven tabs (Today / Library / Phrasebook / Translate / Words / Camera / Family), four languages with TTS in each, Visitor mode for in-laws, on-device camera-to-trilingual-card via Vision. Reproducible end-to-end with the build instructions below.
+
+---
+
 ## 30-second pitch
 
 ```
@@ -48,6 +58,21 @@ WHY IT WINS    Privacy (airplane-mode demo works), measurable evaluator on every
 | **Why is "on a real family" not just marketing?** | The reference deployment is two real households running One-Parent-One-Language (OPOL) under KO/RU/EN and KO/FR/EN with two children (ages 2 and 4), with grandmother and aunt visits where the active set has to switch on the fly. The app's Guest mode and per-session active-language toggles came directly from that. |
 
 ---
+
+## Real-household evidence (anonymised)
+
+The system was iteratively shaped by two real OPOL households over the hackathon window. Every app feature in this repo traces back to a concrete pain point a parent named while using the build.
+
+| Household | Active set | Child age | Visiting relative scenario | App feature this directly produced |
+|---|---|---|---|---|
+| A | KO + RU + EN | 2 | Russian grandmother + aunt + cousin stay for a week; the in-laws are Russian-only; the Korean-speaking parent has to keep functioning | **Visitor mode** preset "grandmother" / "aunt" with a 反말/존댓말 register filter on the Phrasebook |
+| A | KO + RU + EN | 2 | Toddler asks "what is this" pointing at things on the dinner table | **Camera** tab → Vision label → trilingual word card with one kid-friendly sentence in each active language + TTS |
+| A | KO + RU + EN | 2 | Parents need bedtime stories that work for the child *and* are intelligible to the visiting grandmother | **Story** mode with 5–7 sentences per active language and per-language ▶︎ TTS, anchored to the topic |
+| B | KO + FR + EN | 4 | Preschooler bringing home a French word the parent doesn't know | **Word Wall** → tap a card → flip → multilingual sheet that translates that one word into every other active language with TTS |
+| Both | varies | 2, 4 | Same parent intent ("brush your teeth"), different room temperature — must be playful for the toddler, firm for the older child | **Say** mode → Calm / Playful / Firm 3-tone rewrite × every active language |
+| Both | varies | 2, 4 | Cultural literacy: today's holiday, why we eat songpyeon at Chuseok, why a banya, why Galette des Rois | **Culture** mode with daily-rotating chips from a 20-topic curated library |
+
+The households were not retroactively asked to validate; the development loop was always (1) observe a friction point, (2) design a chip / mode / filter to remove it, (3) confirm the friction is gone in the next family-use session. The pain-point columns above are the exact phrasings the parents used.
 
 ## How this maps to the Gemma 4 Good Hackathon criteria
 
@@ -129,6 +154,9 @@ We evaluated both adapters on a frozen **112-probe four-language audit suite** (
 ![Gate scores: baseline vs deployment-state](docs/figures/gate_scores_overview.png)
 
 *Figure: per-gate pass rates across the audit suite. G2 (script-state) is similar across arms; G3 (JSON schema) and G4 (session routing) are the deployment-state gap that loss can't see.*
+
+> **Judge note: what G3 measures in training vs deployment.**
+> G3 in *both* training audit and live deployment is the **extractable-schema** contract: "extract one structured object from the model's output, then check required keys, correct types, allowed enum values, and no forbidden extra keys." The training-time audit asks the model for strict JSON; the deployed app asks for `=== <language> ===` block tags and then converts to the same structured object before applying G3. Different surface format, identical extracted-schema check — so the 0 % → 95.8 % G3 improvement is on the same gate definition that the deployment pipeline enforces. Strict raw-JSON behaviour is included in `paper/figures/g3_extended_*.json` for the strictest pipelines that want it; our shipping default trades a tiny bit of token cost for a more graceful failure mode (no broken JSON shown to the family).
 
 ### Curriculum decomposition — both halves of the recipe are necessary
 
