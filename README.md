@@ -1,6 +1,6 @@
 # Gemma Family — State-Gated Trilingual Family Tutor
 
-End-to-end pipeline for the **Gemma 4 Good Hackathon (Kaggle 2026)**: a multilingual family tutor built on Gemma 4 E2B that runs **fully on-device on an iPad** and is gated at every generation against the same deployment audit suite we published at **EMNLP 2026** (Lee et al., *"From False-Green Detection to Gate-Aware Repair: State-Gated Data Curricula for Multilingual LoRA Adapters"*).
+End-to-end pipeline for the **Gemma 4 Good Hackathon (Kaggle 2026)**: a multilingual family tutor built on Gemma 4 E2B that runs **fully on-device on an iPad** and is gated at every generation against a deployment audit suite (G1–G4 gates on output-card structure, script-state discipline, JSON/schema validity, session-language routing). The companion paper describing the gate suite and repair curriculum is under double-blind review at a peer-reviewed venue and will be added here after the review outcome is announced.
 
 The repository ships **two layers** of one project:
 
@@ -107,7 +107,7 @@ The on-screen dashboard renders all five scores plus a band capsule on every ans
 
 ### Model
 
-`gemma4_e2b_policy.Q4_K_M.gguf` (3.2 GB, Q4_K_M, **Seed 10 policy+family repair**, EMNLP §4L main-boost). Held-out: common loss **0.6673 ± 0.0001**, G3 schema **100 %**, G4 routing **100 %**, app-constrained band **GREEN**. No-policy ablation: loss 0.804, G3 0 %, G4 0 % — used in the app as a toggleable "negative control" to demonstrate that the gates are doing real work.
+`gemma4_e2b_policy.Q4_K_M.gguf` (3.2 GB, Q4_K_M). The shipped adapter is the seed-winner of the policy+family repair curriculum; an alternative no-policy adapter is included as a toggleable "negative control" in the app to demonstrate that the gates do real work. Quantitative details (held-out loss, per-gate pass rates, cross-base replication) are reported in the companion paper currently under double-blind review and will be linked here after the review outcome.
 
 GGUF is not bundled. On launch the app scans the app-container `Documents/` and auto-loads any `.gguf`. The reproduction recipe in `scripts/` uses `xcrun devicectl device copy to` to push the model into the iPad container.
 
@@ -167,40 +167,6 @@ The original strict-JSON schema (`{"title":..., "body":{lang:str}}`) was dropped
 
 ## Citation
 
-```bibtex
-@inproceedings{lee2026stategated,
-  title  = {State-Gated Promotion: Auditable Repair of Multilingual
-            LoRA Adapters via Frozen Deployment Gates},
-  author = {Lee, Byoungsang and Kim, Yunchul and Shim, Youmin and Kwak, Chaewon and Lee, Jung Heon},
-  booktitle = {Proceedings of EMNLP},
-  year   = {2026},
-  note   = {under review}
-}
-```
-
----
-
-## Paper PDF (current draft)
-
-| File | Size | Description |
-|---|---|---|
-| [`paper/state_gated_lora_main.pdf`](paper/state_gated_lora_main.pdf) | 189 KB | Main paper (9 pages incl. references) |
-| [`paper/state_gated_lora_supplement.pdf`](paper/state_gated_lora_supplement.pdf) | 110 KB | Supplementary material (3 pages) |
-
-**Abstract (EMNLP 2026 submission):**
-
-> A LoRA adapter can win on validation loss yet emit unparseable JSON, drift into the wrong script, or answer in a language the session never activated — breaking the deployed interface even though scalar metrics look fine. We introduce *state-gated promotion*: a small set of automatic gates that name the deployment states an interface must preserve, freeze them before model selection, and turn each gate failure into targeted repair data. On a four-language KO/RU/FR/EN deployment with Gemma 4 E2B, a gate-aware repair curriculum lifts JSON-schema pass rate from **0% to 95.8%** and session-language routing from **0% to 91.7%** against a no-policy ablation matched on base, hyper-parameters, audit, and translation corpus but not on data volume, with no held-out loss penalty. The same stock failure replicates on four other instruction-tuned bases (Gemma 4 E4B, Qwen 2.5 3B, Llama 3.2 3B, Phi-3.5 mini), and the repair recipe recovers schema compliance to ≥91.7% on every base we repaired — evidence that the failure is a property of the deployment interface, not of any one base model.
-
-**Headline numbers:**
-
-| Metric | No-policy ablation | Policy+family repair |
-|---|---:|---:|
-| Held-out loss (mean) | 0.804 | 0.667 |
-| G2 script-state (%) | 92.5 | 91.7 |
-| **G3 JSON schema (%)** | **0.0** | **95.8** |
-| **G4 session routing (%)** | **0.0** | **91.7** |
-| Cross-base G3 (Qwen / Llama / Phi) | 0 / 0 / 0 | 91.7 / 100 / 100 |
-
-The contribution is the **loop itself** — frozen gates that simultaneously diagnose failure, define repair data, and re-evaluate the result — plus cross-base evidence that the failure pattern is a property of the deployment interface, not of any one base model.
-
-**Why no arXiv ID yet:** arXiv cs.CL requires endorsement from an existing cs.* contributor and the lead author's home department (Materials Science) doesn't have one in-house. Endorsement is being requested in parallel; this README will be updated with the arXiv ID and Hugging Face Papers link as soon as the upload is approved. The paper is otherwise complete and is being submitted to EMNLP 2026 (deadline 2026-05-25).
+> A companion paper describing the gate suite and repair curriculum is
+> under double-blind review at a peer-reviewed venue. Citation, abstract,
+> and PDF will be added here after the review outcome is announced.
