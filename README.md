@@ -107,7 +107,27 @@ The on-screen dashboard renders all five scores plus a band capsule on every ans
 
 ### Model
 
-`gemma4_e2b_policy.Q4_K_M.gguf` (3.2 GB, Q4_K_M). Two adapters ship with the app: a deployment-state-trained adapter (default) and a translation-only baseline that can be toggled on as a "negative control" so the parent can see, side by side, that the runtime gates catch failures the baseline doesn't. Quantitative details are reported in the companion paper currently under double-blind review and will be linked here after the review outcome.
+`gemma4_e2b_policy.Q4_K_M.gguf` (3.2 GB, Q4_K_M). Two adapters ship with the app: a deployment-state-trained adapter (default) and a translation-only baseline that can be toggled on as a "negative control" so the parent can see, side by side, that the runtime gates catch failures the baseline doesn't.
+
+### Evaluation (Kaggle hackathon submission)
+
+We evaluated both adapters on a frozen 112-probe audit suite covering all four runtime gates (24 G1 + 40 G2 + 24 G3 + 24 G4 prompts), with **Korean / Russian / French / English** as active languages and two sessions (KO/RU/EN and KO/FR/EN).
+
+| Gate | What it checks | Translation-only baseline | Deployment-state adapter |
+|---|---|---:|---:|
+| G1 — output card | family-card structural + age-policy compliance | 12.5 % | 55.6 % |
+| G2 — script state | $\geq$ 85 % of non-whitespace characters in the requested script | 92.5 % | 91.7 % |
+| **G3 — JSON schema** | extractable JSON object with required keys, types, enum values | **0.0 %** | **95.8 %** |
+| **G4 — session routing** | only the active languages are emitted; no leakage of inactive ones | **0.0 %** | **91.7 %** |
+| Held-out loss | common eval set (1,200 examples, identical across arms) | 0.804 | 0.667 |
+
+(G3 / G4 numbers are 3-seed means on the deployment-state arm and 2-seed means on the baseline arm. G3 / G4 standard deviations are reported in the companion paper.)
+
+**Cross-base replication.** Five stock instruction-tuned bases — Gemma 4 E2B, Gemma 4 E4B, Qwen 2.5 3B, Llama 3.2 3B, Phi-3.5 mini — all score 0 % on G1 / G3 / G4 out of the box, so the failure pattern is not a Gemma-specific artefact. Applying the same deployment-state training to three non-Gemma bases (Qwen, Llama, Phi) recovers G3 to $\geq$ 91.7 % on every base; Llama additionally recovers G4 to 100 %.
+
+**FP16 sanity check.** The seed-winner adapter, re-evaluated under FP16 inference, matches the bf16 numbers within rounding (G3 = 100, G4 = 100, G2 = 92.5) — i.e. the gate scores are not a precision artefact.
+
+The companion paper documenting the gate definitions, the curriculum decomposition, and the cross-base evidence is currently under double-blind review at a peer-reviewed venue; the formatted PDF and a full citation will be added here after the review outcome is announced.
 
 GGUF is not bundled. On launch the app scans the app-container `Documents/` and auto-loads any `.gguf`. The reproduction recipe in `scripts/` uses `xcrun devicectl device copy to` to push the model into the iPad container.
 
