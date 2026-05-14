@@ -2,9 +2,9 @@
   "variants": {
     "4l_policy_family_repair_seed10_s1500": {
       "variant": "4l_policy_family_repair_seed10_s1500",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_policy_family_repair_seed10_s1500/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "common_eval_file": "/scratch/hpc198a01/젬마4해커톤/prototype/data/eval_4l_common.jsonl",
+      "common_eval_file": "/PATH/REDACTED",
       "examples": 1200,
       "tokens": 52795,
       "loss": 0.6673232130598351,
@@ -12,5 +12,5 @@
       "elapsed_sec": 174.11
     }
   },
-  "common_eval_file": "/scratch/hpc198a01/젬마4해커톤/prototype/data/eval_4l_common.jsonl"
+  "common_eval_file": "/PATH/REDACTED"
 }

@@ -4,9 +4,9 @@
     "cross_qwen25_4l_pf_s1500": {
       "name": "cross_qwen25_4l_pf_s1500",
       "run_id": "20260511_002859",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/cross_qwen25_4l_pf_s1500/checkpoint-774",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "5f8160750fdd581de0b6149a5a75403613889ed210b9d16e9f1c7c7104a9d887",
       "by_gate": {
@@ -3510,6 +3510,6 @@
       "action": "RED"
     }
   },
-  "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+  "probe_file": "/PATH/REDACTED",
   "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125"
 }

@@ -1,6 +1,6 @@
 {
   "label": "stock_qwen25",
-  "model_path": "/scratch/hpc198a01/\uc82c\ub9c84\ud574\ucee4\ud1a4/models/cross/qwen25_3b_instruct",
+  "model_path": "/PATH/REDACTED",
   "n_prompts": 10,
   "total_new_tokens": 1195,
   "total_wall_sec": 29.230239152908325,

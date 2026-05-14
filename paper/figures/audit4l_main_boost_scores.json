@@ -4,9 +4,9 @@
     "4l_policy_family_repair_seed09_s1500": {
       "name": "4l_policy_family_repair_seed09_s1500",
       "run_id": "4l_main_boost_partial_20260509_073353",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_policy_family_repair_seed09_s1500/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "95599ff89e8cea8eb6652063b029058d138a85a1986e7cb8134bd7a34dfe6945",
       "by_gate": {
@@ -3471,9 +3471,9 @@
     "4l_policy_family_repair_seed10_s1500": {
       "name": "4l_policy_family_repair_seed10_s1500",
       "run_id": "4l_main_boost_partial_20260509_073353",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_policy_family_repair_seed10_s1500/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "2c85187407543d9f08add0e1bc3379df368b533a8da4e01a0aa018f7d61e8b57",
       "by_gate": {
@@ -6898,9 +6898,9 @@
     "4l_no_policy_seed10_s1500": {
       "name": "4l_no_policy_seed10_s1500",
       "run_id": "4l_main_boost_partial_20260509_073353",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_no_policy_seed10_s1500/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "1e85878a1830ff8dad333d71998c01152bbb7fa45a69a523d3b9ea7203212dbe",
       "by_gate": {
@@ -10531,9 +10531,9 @@
     "4l_policy_family_repair_seed11_s1500": {
       "name": "4l_policy_family_repair_seed11_s1500",
       "run_id": "4l_main_boost_partial_20260509_073353",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_policy_family_repair_seed11_s1500/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "140f44e6d619d65c8a0e55ff0d5cc5cc825aca603f8adc6a4bf9f426c6a1996e",
       "by_gate": {
@@ -13993,9 +13993,9 @@
     "4l_no_policy_seed11_s1500": {
       "name": "4l_no_policy_seed11_s1500",
       "run_id": "4l_main_boost_final_np11_20260509_081042",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_no_policy_seed11_s1500/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "477753cf68d428fa414936069b3c6d291c165c9d8f21159339029ff5d7edb9d8",
       "by_gate": {
@@ -17676,6 +17676,6 @@
       "action": "RED"
     }
   },
-  "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+  "probe_file": "/PATH/REDACTED",
   "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125"
 }

@@ -4,9 +4,9 @@
     "stock": {
       "name": "stock",
       "run_id": "4l_s1500_20260509_043032",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/models/unsloth-gemma-4-E2B-it",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": false,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": null,
       "by_gate": {
@@ -3616,9 +3616,9 @@
     "lora_v2": {
       "name": "lora_v2",
       "run_id": "4l_s1500_20260509_043032",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/lora_v2/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "03d83dfef7f94b9a7f50d1a8462a2356cc6aef0fa68086d3c2d7c33458b8fad4",
       "by_gate": {
@@ -7288,6 +7288,6 @@
       "action": "RED"
     }
   },
-  "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+  "probe_file": "/PATH/REDACTED",
   "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125"
 }

@@ -4,9 +4,9 @@
     "4l_balanced_repair_s1500": {
       "name": "4l_balanced_repair_s1500",
       "run_id": "4l_repair_s1500_20260509_052738",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_balanced_repair_s1500/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "f909496cbf1c658badf9fc10cf3dc1e25fcb664cc13984f996ea5e63cf42fc67",
       "by_gate": {
@@ -3448,9 +3448,9 @@
     "4l_policy_repair_s1500": {
       "name": "4l_policy_repair_s1500",
       "run_id": "4l_repair_s1500_20260509_052738",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_policy_repair_s1500/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "b380c09da49d3374798fbaa7007fe83b496f32c2892118ddc3e7fff415730836",
       "by_gate": {
@@ -7134,9 +7134,9 @@
     "4l_family_repair_s1500": {
       "name": "4l_family_repair_s1500",
       "run_id": "4l_repair_s1500_20260509_052738",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_family_repair_s1500/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "d3ae40119ad6f2a95d94ed0e9f08dacb715304d22fb3774733d0ac36d17299d2",
       "by_gate": {
@@ -10562,9 +10562,9 @@
     "4l_no_policy_repair_s1500": {
       "name": "4l_no_policy_repair_s1500",
       "run_id": "4l_repair_s1500_20260509_052738",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_no_policy_repair_s1500/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "3ab7783ddddad735a22c6ec7b78e00643ac1e5f571f0b97708711fcbea8fa082",
       "by_gate": {
@@ -14105,6 +14105,6 @@
       "action": "RED"
     }
   },
-  "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+  "probe_file": "/PATH/REDACTED",
   "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125"
 }

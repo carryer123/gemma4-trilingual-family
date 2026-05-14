@@ -4,9 +4,9 @@
     "cross_gemma4_4l_pf_ctrl_s1500": {
       "name": "cross_gemma4_4l_pf_ctrl_s1500",
       "run_id": "20260510_190703",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/cross_gemma4_4l_pf_ctrl_s1500/checkpoint-2000",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "867c9bdcd6babed14c7bcdcd7615b6fc16d237ffbb18b80a25db652c319e3039",
       "by_gate": {
@@ -3585,6 +3585,6 @@
       "action": "RED"
     }
   },
-  "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+  "probe_file": "/PATH/REDACTED",
   "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125"
 }

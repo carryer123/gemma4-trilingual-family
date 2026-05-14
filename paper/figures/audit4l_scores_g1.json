@@ -4,9 +4,9 @@
     "4l_balanced_s1500": {
       "name": "4l_balanced_s1500",
       "run_id": "4l_s1500_20260509_043032",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_balanced_s1500/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "f53f553b38d60bf5ef3263447f93bea36d193b667f84da795701a9b76c5f4f5b",
       "by_gate": {
@@ -3539,9 +3539,9 @@
     "4l_policy_high_s1500": {
       "name": "4l_policy_high_s1500",
       "run_id": "4l_s1500_20260509_043032",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/4l_policy_high_s1500/adapter",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "8736b09ece2d72420b359307c3f92ecd6e3c4b5b5d2337fd502507361502fa19",
       "by_gate": {
@@ -7091,6 +7091,6 @@
       "action": "RED"
     }
   },
-  "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+  "probe_file": "/PATH/REDACTED",
   "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125"
 }

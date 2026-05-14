@@ -4,9 +4,9 @@
     "cross_phi35_4l_pf_s1500": {
       "name": "cross_phi35_4l_pf_s1500",
       "run_id": "20260510_201742",
-      "adapter_path": "/scratch/hpc198a01/젬마4해커톤/lora_out/cross_phi35_4l_pf_s1500/checkpoint-765",
+      "adapter_path": "/PATH/REDACTED",
       "is_adapter": true,
-      "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+      "probe_file": "/PATH/REDACTED",
       "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125",
       "adapter_config_sha256": "7ef4f71f48870ef54028a3c9849ca287538c8a0f6b5ecc0fd28c715d901157fd",
       "by_gate": {
@@ -3648,6 +3648,6 @@
       "action": "RED"
     }
   },
-  "probe_file": "/scratch/hpc198a01/젬마4해커톤/tools/fae_protocol/probes_v4_4l_audit.jsonl",
+  "probe_file": "/PATH/REDACTED",
   "probe_sha256": "ce069882dc23e19e354302053152cb3d6cde9fc03748fb240e5bf36c2dd8c125"
 }
