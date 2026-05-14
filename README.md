@@ -107,7 +107,7 @@ The on-screen dashboard renders all five scores plus a band capsule on every ans
 
 ### Model
 
-`gemma4_e2b_policy.Q4_K_M.gguf` (3.2 GB, Q4_K_M). The shipped adapter is the seed-winner of the policy+family repair curriculum; an alternative no-policy adapter is included as a toggleable "negative control" in the app to demonstrate that the gates do real work. Quantitative details (held-out loss, per-gate pass rates, cross-base replication) are reported in the companion paper currently under double-blind review and will be linked here after the review outcome.
+`gemma4_e2b_policy.Q4_K_M.gguf` (3.2 GB, Q4_K_M). Two adapters ship with the app: a deployment-state-trained adapter (default) and a translation-only baseline that can be toggled on as a "negative control" so the parent can see, side by side, that the runtime gates catch failures the baseline doesn't. Quantitative details are reported in the companion paper currently under double-blind review and will be linked here after the review outcome.
 
 GGUF is not bundled. On launch the app scans the app-container `Documents/` and auto-loads any `.gguf`. The reproduction recipe in `scripts/` uses `xcrun devicectl device copy to` to push the model into the iPad container.
 
