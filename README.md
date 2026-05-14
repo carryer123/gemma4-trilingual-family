@@ -2,11 +2,37 @@
 
 **Submission for the [Gemma 4 Good Hackathon (Kaggle, 2026)](https://www.kaggle.com/competitions/gemma-4-good-hackathon)**
 
+[![On-device](https://img.shields.io/badge/on--device-100%25-success?style=flat-square)](https://www.kaggle.com/competitions/gemma-4-good-hackathon) [![Base model](https://img.shields.io/badge/base-Gemma%204%20E2B-blue?style=flat-square)](https://ai.google.dev/gemma) [![Quantization](https://img.shields.io/badge/quant-Q4__K__M%203.2GB-blue?style=flat-square)](#) [![Languages](https://img.shields.io/badge/languages-KO%20%C2%B7%20RU%20%C2%B7%20FR%20%C2%B7%20EN-blueviolet?style=flat-square)](#) [![License](https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square)](LICENSE) [![Platform](https://img.shields.io/badge/platform-iPad%20(iOS%2017%2B)-lightgrey?style=flat-square)](#)
+
 A **multilingual family tutor** built on **Gemma 4 E2B** that runs **fully on-device on an iPad** and verifies every generation against a four-gate runtime audit suite (G1–G4) before the family ever sees it. Designed for **multi-script, multi-generation households** where the parents speak different first languages and grandparents / aunts / cousins drop in mid-week with yet another language.
 
 The reference deployment ships with **four languages active** (Korean · Russian · French · English) and two pre-configured sessions, but the data, training, and runtime gates are fully parameterised over a `(L1, L2, bridge)` tuple — adding a new language triple is a single config change. The seven-tab app is branded **Trio** because the runtime almost always shows the parent **three** active languages on screen (two parent-side + one bridge), even though the configured pool is four. We call the underlying system *Gemma Family* and the consumer app *Trio*; we use "multilingual" consistently when referring to capability and the concrete language count only when reporting numbers on the four-language audit.
 
 > **One sentence.** A multilingual family tutor that ships its evaluator in the same binary as its model, so a parent can see — on every single answer — whether the model wrote in the right script, produced parseable JSON, and stayed inside the languages the session activated.
+
+---
+
+## 30-second pitch
+
+```
+PROBLEM        A trilingual household. Parents share no first language. Grandparents
+               visit speaking yet another. Cloud chatbots leak data off-device, route
+               languages incorrectly, or collapse to a single language in the room.
+
+WHAT WE BUILT  A 3.2 GB Gemma 4 E2B GGUF + an iPad SwiftUI app + four runtime gates.
+               One prompt → bedtime story / song / culture card / flashcard in
+               every active language, with on-device TTS, audited on every generation.
+
+THE NUMBER     The same translation training that gives baseline G2 = 92.5 % gives
+               G3 = 0 % JSON-schema and G4 = 0 % session-language routing. Our
+               gate-aware repair curriculum recovers G3 to 95.8 % and G4 to 91.7 %
+               on the same Gemma 4 E2B base, with no held-out loss penalty.
+
+WHY IT WINS    Privacy (airplane-mode demo works), measurable evaluator on every
+               generation (judges see the gate gauge live), family-real motivation,
+               and reproducible cross-base evidence (Qwen / Llama / Phi all recover
+               G3 to ≥ 91.7 % with the same recipe).
+```
 
 ---
 
@@ -20,6 +46,20 @@ The reference deployment ships with **four languages active** (Korean · Russian
 | **What's the technical novelty?** | We freeze the four runtime gates as named *deployment states* before model selection, evaluate every candidate adapter under that exact suite, and feed the failed probes back into a targeted repair curriculum. The same gates that diagnose failure define the repair data and re-evaluate the fix. |
 | **What's the measured win?** | G3 JSON-schema pass rate **0 % → 95.8 %**, G4 session-routing **0 % → 91.7 %** against a translation-only baseline matched on base / hyper-parameters / audit / translation corpus (but not on data volume — the deployment-state arm sees ≈ 2× more rows because it adds the policy + family slices). Same recipe recovers **G3** to ≥ 91.7 % on three other instruct bases (Qwen 2.5 3B, Llama 3.2 3B, Phi-3.5 mini); **G4 only recovers on Llama 3.2** within the audited training budget. |
 | **Why is "on a real family" not just marketing?** | The reference deployment is two real households running One-Parent-One-Language (OPOL) under KO/RU/EN and KO/FR/EN with two children (ages 2 and 4), with grandmother and aunt visits where the active set has to switch on the fly. The app's Guest mode and per-session active-language toggles came directly from that. |
+
+---
+
+## How this maps to the Gemma 4 Good Hackathon criteria
+
+| Hackathon criterion | What we ship in this repo |
+|---|---|
+| **Real-world impact / social good** | Two real multilingual households (Slavic-Asian-English and Romance-Asian-English) running One-Parent-One-Language; the app's Guest mode and per-session active-language toggles came directly from those families' visiting-relative scenarios. |
+| **Use of Gemma 4** | Gemma 4 E2B chosen as the smallest base that fits on iPad RAM at Q4_K_M (≈ 3.2 GB) and still recovers schema / routing under our repair curriculum. We also replicate on E4B to prove the failure is not Gemma-specific. |
+| **Multimodal / native function calling** | Vision (`VNClassifyImageRequest`) → label → trilingual word card with TTS; native block-tagged structured output (replacing strict JSON for token-efficiency on iPad) with a parser-contract gate (G3) at the deployment boundary. |
+| **On-device** | Full pipeline (LoRA inference, KV cache, audit, TTS, Vision) on a single iPad; airplane-mode demo works identically. The only off-device hop is the iOS keyboard's dictation if the user has on-device dictation turned off in Settings (a platform property, not an app one). |
+| **Evaluation rigor** | Frozen 112-probe audit suite, four named gates, repeated seeds (3 deployment / 2 baseline) on the main model, cross-base replication on 5 stock instruction-tuned bases, bf16 → FP16 parity check, on-screen audit gauge on every single generation. |
+| **Reproducibility** | One README, one `setup_env.sh`, one Xcode project, the merged Q4_K_M GGUF documented end-to-end; all gate-pass JSONs backing every table in this README are included under `paper/figures/`. |
+| **Documentation / submission polish** | Multi-language UI (KO/EN/RU/FR), an in-app `?` mode-overview sheet, a 3-minute demo script in `DEMO_SCRIPT_3MIN.md`, and a beat-by-beat real-family scenario for the video. |
 
 ---
 
@@ -86,6 +126,10 @@ We evaluated both adapters on a frozen **112-probe four-language audit suite** (
 
 **Read this way.** Both arms reach low loss in the same neighbourhood (0.80 vs 0.67) and similar G2 (92.5 vs 91.7), so any pipeline that filters only on loss or G2 admits both — yet G3 and G4 collapse to 0 % on the baseline and recover to 92–96 % on the deployment-state adapter. **That gap is the deployment-state gap that scalar selection cannot see.**
 
+![Gate scores: baseline vs deployment-state](docs/figures/gate_scores_overview.png)
+
+*Figure: per-gate pass rates across the audit suite. G2 (script-state) is similar across arms; G3 (JSON schema) and G4 (session routing) are the deployment-state gap that loss can't see.*
+
 ### Curriculum decomposition — both halves of the recipe are necessary
 
 | Curriculum (same base / hyper-params / step budget; data-volume varies as the slices are added) | G1 | G2 | G3 | G4 |
@@ -121,6 +165,14 @@ Five stock instruction-tuned bases spanning four model families (Gemma 4 E2B / E
 2. The recipe lifts G3 to ≥ 91.7 % on every newly repaired non-Gemma base.
 3. G4 is harder than G3: only Llama 3.2 and the main Gemma E2B seeds also recover G4.
 4. The two Gemma E2B *control* runs on different save schedules illustrate that **G3 and G4 are not learned by a single mechanism** — Ctrl A reaches G3 = 95.8 but G4 = 0; Ctrl B reaches G4 = 41.7 but only G3 = 45.8. The main 3-seed run avoids this trade-off because the combined curriculum carries explicit exemplars for both states.
+
+![Training dynamics across bases](docs/figures/training_dynamics.png)
+
+*Figure: per-base step trajectory under the repair curriculum. Different bases reach G3 and G4 on different schedules — Llama clears both, Qwen clears G3 then plateaus, Phi reaches G3 immediately but never opens G4 in the audited budget.*
+
+![LoRA layer impact](docs/figures/lora_layer_impact.png)
+
+*Figure: per-layer ΔSVD norm of the LoRA update vs. the base, showing the upper-mid blocks carry the bulk of the deployment-state behaviour change.*
 
 ### Per-seed deployment trace
 

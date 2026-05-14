@@ -1,5 +1,5 @@
 # FaE failure-mode taxonomy v1.0
-# Authors: Lee & Lee (2026). License: CC-BY 4.0
+# License: CC-BY 4.0
 # Tag format: lowercase_snake_case
 # Append-only within a major version. New tags via PR.
 
