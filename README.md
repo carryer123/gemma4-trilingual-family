@@ -427,7 +427,17 @@ xcrun devicectl device copy to \
   --destination Documents/gemma4_e2b_policy.Q4_K_M.gguf
 ```
 
-The model is **not bundled** (App Store binary size limits + Gemma Terms of Use). On launch the app scans the app-container `Documents/` and auto-loads any `.gguf`. A public Hugging Face mirror of the merged Q4_K_M GGUF is in the final-checks stage and will be linked here once published. In the meantime, the full recipe in this README reproduces an equivalent GGUF end-to-end on a single 80 GB A100 in roughly half a day of wall-clock time.
+The model is **not bundled** (App Store binary size limits + Gemma Terms of Use). On launch the app scans the app-container `Documents/` and auto-loads any `.gguf`. The shipped Q4_K_M GGUF is published on Hugging Face:
+
+**https://huggingface.co/carryer123/gemma4-trilingual-family-Q4_K_M**
+
+```bash
+hf download carryer123/gemma4-trilingual-family-Q4_K_M \
+  gemma4_e2b_policy.Q4_K_M.gguf --local-dir .
+# then push into the iPad app container with `xcrun devicectl device copy to ...`
+```
+
+The full training recipe in this README also reproduces an equivalent GGUF end-to-end on a single 80 GB A100 in roughly half a day of wall-clock time.
 
 ---
 
@@ -521,7 +531,7 @@ The full demo runs in airplane mode end to end. The recorded video file and a Yo
 | Artefact | License |
 |---|---|
 | App and pipeline code | Apache 2.0 ([LICENSE](LICENSE)) |
-| Trained LoRA adapter weights | Apache 2.0 (HF release URL added after the upload is finalised; for the hackathon judging window the merged Q4_K_M GGUF is reproducible from the recipe in this repo) |
+| Trained LoRA adapter weights | Apache 2.0 — merged Q4_K_M GGUF published at [carryer123/gemma4-trilingual-family-Q4_K_M](https://huggingface.co/carryer123/gemma4-trilingual-family-Q4_K_M) (3.2 GB) |
 | Multilingual datasets | CC-BY 4.0 (inherits from Tatoeba) |
 | FaE protocol specification, probe set, taxonomy | CC-BY 4.0 |
 | Engine | MIT (see `vendor/llama.cpp/LICENSE`) |
