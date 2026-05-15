@@ -12,17 +12,17 @@ The reference deployment ships with **four languages active** (Korean · Russian
 
 ---
 
-## Why this is 1등-worthy (judge card)
+## What's interesting here
 
-1. **Offline family privacy** — every byte the app owns stays on the iPad (model, KV cache, audit, TTS, Vision). The hackathon demo runs in airplane mode with the wifi badge off. The only off-device hop is the iOS system-keyboard dictation key, and only when the user has on-device dictation disabled in Settings — that is an iOS platform property, not an app one.
-2. **The evaluator ships with the model** — every single generation is graded by four named gates and tagged Green / Amber / Red, *live*, before the family sees it. Judges can watch the gauge update on every tap during the demo.
+1. **Offline family privacy** — every byte the app owns stays on the iPad (model, KV cache, audit, TTS, Vision). Airplane-mode mode of operation works identically. The only off-device hop is the iOS system-keyboard dictation key, and only when the user has on-device dictation disabled in Settings — an iOS platform property, not an app one.
+2. **The evaluator ships with the model** — every single generation is graded by four named gates and tagged Green / Amber / Red, *live*, before the family sees it.
 3. **A measured deployment-state failure** — a same-base translation-only fine-tune of Gemma 4 E2B reaches 0 % on JSON-schema and 0 % on session-language routing while still passing G2 (script) at ≥ 92 % and held-out loss in the standard 0.80 band. Loss and a script-only filter both admit this run. We name the failure (G3, G4) and show it.
 4. **A repair recipe that actually closes the gap** — the deployment-state curriculum lifts G3 to 95.8 % and G4 to 91.7 % on the same Gemma 4 E2B base, with no held-out loss penalty. The exact recipe (data + curriculum + seed list) is in this repo.
 5. **A real working iPad product** — seven tabs (Today / Library / Phrasebook / Translate / Words / Camera / Family), four languages with TTS in each, **Guest mode** for in-laws, on-device camera-to-trilingual-card via Vision. Reproducible end-to-end with the build instructions below.
 
 ---
 
-## 30-second pitch
+## 30-second overview
 
 ```
 PROBLEM        A trilingual household. Parents share no first language. Grandparents
@@ -38,15 +38,15 @@ THE NUMBER     The same translation training that gives baseline G2 = 92.5 % giv
                gate-aware repair curriculum recovers G3 to 95.8 % and G4 to 91.7 %
                on the same Gemma 4 E2B base, with no held-out loss penalty.
 
-WHY IT WINS    Privacy (airplane-mode demo works), measurable evaluator on every
-               generation (judges see the gate gauge live), family-real motivation,
-               and reproducible cross-base evidence (Qwen / Llama / Phi all recover
-               G3 to ≥ 91.7 % with the same recipe).
+WHY IT MATTERS Privacy (airplane-mode mode of operation works), measurable evaluator on
+               every generation, family-real motivation, and reproducible cross-base
+               evidence (Qwen / Llama / Phi all recover G3 to ≥ 91.7 % with the same
+               recipe).
 ```
 
 ---
 
-## TL;DR (for hackathon judges)
+## At a glance
 
 | Question | Answer |
 |---|---|
@@ -155,7 +155,7 @@ We evaluated both adapters on a frozen **112-probe four-language audit suite** (
 
 *Figure: per-gate pass rates across the audit suite. G2 (script-state) is similar across arms; G3 (JSON schema) and G4 (session routing) are the deployment-state gap that loss can't see.*
 
-> **Judge note: what G3 measures in training vs deployment.**
+> **Note — what G3 measures in training vs deployment.**
 > G3 in *both* training audit and live deployment is the **extractable-schema** contract: "extract one structured object from the model's output, then check required keys, correct types, allowed enum values, and no forbidden extra keys." The training-time audit asks the model for strict JSON; the deployed app asks for `=== <language> ===` block tags and then converts to the same structured object before applying G3. Different surface format, identical extracted-schema check — so the 0 % → 95.8 % G3 improvement is on the same gate definition that the deployment pipeline enforces. Strict raw-JSON behaviour is included in `paper/figures/g3_extended_*.json` for the strictest pipelines that want it; our shipping default trades a tiny bit of token cost for a more graceful failure mode (no broken JSON shown to the family).
 
 ### Curriculum decomposition — both halves of the recipe are necessary
@@ -427,7 +427,7 @@ xcrun devicectl device copy to \
   --destination Documents/gemma4_e2b_policy.Q4_K_M.gguf
 ```
 
-The model is **not bundled** (App Store binary size limits + Gemma Terms of Use). On launch the app scans the app-container `Documents/` and auto-loads any `.gguf`. Until the public Hugging Face upload is finalised (a final-checks pass over the merged GGUF is in progress), hackathon judges who want the exact shipped binary can request it via the contact channel on the Kaggle submission writeup. The full recipe in this README also reproduces an equivalent GGUF end-to-end on a single 80 GB A100 in roughly half a day of wall-clock time.
+The model is **not bundled** (App Store binary size limits + Gemma Terms of Use). On launch the app scans the app-container `Documents/` and auto-loads any `.gguf`. A public Hugging Face mirror of the merged Q4_K_M GGUF is in the final-checks stage and will be linked here once published. In the meantime, the full recipe in this README reproduces an equivalent GGUF end-to-end on a single 80 GB A100 in roughly half a day of wall-clock time.
 
 ---
 
@@ -452,7 +452,7 @@ The model is **not bundled** (App Store binary size limits + Gemma Terms of Use)
 | Design system primitives | `AppGradient`, `CardSurface`, `AppPalette` in `ContentView.swift` |
 | UI localization (KO / EN / RU / FR) | `Localization`, `LocKey` in `ContentView.swift` |
 
-The whole app is one file (`ContentView.swift`, ~5,500 lines) on purpose — keeps the implementation map auditable for hackathon judges and makes it trivial to fork for a new language triple.
+The whole app is one file (`ContentView.swift`, ~5,500 lines) on purpose — keeps the implementation map auditable in one read-through and makes it trivial to fork for a new language triple.
 
 ---
 
