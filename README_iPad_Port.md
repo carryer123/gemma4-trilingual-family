@@ -1,4 +1,4 @@
-# Gemma 4 Good iPad Port
+# Gemma Family iPad Port
 
 ## 결론
 

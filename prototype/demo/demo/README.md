@@ -34,14 +34,6 @@ Browse to http://localhost:7860 (or expose via `share=True` / cloudflared / ngro
 3. Push the LoRA-v2 adapter to a HF model repo (or include in the Space if small)
 4. Set `ADAPTER_PATH` in Space secrets to the HF model repo ID
 
-## Backend alternative — moon1 cloudflared
-
-If HuggingFace Space GPU quota is exhausted, point the Space's frontend to the
-moon1 backend via the cloudflared tunnel:
-- moon1: `python prototype/demo/app.py` (port 7860)
-- moon1: `cloudflared tunnel run --url http://localhost:7860`
-- Space: redirect to the cloudflared URL or wrap as iframe
-
 ## Five tabs (matches paper Section 3.1 capabilities)
 
 1. **Translation** — KO ↔ RU ↔ EN any direction

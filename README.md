@@ -1,8 +1,6 @@
 # Gemma Family — State-Gated Multilingual Family Tutor
 
-**Submission for the [Gemma 4 Good Hackathon (Kaggle, 2026)](https://www.kaggle.com/competitions/gemma-4-good-hackathon)**
-
-[![On-device](https://img.shields.io/badge/on--device-100%25-success?style=flat-square)](https://www.kaggle.com/competitions/gemma-4-good-hackathon) [![Base model](https://img.shields.io/badge/base-Gemma%204%20E2B-blue?style=flat-square)](https://ai.google.dev/gemma) [![Quantization](https://img.shields.io/badge/quant-Q4__K__M%203.2GB-blue?style=flat-square)](#) [![Languages](https://img.shields.io/badge/languages-KO%20%C2%B7%20RU%20%C2%B7%20FR%20%C2%B7%20EN-blueviolet?style=flat-square)](#) [![License](https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square)](LICENSE) [![Platform](https://img.shields.io/badge/platform-iPad%20(iOS%2017%2B)-lightgrey?style=flat-square)](#)
+[![On-device](https://img.shields.io/badge/on--device-100%25-success?style=flat-square)](#) [![Base model](https://img.shields.io/badge/base-Gemma%204%20E2B-blue?style=flat-square)](https://ai.google.dev/gemma) [![Quantization](https://img.shields.io/badge/quant-Q4__K__M%203.2GB-blue?style=flat-square)](#) [![Languages](https://img.shields.io/badge/languages-KO%20%C2%B7%20RU%20%C2%B7%20FR%20%C2%B7%20EN-blueviolet?style=flat-square)](#) [![License](https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square)](LICENSE) [![Platform](https://img.shields.io/badge/platform-iPad%20(iOS%2017%2B)-lightgrey?style=flat-square)](#)
 
 A **multilingual family tutor** built on **Gemma 4 E2B** that runs **fully on-device on an iPad** and verifies every generation against a four-gate runtime audit suite (G1–G4) before the family ever sees it. Designed for **multi-script, multi-generation households** where the parents speak different first languages and grandparents / aunts / cousins drop in mid-week with yet another language.
 
@@ -61,7 +59,7 @@ WHY IT MATTERS Privacy (airplane-mode mode of operation works), measurable evalu
 
 ## Real-household evidence (anonymised)
 
-The system was iteratively shaped by two real OPOL households over the hackathon window. Several core family-facing features in this repo trace back to a concrete pain point a parent surfaced while using the build.
+The system was iteratively shaped by two real OPOL households over the development window. Several core family-facing features in this repo trace back to a concrete pain point a parent surfaced while using the build.
 
 | Household | Active set | Child age | Visiting relative scenario | App feature this directly produced |
 |---|---|---|---|---|
@@ -72,21 +70,7 @@ The system was iteratively shaped by two real OPOL households over the hackathon
 | Both | varies | 2, 4 | Same parent intent ("brush your teeth"), different room temperature — must be playful for the toddler, firm for the older child | **Say** mode → Calm / Playful / Firm 3-tone rewrite × every active language |
 | Both | varies | 2, 4 | Cultural literacy: today's holiday, why we eat songpyeon at Chuseok, why a banya, why Galette des Rois | **Culture** mode with daily-rotating chips from a 20-topic curated library |
 
-The development loop throughout the hackathon window was (1) observe a friction point in family use, (2) design a chip / mode / filter to remove it, (3) check whether the friction is gone in the next family-use session. The pain-point column above summarises the parent-reported frictions; the feature column links each to the specific addition in the repo.
-
-## How this maps to the Gemma 4 Good Hackathon criteria
-
-| Hackathon criterion | What we ship in this repo |
-|---|---|
-| **Real-world impact / social good** | Two real multilingual households (Slavic-Asian-English and Romance-Asian-English) running One-Parent-One-Language; the app's Guest mode and per-session active-language toggles came directly from those families' visiting-relative scenarios. |
-| **Use of Gemma 4** | Gemma 4 E2B chosen as the smallest base that fits on iPad RAM at Q4_K_M (≈ 3.2 GB) and still recovers schema / routing under our repair curriculum. We also replicate on E4B to prove the failure is not Gemma-specific. |
-| **Multimodal / native function calling** | Vision (`VNClassifyImageRequest`) → label → trilingual word card with TTS; native block-tagged structured output (replacing strict JSON for token-efficiency on iPad) with a parser-contract gate (G3) at the deployment boundary. |
-| **On-device** | Full pipeline (LoRA inference, KV cache, audit, TTS, Vision) on a single iPad; airplane-mode demo works identically. The only off-device hop is the iOS keyboard's dictation if the user has on-device dictation turned off in Settings (a platform property, not an app one). |
-| **Evaluation rigor** | Frozen 112-probe audit suite, four named gates, repeated seeds (3 deployment / 2 baseline) on the main model, cross-base replication on 5 stock instruction-tuned bases, bf16 → FP16 parity check, on-screen audit gauge on every single generation. |
-| **Reproducibility** | One README, one `setup_env.sh`, one Xcode project, the merged Q4_K_M GGUF documented end-to-end; all gate-pass JSONs backing every table in this README are included under `paper/figures/`. |
-| **Documentation / submission polish** | Multi-language UI (KO/EN/RU/FR), an in-app `?` mode-overview sheet, a 3-minute demo script in `DEMO_SCRIPT_3MIN.md`, and a beat-by-beat real-family scenario for the video. |
-
----
+The development loop was (1) observe a friction point in family use, (2) design a chip / mode / filter to remove it, (3) check whether the friction is gone in the next family-use session. The pain-point column above summarises the parent-reported frictions; the feature column links each to the specific addition in the repo.
 
 ## Why this exists
 
@@ -136,7 +120,7 @@ The app's dashboard renders all four scores plus a Green / Amber / Red band on e
 
 ---
 
-## Evaluation (Kaggle hackathon submission)
+## Evaluation
 
 We evaluated both adapters on a frozen **112-probe four-language audit suite** (24 G1 + 40 G2 + 24 G3 + 24 G4 prompts), with **Korean / Russian / French / English** as active languages and two sessions (KO/RU/EN and KO/FR/EN).
 
@@ -277,7 +261,7 @@ Each preset just sets the *active-languages* set + a register hint. The gates do
 
 ### Design system
 
-We use a tiny, deliberately minimal design system added in this hackathon round:
+We use a tiny, deliberately minimal design system:
 
 - `CardSurface` — every card gets a soft drop shadow (`radius: 10, y: 4`), a thin top-bevel stroke, and an optional **left-edge accent bar** colour-coded to the card's category (register, mode, language).
 - `AppGradient` — pastel lavender → peach app-wide backdrop, on every tab.
@@ -518,7 +502,7 @@ A **3-minute end-to-end demo** is scripted, beat-by-beat, in [`DEMO_SCRIPT_3MIN.
 6. *Differentiator cuts* — airplane-mode toggle (the on-device claim, visually proven) → the on-screen audit gauge → the cross-base table.
 7. *Close* — the family at the table, app shows the four-language `Приятного аппетита` card.
 
-The full demo runs in airplane mode end to end. The recorded video file and a YouTube link will be added to the Kaggle submission writeup; this repo's `paper/figures/` directory contains the supporting evaluation artefacts the video cites.
+The full demo runs in airplane mode end to end. This repo's `paper/figures/` directory contains the supporting evaluation artefacts the demo cites.
 
 ### Screenshots placeholder
 
@@ -555,6 +539,6 @@ The full demo runs in airplane mode end to end. The recorded video file and a Yo
 - **Audit scope** — G2 checks *script-state* compliance, not phonetic transliteration quality; G3 checks *schema shape*, not semantic correctness; the deployment-constrained Green band depends on deterministic interface guards (templates / constrained decoding).
 - **Thresholds** — gate thresholds are engineering triage rules, not calibrated precision / recall cut-offs.
 - **Adversarial robustness** — the gates are not adversarial; prompt-injection and jailbreak attacks against the deployed multilingual interface are out of scope and need their own threat-model-specific evaluation.
-- **Real-time voice in/out** — only the parent's typed prompt + system-dictation path is shipped in this hackathon round; a continuous voice loop is a natural next step.
+- **Real-time voice in/out** — only the parent's typed prompt + system-dictation path is shipped in this release; a continuous voice loop is a natural next step.
 
 The point of releasing the gates and the FaE protocol alongside the app is precisely so the next family that picks this up can see exactly what's been measured, what hasn't, and on how many seeds.

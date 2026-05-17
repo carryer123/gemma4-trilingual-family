@@ -1,7 +1,7 @@
 import Foundation
 
-/// UserDefaults-backed JSON persistence (good enough for hackathon scope).
-/// Swap to SwiftData post-hackathon if vocab grows large.
+/// UserDefaults-backed JSON persistence.
+/// Swap to SwiftData if vocab grows large.
 enum Persistence {
     private static let familyKey = "trilingual.family"
     private static let vocabKey  = "trilingual.vocab"

@@ -60,8 +60,7 @@ LearningScreen
   ├─ Voice toggle  [audio → multilingual response]
   ├─ Text mode (parent learning)
   ├─ Age band selector (0-2 / 2-4 / 4-6 / 6-8)
-  ├─ Bridge language selector (RU or EN for wife)
-  └─ Premium toggle (connects to moon1 cloudflared)
+  └─ Bridge language selector (RU or EN)
 ```
 
 ### Inference call (sketch)
@@ -117,7 +116,6 @@ val session = LlmInferenceSession.createFromOptions(llmInference, sessionOptions
 - [ ] LlmInference 통합 + JSON 카드 파싱
 - [ ] TTS 3언어 큐
 - [ ] 음성 입력 (AudioRecord → Gemma 4 audio modality 또는 onboard ASR)
-- [ ] 프리미엄 토글 → moon1 endpoint
 - [ ] LoRA 어댑터 로드
 - [ ] 어린이 콘텐츠 가드레일
 

@@ -4,11 +4,11 @@
 
 | Question | Choice | Rationale |
 |---|---|---|
-| Runtime (both platforms) | **MediaPipe Genai LLM Inference** — Android `com.google.mediapipe:tasks-genai:0.10.27`, iOS pods `MediaPipeTasksGenAI` + `MediaPipeTasksGenAIC` | Cross-platform parity: single .task artifact loads on both. LiteRT-LM Swift bindings still "🚀 In Dev" on the official repo, so it can't be the iOS path inside the hackathon window. |
+| Runtime (both platforms) | **MediaPipe Genai LLM Inference** — Android `com.google.mediapipe:tasks-genai:0.10.27`, iOS pods `MediaPipeTasksGenAI` + `MediaPipeTasksGenAIC` | Cross-platform parity: single .task artifact loads on both. LiteRT-LM Swift bindings still "🚀 In Dev" on the official repo, so it can't be the iOS path inside this development window. |
 | Model artifact | **`gemma-4-E2B-it-merged.task`** (we produce it) | Single file, both platforms, supports `setLoraPath()` if we ever want to split LoRA out. |
 | LoRA strategy | **Merge LoRA-v2 into base, re-quantize, re-bundle** | Single deploy. We retain the option to ship base + lora_v2.bin separately later. |
 | Reference artifact | [`litert-community/gemma-4-E2B-it-litert-lm`](https://huggingface.co/litert-community/gemma-4-E2B-it-litert-lm) | Reference weights for sanity comparison only; we do NOT ship these — they lack LoRA-v2. |
-| Deprecation note | MediaPipe Genai is marked deprecated by Google in favor of LiteRT-LM. We pin to 0.10.27 and call this out in the paper README: "Pinned to MediaPipe Genai for cross-platform parity; LiteRT-LM Swift bindings ETA after our hackathon window." | Stable now, forward-known. |
+| Deprecation note | MediaPipe Genai is marked deprecated by Google in favor of LiteRT-LM. We pin to 0.10.27 and call this out in the paper README: "Pinned to MediaPipe Genai for cross-platform parity; LiteRT-LM Swift bindings ETA after this release window." | Stable now, forward-known. |
 
 ## Pipeline
 
@@ -72,5 +72,4 @@ Pre-flight on HPC by loading the merged HF safetensors with transformers and run
 
 ## What is NOT in this pipeline
 
-- Audio modality of Gemma 4 E2B — we use Android `SpeechRecognizer` for input, OS TTS for output. The Gemma 4 audio path is post-hackathon.
-- moon1 server / avatar — premium tier was dropped from the public release per user decision 2026-05-09.
+- Audio modality of Gemma 4 E2B — we use Android `SpeechRecognizer` for input, OS TTS for output. The Gemma 4 audio path is a follow-up.

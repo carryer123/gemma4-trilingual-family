@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build KO/RU/FR/EN training corpora and state-gated mix variants.
 
-This is the fast four-language experiment for the hackathon/paper:
+This is the fast four-language experiment for the paper:
 
 * `train_4l_balanced.jsonl`:
   broad KO/RU/FR/EN translation + family-card + schema + script-state data.
