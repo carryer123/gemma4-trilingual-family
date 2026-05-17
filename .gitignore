@@ -33,7 +33,7 @@ vendor/llama.cpp/build-visionos-sim/
 # Large model files
 *.gguf
 gguf_models/
-ipad_transfer/
+mobile_transfer/
 
 # Training outputs (large)
 prototype/checkpoints/

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="<repo-root>/Gemma4Good_iPad/vendor/llama.cpp"
+ROOT="$(cd "$(dirname "$0")/.." && pwd)/vendor/llama.cpp"
 PROJECT="$ROOT/examples/llama.swiftui/llama.swiftui.xcodeproj"
 
 if [ ! -d "$PROJECT" ]; then
