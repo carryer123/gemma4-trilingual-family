@@ -1446,7 +1446,7 @@ struct ContentView: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(storyTitle(from: generatedRaw) ?? loc.title(for: selectedMode))
                         .font(.headline)
-                    Text("\(loc.t(.madeOnIPad)) · \(loc.ageLabel(targetAge))")
+                    Text("\(loc.t(.madeOnDevice)) · \(loc.ageLabel(targetAge))")
                         .font(.caption).foregroundColor(.secondary)
                 }
                 Spacer()
@@ -1578,7 +1578,7 @@ struct ContentView: View {
             HStack(spacing: 6) {
                 Image(systemName: "lock.shield.fill")
                     .foregroundColor(Color(red: 0.30, green: 0.55, blue: 0.40))
-                Text(loc.t(.madeOnIPad))
+                Text(loc.t(.madeOnDevice))
                     .font(.caption.weight(.medium))
             }
         }
@@ -1754,7 +1754,7 @@ enum LocKey: String, CaseIterable, Hashable {
     case end, uiLanguage
     case modelMissing, askKid, askKidHint
     case familyLangsSection, child1, child2, nameLabel, ageStepper, addSecondChild, done, save
-    case whosUsing, freeForm, makeAnother, madeOnIPad
+    case whosUsing, freeForm, makeAnother, madeOnDevice
     case allFilter, voiceSection, voicePickerHint, autoVoice
     case translate, translateHint, translateButton, translating, translateClear
 }
@@ -1927,7 +1927,7 @@ final class Localization: ObservableObject {
             .done:"완료", .save:"저장",
             .whosUsing:"누가 쓰고 있어요", .freeForm:"자유 형식",
             .makeAnother:"하나 더 만들기",
-            .madeOnIPad:"이 모바일에서 만들었어요. 서버로 전송되지 않아요.",
+            .madeOnDevice:"이 모바일에서 만들었어요. 서버로 전송되지 않아요.",
             .allFilter:"전체", .voiceSection:"음성 (TTS)",
             .voicePickerHint:"각 언어마다 설치된 음성을 골라요. Siri/Premium이 가장 자연스러워요.",
             .autoVoice:"자동 (최고 품질)",
@@ -1982,7 +1982,7 @@ final class Localization: ObservableObject {
             .done:"Done", .save:"Save",
             .whosUsing:"Who's using this", .freeForm:"free form",
             .makeAnother:"Make another",
-            .madeOnIPad:"Made on this device. Nothing is sent to a server.",
+            .madeOnDevice:"Made on this device. Nothing is sent to a server.",
             .allFilter:"All", .voiceSection:"Voice (TTS)",
             .voicePickerHint:"Choose an installed voice per language. Siri/Premium sound most natural.",
             .autoVoice:"Auto (best available)",
@@ -2037,7 +2037,7 @@ final class Localization: ObservableObject {
             .done:"Готово", .save:"Сохранить",
             .whosUsing:"Кто пользуется", .freeForm:"свободная форма",
             .makeAnother:"Сделать ещё",
-            .madeOnIPad:"Создано на этом устройстве. Ничего не отправляется на сервер.",
+            .madeOnDevice:"Создано на этом устройстве. Ничего не отправляется на сервер.",
             .allFilter:"Все", .voiceSection:"Голос (TTS)",
             .voicePickerHint:"Выберите голос для каждого языка. Siri/Premium звучат естественнее.",
             .autoVoice:"Авто (лучший доступный)",
@@ -2092,7 +2092,7 @@ final class Localization: ObservableObject {
             .done:"OK", .save:"Enregistrer",
             .whosUsing:"Qui utilise", .freeForm:"forme libre",
             .makeAnother:"En faire un autre",
-            .madeOnIPad:"Créé sur cet appareil. Rien n'est envoyé au serveur.",
+            .madeOnDevice:"Créé sur cet appareil. Rien n'est envoyé au serveur.",
             .allFilter:"Tout", .voiceSection:"Voix (TTS)",
             .voicePickerHint:"Choisissez une voix par langue. Siri/Premium sonnent le plus naturel.",
             .autoVoice:"Auto (meilleure dispo)",
