@@ -38,7 +38,7 @@ dependencies {
 ```kotlin
 // app/src/main/assets/gemma-4-e2b-it-int4.task   (~3GB after quantization)
 // Or download on first launch:
-// https://www.kaggle.com/models/google/gemma-4 (Mobile / MediaPipe variant)
+// https://huggingface.co/google/gemma-4-e2b-it (Mobile / MediaPipe variant)
 
 val options = LlmInference.LlmInferenceOptions.builder()
     .setModelPath("/data/local/tmp/llm/gemma-4-e2b-it.task")
