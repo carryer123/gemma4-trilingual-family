@@ -735,7 +735,7 @@ final class SpeechRecognizer: NSObject, ObservableObject {
         // Match Apple's "SpeakToMe" sample code exactly. `.record/.measurement`
         // is the documented combo for SFSpeechAudioBufferRecognitionRequest —
         // anything else has consistently produced either OSStatus -50 or
-        // kAFAssistantErrorDomain 216 on this iPad.
+        // kAFAssistantErrorDomain 216 on this device.
         let session = AVAudioSession.sharedInstance()
         do {
             try session.setCategory(.record, mode: .measurement, options: .duckOthers)
@@ -825,7 +825,7 @@ enum GemmaChat {
 }
 
 // =============================================================================
-//  Gemma Family — State-Gated Multilingual Tutor (iPad)
+//  Gemma Family — State-Gated Multilingual Tutor (mobile)
 // -----------------------------------------------------------------------------
 //  Implements the deployment side of the EMNLP 2026 paper:
 //    "From False-Green Detection to Gate-Aware Repair: State-Gated Data
@@ -1138,7 +1138,7 @@ struct ContentView: View {
 
             // Voice input is handled by the iOS keyboard's built-in dictation
             // mic key — tap the text box above, then the microphone key on
-            // the keyboard. This is what every consumer iPad app uses and
+            // the keyboard. This is what every consumer mobile app uses and
             // bypasses all the audio-engine / SFSpeech failure modes.
             HStack(spacing: 6) {
                 Image(systemName: "keyboard").font(.caption2).foregroundColor(.secondary)
@@ -1538,7 +1538,7 @@ struct ContentView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(generatingTitle)
                     .font(.headline)
-                Text("Made on this iPad. Nothing is sent to a server.")
+                Text("Made on this device. Nothing is sent to a server.")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
@@ -1598,7 +1598,7 @@ struct ContentView: View {
         let activeList = familyLanguages.filter { activeLangs.contains($0) }
         let kidLine = familyKids.map { "\($0.name)(\($0.age))" }.joined(separator: ", ")
 
-        // Slim system prompt — every extra token costs prefill time on iPad.
+        // Slim system prompt — every extra token costs prefill time on mobile.
         // Schema is compact; if policy adapter is off we drop the rules entirely
         // to mimic the EMNLP no-policy curriculum.
         let bodyKeys = activeList.map { "\"\($0)\":\"…\"" }.joined(separator: ",")
@@ -1927,7 +1927,7 @@ final class Localization: ObservableObject {
             .done:"완료", .save:"저장",
             .whosUsing:"누가 쓰고 있어요", .freeForm:"자유 형식",
             .makeAnother:"하나 더 만들기",
-            .madeOnIPad:"이 아이패드에서 만들었어요. 서버로 전송되지 않아요.",
+            .madeOnIPad:"이 모바일에서 만들었어요. 서버로 전송되지 않아요.",
             .allFilter:"전체", .voiceSection:"음성 (TTS)",
             .voicePickerHint:"각 언어마다 설치된 음성을 골라요. Siri/Premium이 가장 자연스러워요.",
             .autoVoice:"자동 (최고 품질)",
@@ -1982,7 +1982,7 @@ final class Localization: ObservableObject {
             .done:"Done", .save:"Save",
             .whosUsing:"Who's using this", .freeForm:"free form",
             .makeAnother:"Make another",
-            .madeOnIPad:"Made on this iPad. Nothing is sent to a server.",
+            .madeOnIPad:"Made on this device. Nothing is sent to a server.",
             .allFilter:"All", .voiceSection:"Voice (TTS)",
             .voicePickerHint:"Choose an installed voice per language. Siri/Premium sound most natural.",
             .autoVoice:"Auto (best available)",
@@ -2037,7 +2037,7 @@ final class Localization: ObservableObject {
             .done:"Готово", .save:"Сохранить",
             .whosUsing:"Кто пользуется", .freeForm:"свободная форма",
             .makeAnother:"Сделать ещё",
-            .madeOnIPad:"Создано на этом iPad. Ничего не отправляется на сервер.",
+            .madeOnIPad:"Создано на этом устройстве. Ничего не отправляется на сервер.",
             .allFilter:"Все", .voiceSection:"Голос (TTS)",
             .voicePickerHint:"Выберите голос для каждого языка. Siri/Premium звучат естественнее.",
             .autoVoice:"Авто (лучший доступный)",
@@ -2092,7 +2092,7 @@ final class Localization: ObservableObject {
             .done:"OK", .save:"Enregistrer",
             .whosUsing:"Qui utilise", .freeForm:"forme libre",
             .makeAnother:"En faire un autre",
-            .madeOnIPad:"Créé sur cet iPad. Rien n'est envoyé au serveur.",
+            .madeOnIPad:"Créé sur cet appareil. Rien n'est envoyé au serveur.",
             .allFilter:"Tout", .voiceSection:"Voix (TTS)",
             .voicePickerHint:"Choisissez une voix par langue. Siri/Premium sonnent le plus naturel.",
             .autoVoice:"Auto (meilleure dispo)",
@@ -3458,7 +3458,7 @@ private struct ModelDrawerView: View {
         List {
             Section("Gemma 4 model file (.gguf)") {
                 LoadCustomButton(llamaState: llamaState)
-                Text("Copy gemma4_e2b_policy.Q4_K_M.gguf into Files → On My iPad, then load it here.  The 3.2 GB model stays outside the app bundle.")
+                Text("Copy gemma4_e2b_policy.Q4_K_M.gguf into the Files app on this device, then load it here.  The 3.2 GB model stays outside the app bundle.")
                     .font(.caption).foregroundColor(.secondary)
             }
             if !llamaState.downloadedModels.isEmpty {

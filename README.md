@@ -1,8 +1,8 @@
 # Gemma Family — State-Gated Multilingual Family Tutor
 
-[![On-device](https://img.shields.io/badge/on--device-100%25-success?style=flat-square)](#) [![Base model](https://img.shields.io/badge/base-Gemma%204%20E2B-blue?style=flat-square)](https://ai.google.dev/gemma) [![Quantization](https://img.shields.io/badge/quant-Q4__K__M%203.2GB-blue?style=flat-square)](#) [![Languages](https://img.shields.io/badge/languages-KO%20%C2%B7%20RU%20%C2%B7%20FR%20%C2%B7%20EN-blueviolet?style=flat-square)](#) [![License](https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square)](LICENSE) [![Platform](https://img.shields.io/badge/platform-iPad%20(iOS%2017%2B)-lightgrey?style=flat-square)](#)
+[![On-device](https://img.shields.io/badge/on--device-100%25-success?style=flat-square)](#) [![Base model](https://img.shields.io/badge/base-Gemma%204%20E2B-blue?style=flat-square)](https://ai.google.dev/gemma) [![Quantization](https://img.shields.io/badge/quant-Q4__K__M%203.2GB-blue?style=flat-square)](#) [![Languages](https://img.shields.io/badge/languages-KO%20%C2%B7%20RU%20%C2%B7%20FR%20%C2%B7%20EN-blueviolet?style=flat-square)](#) [![License](https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square)](LICENSE) [![Platform](https://img.shields.io/badge/platform-mobile%20(iOS%2017%2B%20%C2%B7%20Android%2012%2B)-lightgrey?style=flat-square)](#)
 
-A **multilingual family tutor** built on **Gemma 4 E2B** that runs **fully on-device on an iPad** and verifies every generation against a four-gate runtime audit suite (G1–G4) before the family ever sees it. Designed for **multi-script, multi-generation households** where the parents speak different first languages and grandparents / aunts / cousins drop in mid-week with yet another language.
+A **multilingual family tutor** built on **Gemma 4 E2B** that runs **fully on-device on mobile** and verifies every generation against a four-gate runtime audit suite (G1–G4) before the family ever sees it. Designed for **multi-script, multi-generation households** where the parents speak different first languages and grandparents / aunts / cousins drop in mid-week with yet another language.
 
 The reference deployment ships with **four languages active** (Korean · Russian · French · English) and two pre-configured sessions, but the data, training, and runtime gates are fully parameterised over a `(L1, L2, bridge)` tuple — adding a new language triple is a small config + data-spec change (three named touch-points: the Tatoeba pair list, the bridge-pivot spec, and an optional probe-set localisation; see *Adding a new language triple* below). The seven-tab app is branded **Trio** because the runtime almost always shows the parent **three** active languages on screen (two parent-side + one bridge), even though the configured pool is four. We call the underlying system *Gemma Family* and the consumer app *Trio*; we use "multilingual" consistently when referring to capability and the concrete language count only when reporting numbers on the four-language audit.
 
@@ -12,11 +12,11 @@ The reference deployment ships with **four languages active** (Korean · Russian
 
 ## What's interesting here
 
-1. **Offline family privacy** — every byte the app owns stays on the iPad (model, KV cache, audit, TTS, Vision). Airplane-mode mode of operation works identically. The only off-device hop is the iOS system-keyboard dictation key, and only when the user has on-device dictation disabled in Settings — an iOS platform property, not an app one.
+1. **Offline family privacy** — every byte the app owns stays on the device (model, KV cache, audit, TTS, Vision). Airplane-mode mode of operation works identically. The only off-device hop is the iOS system-keyboard dictation key, and only when the user has on-device dictation disabled in Settings — an iOS platform property, not an app one.
 2. **The evaluator ships with the model** — every single generation is graded by four named gates and tagged Green / Amber / Red, *live*, before the family sees it.
 3. **A measured deployment-state failure** — a same-base translation-only fine-tune of Gemma 4 E2B reaches 0 % on JSON-schema and 0 % on session-language routing while still passing G2 (script) at ≥ 92 % and held-out loss in the standard 0.80 band. Loss and a script-only filter both admit this run. We name the failure (G3, G4) and show it.
 4. **A repair recipe that actually closes the gap** — the deployment-state curriculum lifts G3 to 95.8 % and G4 to 91.7 % on the same Gemma 4 E2B base, with no held-out loss penalty. The exact recipe (data + curriculum + seed list) is in this repo.
-5. **A real working iPad product** — seven tabs (Today / Library / Phrasebook / Translate / Words / Camera / Family), four languages with TTS in each, **Guest mode** for in-laws, on-device camera-to-trilingual-card via Vision. Reproducible end-to-end with the build instructions below.
+5. **A real working mobile product** — seven tabs (Today / Library / Phrasebook / Translate / Words / Camera / Family), four languages with TTS in each, **Guest mode** for in-laws, on-device camera-to-trilingual-card via Vision. Reproducible end-to-end with the build instructions below.
 
 ---
 
@@ -27,7 +27,7 @@ PROBLEM        A trilingual household. Parents share no first language. Grandpar
                visit speaking yet another. Cloud chatbots leak data off-device, route
                languages incorrectly, or collapse to a single language in the room.
 
-WHAT WE BUILT  A 3.2 GB Gemma 4 E2B GGUF + an iPad SwiftUI app + four runtime gates.
+WHAT WE BUILT  A 3.2 GB Gemma 4 E2B GGUF + an mobile SwiftUI app + four runtime gates.
                One prompt → bedtime story / song / culture card / flashcard in
                every active language, with on-device TTS, audited on every generation.
 
@@ -48,8 +48,8 @@ WHY IT MATTERS Privacy (airplane-mode mode of operation works), measurable evalu
 
 | Question | Answer |
 |---|---|
-| **What does it do?** | An iPad app that, given a one-line parent prompt, writes a bedtime story, a song, a culture moment, a flashcard, a child-directed rewrite, or a caregiver note in all the languages the family currently has active — with native-language TTS on every block. |
-| **Why Gemma 4?** | Gemma 4 E2B (2-billion-parameter instruct base) is the smallest base on which we could ship the full pipeline at ~3.2 GB Q4_K_M, fit in iPad RAM, and still recover JSON / session-routing behaviour after our gate-aware repair curriculum. |
+| **What does it do?** | An mobile app that, given a one-line parent prompt, writes a bedtime story, a song, a culture moment, a flashcard, a child-directed rewrite, or a caregiver note in all the languages the family currently has active — with native-language TTS on every block. |
+| **Why Gemma 4?** | Gemma 4 E2B (2-billion-parameter instruct base) is the smallest base on which we could ship the full pipeline at ~3.2 GB Q4_K_M, fit in mobile RAM, and still recover JSON / session-routing behaviour after our gate-aware repair curriculum. |
 | **What runs on-device vs. cloud?** | **The entire app pipeline** — LoRA adapter inference, KV cache, audit gates, TTS, Vision classifier. The one nuance: if the parent uses the iOS keyboard's dictation key, that transcription is on-device on iOS 17+ with on-device dictation enabled (a platform setting), otherwise iOS routes it to Apple's server — this is an iOS behaviour, not an app one. Airplane-mode demo works identically for the parts the app owns (everything except keyboard dictation). |
 | **What's the technical novelty?** | We freeze the four runtime gates as named *deployment states* before model selection, evaluate every candidate adapter under that exact suite, and feed the failed probes back into a targeted repair curriculum. The same gates that diagnose failure define the repair data and re-evaluate the fix. |
 | **What's the measured win?** | G3 JSON-schema pass rate **0 % → 95.8 %**, G4 session-routing **0 % → 91.7 %** against a translation-only baseline matched on base / hyper-parameters / audit / translation corpus (but not on data volume — the deployment-state arm sees ≈ 2× more rows because it adds the policy + family slices). Same recipe recovers **G3** to ≥ 91.7 % on three other instruct bases (Qwen 2.5 3B, Llama 3.2 3B, Phi-3.5 mini); **G4 only recovers on Llama 3.2** within the audited training budget. |
@@ -94,7 +94,7 @@ We replace all of that with **one 3.2 GB GGUF model file** (Gemma 4 E2B base wit
 | Layer | Where | Purpose |
 |---|---|---|
 | **Training** — bridge-pivot data, distillation, LoRA fine-tuning, FaE protocol | `prototype/`, `tools/fae_protocol/` | Produce the deployment-state-trained LoRA adapter shipped with the app |
-| **Deployment** — iPad SwiftUI app, runtime G1–G4 gates, audit capsule | `app/`, `vendor/llama.cpp/examples/llama.swiftui/` | Run the adapter on-device, verify every output, persist a per-generation audit log |
+| **Deployment** — mobile SwiftUI app, runtime G1–G4 gates, audit capsule | `app/`, `vendor/llama.cpp/examples/llama.swiftui/` | Run the adapter on-device, verify every output, persist a per-generation audit log |
 
 Both layers are **language-agnostic**: data and code are parameterised over a `(L1, L2, bridge)` tuple, the runtime gates only depend on the family's *configured* languages, and the deployment-time UI re-localises into the parent's chosen UI language (KO / EN / RU / FR). The reference configuration is `(L1=Korean, L2=Russian, bridge=English)` for the toddler in Household A and `(L1=Korean, L2=French, bridge=English)` for the preschooler in Household B.
 
@@ -255,7 +255,7 @@ Each preset just sets the *active-languages* set + a register hint. The gates do
 
 ### Multimodal status
 
-- **Speech in (parent)** — handled by **iOS's built-in dictation key** on the system keyboard. Whether that transcription is local depends on the device's settings: on iPads running iOS 17+ with "Enable Dictation" on, dictation is on-device by default (a one-time language-pack download per locale). If a user is on an older iOS or has disabled on-device dictation, audio will go to Apple's server — that is an iOS-platform property of the system keyboard, not a choice this app makes. The app itself never holds a `SFSpeechRecognizer` reference. We dropped the custom `SFSpeechRecognizer` + `AVAudioEngine` path because audio-session configs cycled through OSStatus `-50`, `kAFAssistantErrorDomain 216`, and `"No speech detected"` on remote-debugged builds; the keyboard mic is what every consumer iPad app uses and avoids the audio session entirely.
+- **Speech in (parent)** — handled by **iOS's built-in dictation key** on the system keyboard. Whether that transcription is local depends on the device's settings: on devices running iOS 17+ with "Enable Dictation" on, dictation is on-device by default (a one-time language-pack download per locale). If a user is on an older iOS or has disabled on-device dictation, audio will go to Apple's server — that is an iOS-platform property of the system keyboard, not a choice this app makes. The app itself never holds a `SFSpeechRecognizer` reference. We dropped the custom `SFSpeechRecognizer` + `AVAudioEngine` path because audio-session configs cycled through OSStatus `-50`, `kAFAssistantErrorDomain 216`, and `"No speech detected"` on remote-debugged builds; the keyboard mic is what every consumer mobile app uses and avoids the audio session entirely.
 - **Speech out** — `AVSpeechSynthesizer` with a quality-ranked voice selector (`Siri-class → Premium → Enhanced → Compact`). The Family tab exposes a per-language voice picker so the parent can pin (for example) Kate Enhanced for English. Siri voices themselves need Apple's `com.apple.developer.speech.synthesis` entitlement (paid Developer Program); Personal-Team sign-ins fall back to Premium, which uses the same neural engine.
 - **Camera + Vision** — shipped. `VNClassifyImageRequest` produces English labels → tap a label → Gemma writes the matching trilingual word card with a one-line example sentence. The photo never leaves the device.
 
@@ -386,7 +386,7 @@ The pipeline is parameterised over `(L1, L2, bridge)`. To add `(EN, ES)` with no
 
 ## Reproduction — app side
 
-**Requirements** — tested on iPad Pro M2 (11-inch, 8 GB RAM, iPadOS 18.4) and iPad Air M2 (11-inch, 8 GB RAM, iPadOS 18.3). At Q4_K_M the model takes ≈3.2 GB on disk and the runtime needs ≈4 GB free RAM at inference. Xcode 16.5 or newer (Swift 6, iOS 17+ deployment target). The default UI is iPad-landscape but the layout is compatible with iPad-portrait. **We have not verified iPads with less than 8 GB RAM**; those devices may swap or OOM at this model size and we treat them as untested.
+**Requirements** — tested on M2-class Apple Silicon mobile devices (11-inch, 8 GB RAM, iOS 18.3–18.4). At Q4_K_M the model takes ≈3.2 GB on disk and the runtime needs ≈4 GB free RAM at inference. Xcode 16.5 or newer (Swift 6, iOS 17+ deployment target). The default UI is landscape but the layout is compatible with portrait. **We have not verified devices with less than 8 GB RAM**; those devices may swap or OOM at this model size and we treat them as untested.
 
 ```bash
 # 1. iOS llama.xcframework (~10 min, Xcode 16.5+).
@@ -396,7 +396,7 @@ cd vendor/llama.cpp && ./build-xcframework.sh
 open examples/llama.swiftui/llama.swiftui.xcodeproj
 #   Xcode → Signing & Capabilities → Team → your Apple ID
 
-# 3. Connect an iPad in Developer Mode, then build and install on device.
+# 3. Connect an iOS device in Developer Mode, then build and install on device.
 xcodebuild -project examples/llama.swiftui/llama.swiftui.xcodeproj \
            -scheme llama.swiftui -configuration Debug \
            -destination 'platform=iOS,id=<UDID>' \
@@ -418,7 +418,7 @@ The model is **not bundled** (App Store binary size limits + Gemma Terms of Use)
 ```bash
 hf download carryer123/gemma4-trilingual-family-Q4_K_M \
   gemma4_e2b_policy.Q4_K_M.gguf --local-dir .
-# then push into the iPad app container with `xcrun devicectl device copy to ...`
+# then push into the app container with `xcrun devicectl device copy to ...`
 ```
 
 The full training recipe in this README also reproduces an equivalent GGUF end-to-end on a single 80 GB A100 in roughly half a day of wall-clock time.
@@ -429,7 +429,7 @@ The full training recipe in this README also reproduces an equivalent GGUF end-t
 
 | Component | Location |
 |---|---|
-| iPad SwiftUI app (seven tabs) | `app/UI/ContentView.swift` |
+| mobile SwiftUI app (seven tabs) | `app/UI/ContentView.swift` |
 | Engine wrapper around vendored llama.cpp | `app/llama.cpp.swift/LibLlama.swift` |
 | Gemma 4 chat-template wrap | `GemmaChat.wrap(_:)` in `ContentView.swift` |
 | G1–G4 evaluator + Green/Amber/Red band | `StateGates` enum in `ContentView.swift` |
@@ -454,7 +454,7 @@ The whole app is one file (`ContentView.swift`, ~5,500 lines) on purpose — kee
 
 The original strict-JSON schema (`{"title": ..., "body": {lang: str}}`) was dropped during development:
 
-1. **Token cost** — it wasted ~40 % of the iPad's prefill budget on scaffolding.
+1. **Token cost** — it wasted ~40 % of the device's prefill budget on scaffolding.
 2. **Truncation** — Gemma 4 E2B would routinely truncate mid-`body`, leaving the family looking at unclosed JSON.
 3. **Bad failure mode** — when JSON did break, the family saw raw `"title": "..."` text instead of a graceful fallback.
 
