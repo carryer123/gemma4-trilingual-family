@@ -2,6 +2,24 @@
 
 [![Demo video](https://img.shields.io/badge/demo-YouTube%203%E2%80%AFmin-red?style=flat-square&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=KcQ1-uPqIBk) [![On-device](https://img.shields.io/badge/on--device-100%25-success?style=flat-square)](#) [![Base model](https://img.shields.io/badge/base-Gemma%204%20E2B-blue?style=flat-square)](https://ai.google.dev/gemma) [![Quantization](https://img.shields.io/badge/quant-Q4__K__M%203.2GB-blue?style=flat-square)](#) [![Languages](https://img.shields.io/badge/languages-KO%20%C2%B7%20RU%20%C2%B7%20FR%20%C2%B7%20EN-blueviolet?style=flat-square)](#) [![License](https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square)](LICENSE) [![Platform](https://img.shields.io/badge/platform-mobile%20(iOS%2017%2B%20%C2%B7%20Android%2012%2B)-lightgrey?style=flat-square)](#)
 
+## ▶ Demo video (3 min)
+
+[![Watch the demo](https://img.youtube.com/vi/KcQ1-uPqIBk/maxresdefault.jpg)](https://www.youtube.com/watch?v=KcQ1-uPqIBk)
+
+**https://www.youtube.com/watch?v=KcQ1-uPqIBk** — one real Korean + Russian + English household using the app on a mobile device, with bilingual subtitles (original language above, English translation below) on every non-English line.
+
+What's actually in the 3 minutes, in order:
+
+1. *00:00–00:43 — English intro.* The mother explains, talking to camera, that her elder sister is also Russian-speaking, that the household runs three languages at once (KO / RU / EN), that her husband speaks only English, that her sister speaks only Russian, and that the toddler is being taught all three. She introduces why they're using the app to bridge a New Year explanation across the family.
+2. *00:43–00:57 — switching the app's interface to Russian.* Quick exchange with the child ("It's a Christmas tree!"), then she demonstrates that she can change the app's interface language to Russian so she can use her own mother tongue while she works.
+3. *00:57–01:29 — Russian New Year explanation.* She narrates in Russian: on New Year the family gathers, puts up the New Year tree in the centre of the room, and dances the *хоровод* (khorovod — a warm Russian tradition). The child copies the word, going from "хариво" to "хоровод".
+4. *01:29–01:58 — Korean New Year explanation.* The same beat in Korean for the Korean-speaking side of the family: gathering, decorating the tree, holding hands in a circle, "빙글빙글" (round and round), closing on "따뜻하고 행복한 추억이 가득한 하루예요" — a day full of warm happy memories.
+5. *02:00–02:55 — family chatter in Korean while using the app together at home,* ending on a family photo moment ("Potato!", "Smile at the camera!", "Wow!"). The audio in this stretch is fast, overlapping, kid-and-parent chat, and we are not going to over-claim what individual sentences are doing — the visible point is just *the family is using the app together, on the device, for everyday talk.*
+
+The video runs entirely on the device — no cloud round-trip for the language generation or TTS that the app produces. A separately scripted 7-beat product showcase (Phrasebook / Story / Word Wall / Say-it / on-screen audit gauge / Camera / Guest mode) is documented in [`DEMO_SCRIPT_3MIN.md`](DEMO_SCRIPT_3MIN.md) for reference; **the shipped video focuses on the household actually using the app, not on a feature tour.**
+
+---
+
 A **multilingual family tutor** built on **Gemma 4 E2B** that runs **fully on-device on mobile** and verifies every generation against a four-gate runtime audit suite (G1–G4) before the family ever sees it. Designed for **multi-script, multi-generation households** where the parents speak different first languages and grandparents / aunts / cousins drop in mid-week with yet another language.
 
 The reference deployment ships with **four languages active** (Korean · Russian · French · English) and two pre-configured sessions, but the data, training, and runtime gates are fully parameterised over a `(L1, L2, bridge)` tuple — adding a new language triple is a small config + data-spec change (three named touch-points: the Tatoeba pair list, the bridge-pivot spec, and an optional probe-set localisation; see *Adding a new language triple* below). The seven-tab app is branded **Trio** because the runtime almost always shows the parent **three** active languages on screen (two parent-side + one bridge), even though the configured pool is four. We call the underlying system *Gemma Family* and the consumer app *Trio*; we use "multilingual" consistently when referring to capability and the concrete language count only when reporting numbers on the four-language audit.
@@ -490,24 +508,7 @@ It is independent of this dataset and this model: any practitioner deploying an 
 
 ---
 
-## Demo video
-
-▶ **Watch the 3-minute demo on YouTube: https://www.youtube.com/watch?v=KcQ1-uPqIBk**
-
-[![Watch the demo](https://img.youtube.com/vi/KcQ1-uPqIBk/maxresdefault.jpg)](https://www.youtube.com/watch?v=KcQ1-uPqIBk)
-
-The video is shot on a real device with a real OPOL household (Korean + Russian + English) on screen, with bilingual subtitles for every non-English line (original above, English translation below). What you'll see, in order:
-
-1. *Intro (00:00–00:43, English)* — the mother explains the situation directly to camera: her elder sister is also Russian-speaking, the household has three languages running at once (KO / RU / EN), her husband speaks only English, her sister speaks only Russian, and the toddler is being taught all three. She introduces why they're using the app to bridge a New Year explanation across the family.
-2. *Switching the app to Russian (00:43–00:57)* — quick exchange with the child ("It's a Christmas tree!"), then the mother demonstrates that she can change the app's interface language to Russian so she can use her own mother tongue while she works.
-3. *Russian New Year explanation (00:57–01:29)* — she narrates in Russian: on New Year, the family gathers, puts up the New Year tree in the centre of the room, and dances the *хоровод* (khorovod) — a warm Russian tradition. The child tries to copy the word, going from "хариво" to "хоровод".
-4. *Korean New Year explanation (01:29–01:58)* — the same beat in Korean for the Korean-speaking side of the family: gathering, decorating the tree, holding hands in a circle, "빙글빙글" (round and round), ending on "따뜻하고 행복한 추억이 가득한 하루예요" — a day full of warm happy memories.
-5. *Notes-for-grandma flow (02:00–02:50, Korean)* — the mother walks through a quiet feature: a "이건 엄마의 자리야" (this is mom's spot) note-pad, where she can leave a written note for the visiting grandmother in the app while the child is mid-conversation. Closes with "정말 편안해" (so convenient).
-6. *Family photo close (02:50–02:58)* — the camera catches the photo-taking moment: "Potato!", "Smile at the camera!", "Wow!" — the household using the app together at the table.
-
-The video runs entirely on the device — no cloud round-trip for any of the language generation or TTS that the app produces. The originally planned 7-beat product showcase (Phrasebook / Story / Word Wall / Say-it / Audit gauge / Camera) is in [`DEMO_SCRIPT_3MIN.md`](DEMO_SCRIPT_3MIN.md) for reference; the shipped video focuses instead on the *family* using the app naturally.
-
-### Screenshots placeholder
+## Screenshots placeholder
 
 `docs/screenshots/` is reserved for the eight key screen captures of the in-app features (Today / Library / Phrasebook with register filter / Translate with Alternative line / Word Wall flip-card / Camera label translation / Family Guest mode / on-screen audit gauge). For each of those features the canonical reference is the code in `app/UI/ContentView.swift` and the supporting evaluation artefacts under `paper/figures/`.
 
