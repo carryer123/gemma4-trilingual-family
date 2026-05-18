@@ -1,6 +1,6 @@
 # Gemma Family — State-Gated Multilingual Family Tutor
 
-[![On-device](https://img.shields.io/badge/on--device-100%25-success?style=flat-square)](#) [![Base model](https://img.shields.io/badge/base-Gemma%204%20E2B-blue?style=flat-square)](https://ai.google.dev/gemma) [![Quantization](https://img.shields.io/badge/quant-Q4__K__M%203.2GB-blue?style=flat-square)](#) [![Languages](https://img.shields.io/badge/languages-KO%20%C2%B7%20RU%20%C2%B7%20FR%20%C2%B7%20EN-blueviolet?style=flat-square)](#) [![License](https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square)](LICENSE) [![Platform](https://img.shields.io/badge/platform-mobile%20(iOS%2017%2B%20%C2%B7%20Android%2012%2B)-lightgrey?style=flat-square)](#)
+[![Demo video](https://img.shields.io/badge/demo-YouTube%203%E2%80%AFmin-red?style=flat-square&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=KcQ1-uPqIBk) [![On-device](https://img.shields.io/badge/on--device-100%25-success?style=flat-square)](#) [![Base model](https://img.shields.io/badge/base-Gemma%204%20E2B-blue?style=flat-square)](https://ai.google.dev/gemma) [![Quantization](https://img.shields.io/badge/quant-Q4__K__M%203.2GB-blue?style=flat-square)](#) [![Languages](https://img.shields.io/badge/languages-KO%20%C2%B7%20RU%20%C2%B7%20FR%20%C2%B7%20EN-blueviolet?style=flat-square)](#) [![License](https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square)](LICENSE) [![Platform](https://img.shields.io/badge/platform-mobile%20(iOS%2017%2B%20%C2%B7%20Android%2012%2B)-lightgrey?style=flat-square)](#)
 
 A **multilingual family tutor** built on **Gemma 4 E2B** that runs **fully on-device on mobile** and verifies every generation against a four-gate runtime audit suite (G1–G4) before the family ever sees it. Designed for **multi-script, multi-generation households** where the parents speak different first languages and grandparents / aunts / cousins drop in mid-week with yet another language.
 
@@ -492,7 +492,11 @@ It is independent of this dataset and this model: any practitioner deploying an 
 
 ## Demo video
 
-A **3-minute end-to-end demo** is scripted, beat-by-beat, in [`DEMO_SCRIPT_3MIN.md`](DEMO_SCRIPT_3MIN.md). It walks through:
+▶ **Watch the 3-minute demo on YouTube: https://www.youtube.com/watch?v=KcQ1-uPqIBk**
+
+[![Watch the demo](https://img.youtube.com/vi/KcQ1-uPqIBk/maxresdefault.jpg)](https://www.youtube.com/watch?v=KcQ1-uPqIBk)
+
+The video is shot entirely in airplane mode on a real device, with two real OPOL households on screen. The beat-by-beat script lives in [`DEMO_SCRIPT_3MIN.md`](DEMO_SCRIPT_3MIN.md). It walks through:
 
 1. *Cold open* — a visiting Russian-speaking grandmother + aunt + cousin arrive, and the parent uses the app to bridge.
 2. *Phrasebook (Greeting / Formal-Russian filter)* — parent taps `Здравствуйте.` → on-device TTS, parent repeats.
