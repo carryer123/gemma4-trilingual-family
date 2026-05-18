@@ -496,21 +496,20 @@ It is independent of this dataset and this model: any practitioner deploying an 
 
 [![Watch the demo](https://img.youtube.com/vi/KcQ1-uPqIBk/maxresdefault.jpg)](https://www.youtube.com/watch?v=KcQ1-uPqIBk)
 
-The video is shot entirely in airplane mode on a real device, with two real OPOL households on screen. The beat-by-beat script lives in [`DEMO_SCRIPT_3MIN.md`](DEMO_SCRIPT_3MIN.md). It walks through:
+The video is shot on a real device with a real OPOL household (Korean + Russian + English) on screen, with bilingual subtitles for every non-English line (original above, English translation below). What you'll see, in order:
 
-1. *Cold open* — a visiting Russian-speaking grandmother + aunt + cousin arrive, and the parent uses the app to bridge.
-2. *Phrasebook (Greeting / Formal-Russian filter)* — parent taps `Здравствуйте.` → on-device TTS, parent repeats.
-3. *Story* — parent types one Korean line about a new toy bear; the app produces a coherent 5–7 sentence bedtime story in **KO / RU / EN** simultaneously, each language with its own ▶︎ TTS.
-4. *Word Wall* — parent taps the Russian word `медвежонок` → flip-card animation → multilingual translation sheet with TTS for "곰인형" / "little bear".
-5. *Say-it* — parent types "이제 식탁으로 와서 밥 먹자" → three labelled tones (Calm / Playful / Firm) × KO / RU / EN.
-6. *Differentiator cuts* — airplane-mode toggle (the on-device claim, visually proven) → the on-screen audit gauge → the cross-base table.
-7. *Close* — the family at the table, app shows the four-language `Приятного аппетита` card.
+1. *Intro (00:00–00:43, English)* — the mother explains the situation directly to camera: her elder sister is also Russian-speaking, the household has three languages running at once (KO / RU / EN), her husband speaks only English, her sister speaks only Russian, and the toddler is being taught all three. She introduces why they're using the app to bridge a New Year explanation across the family.
+2. *Switching the app to Russian (00:43–00:57)* — quick exchange with the child ("It's a Christmas tree!"), then the mother demonstrates that she can change the app's interface language to Russian so she can use her own mother tongue while she works.
+3. *Russian New Year explanation (00:57–01:29)* — she narrates in Russian: on New Year, the family gathers, puts up the New Year tree in the centre of the room, and dances the *хоровод* (khorovod) — a warm Russian tradition. The child tries to copy the word, going from "хариво" to "хоровод".
+4. *Korean New Year explanation (01:29–01:58)* — the same beat in Korean for the Korean-speaking side of the family: gathering, decorating the tree, holding hands in a circle, "빙글빙글" (round and round), ending on "따뜻하고 행복한 추억이 가득한 하루예요" — a day full of warm happy memories.
+5. *Notes-for-grandma flow (02:00–02:50, Korean)* — the mother walks through a quiet feature: a "이건 엄마의 자리야" (this is mom's spot) note-pad, where she can leave a written note for the visiting grandmother in the app while the child is mid-conversation. Closes with "정말 편안해" (so convenient).
+6. *Family photo close (02:50–02:58)* — the camera catches the photo-taking moment: "Potato!", "Smile at the camera!", "Wow!" — the household using the app together at the table.
 
-The full demo runs in airplane mode end to end. This repo's `paper/figures/` directory contains the supporting evaluation artefacts the demo cites.
+The video runs entirely on the device — no cloud round-trip for any of the language generation or TTS that the app produces. The originally planned 7-beat product showcase (Phrasebook / Story / Word Wall / Say-it / Audit gauge / Camera) is in [`DEMO_SCRIPT_3MIN.md`](DEMO_SCRIPT_3MIN.md) for reference; the shipped video focuses instead on the *family* using the app naturally.
 
 ### Screenshots placeholder
 
-`docs/screenshots/` is reserved for the eight key screen captures referenced in the demo (Today / Library / Phrasebook with register filter / Translate with Alternative line / Word Wall flip-card / Camera label translation / Family Guest mode / on-screen audit gauge). Until the recorded video is attached, the script above is the canonical walkthrough.
+`docs/screenshots/` is reserved for the eight key screen captures of the in-app features (Today / Library / Phrasebook with register filter / Translate with Alternative line / Word Wall flip-card / Camera label translation / Family Guest mode / on-screen audit gauge). For each of those features the canonical reference is the code in `app/UI/ContentView.swift` and the supporting evaluation artefacts under `paper/figures/`.
 
 ---
 
