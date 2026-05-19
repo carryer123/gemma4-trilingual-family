@@ -6,17 +6,9 @@
 
 [![Watch the demo](https://img.youtube.com/vi/KcQ1-uPqIBk/maxresdefault.jpg)](https://www.youtube.com/watch?v=KcQ1-uPqIBk)
 
-**https://www.youtube.com/watch?v=KcQ1-uPqIBk** — one real Korean + Russian + English household using the app on a mobile device, with bilingual subtitles (original language above, English translation below) on every non-English line.
+**https://www.youtube.com/watch?v=KcQ1-uPqIBk** — one real Korean + Russian + English household using the app on a mobile device, fully on-device. Bilingual subtitles throughout (original language + English translation).
 
-What's actually in the 3 minutes, in order:
-
-1. *00:00–00:43 — English intro.* The mother explains, talking to camera, that her elder sister is also Russian-speaking, that the household runs three languages at once (KO / RU / EN), that her husband speaks only English, that her sister speaks only Russian, and that the toddler is being taught all three. She introduces why they're using the app to bridge a New Year explanation across the family.
-2. *00:43–00:57 — switching the app's interface to Russian.* Quick exchange with the child ("It's a Christmas tree!"), then she demonstrates that she can change the app's interface language to Russian so she can use her own mother tongue while she works.
-3. *00:57–01:29 — Russian New Year explanation.* She narrates in Russian: on New Year the family gathers, puts up the New Year tree in the centre of the room, and dances the *хоровод* (khorovod — a warm Russian tradition). The child copies the word, going from "хариво" to "хоровод".
-4. *01:29–01:58 — Korean New Year explanation.* The same beat in Korean for the Korean-speaking side of the family: gathering, decorating the tree, holding hands in a circle, "빙글빙글" (round and round), closing on "따뜻하고 행복한 추억이 가득한 하루예요" — a day full of warm happy memories.
-5. *02:00–02:55 — family chatter in Korean while using the app together at home,* ending on a family photo moment ("Potato!", "Smile at the camera!", "Wow!"). The audio in this stretch is fast, overlapping, kid-and-parent chat, and we are not going to over-claim what individual sentences are doing — the visible point is just *the family is using the app together, on the device, for everyday talk.*
-
-The video runs entirely on the device — no cloud round-trip for the language generation or TTS that the app produces. A separately scripted 7-beat product showcase (Phrasebook / Story / Word Wall / Say-it / on-screen audit gauge / Camera / Guest mode) is documented in [`DEMO_SCRIPT_3MIN.md`](DEMO_SCRIPT_3MIN.md) for reference; **the shipped video focuses on the household actually using the app, not on a feature tour.**
+A scripted feature tour (Phrasebook / Story / Word Wall / Say-it / audit gauge / Camera / Guest mode) is documented separately in [`DEMO_SCRIPT_3MIN.md`](DEMO_SCRIPT_3MIN.md); the shipped video shows the family actually using the app.
 
 ---
 
